@@ -1,0 +1,97 @@
+/* Frontend principal pour Mon Cacao - style.css */
+
+/* Reset / base */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; font-family: "Segoe UI", Roboto, Arial, sans-serif; background: #f2f6f2; color: #222; }
+
+/* Navbar */
+.navbar {
+  background: #88BA3F;
+  color: #fff;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.navbar .brand { font-weight: 700; font-size: 1.2rem; }
+.navbar .status { font-size: 0.9rem; opacity: 0.95; }
+
+/* Container principal */
+.container {
+  max-width: 1100px;
+  margin: 18px auto;
+  padding: 0 16px;
+}
+
+/* Layout en colonnes responsive */
+.grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 18px;
+}
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* Sidebar */
+.sidebar {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(20,20,20,0.06);
+}
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #2b4a18;
+}
+.sidebar .nav-item { display: flex; align-items: center; gap: 10px; padding: 8px 6px; border-radius: 6px; cursor: pointer; color: #333; text-decoration: none; }
+.sidebar .nav-item:hover { background: #f4f8ee; }
+
+/* Card / content area */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(20,20,20,0.05);
+  margin-bottom: 18px;
+}
+.card h3 { margin-top: 0; color: #2b4a18; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2b7a0b;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn.secondary { background: #e6f1d6; color: #214f10; border: 1px solid #d6e6b9; }
+.btn.small { padding: 6px 8px; font-size: 0.9rem; }
+
+/* Small helper icons */
+.icon { width: 20px; display: inline-block; text-align: center; }
+
+/* Chat widget (ex: Mon Assistant Cacao) */
+.chat-widget {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 340px;
+  max-width: calc(100% - 32px);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(5,10,10,0.2);
+  background: #fff;
+}
+
+/* Footer spacing */
+.footer-spacer { height: 80px; }
+
+/* Misc */
+.small-muted { color: #666; font-size: 0.9rem; }
