@@ -11,18 +11,21 @@
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,sans-serif}button,input,select{font:inherit}button,a,input,select{touch-action:manipulation}a{color:inherit}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a45615;outline-offset:3px}[hidden]{display:none!important}.wrap{max-width:1100px;margin:auto;padding-inline:24px}.skip{position:absolute;top:-100px}.skip:focus{top:0;z-index:2;background:white;padding:12px}.top{background:var(--white);border-bottom:1px solid var(--line)}.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:74px}.brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-size:1.2rem;font-weight:800}.mark{display:grid;place-items:center;width:40px;height:40px;background:var(--forest);color:var(--gold);border-radius:14px}.mark svg{width:24px}.nav{display:flex;flex-wrap:wrap;gap:6px}.nav a{display:block;text-decoration:none;border-radius:8px;padding:9px 13px}.nav a[aria-current]{background:var(--mint);font-weight:700;color:var(--forest)}main{padding-block:30px 44px}.hero{background:var(--forest);color:var(--white);padding:clamp(24px,5vw,56px);border-radius:26px;display:grid;grid-template-columns:1.6fr 1fr;gap:22px;align-items:center}.hero h1,h1.page{font:500 clamp(2.35rem,6vw,4.4rem)/.99 Georgia,serif;letter-spacing:-.035em;margin:.15em 0 .3em}.hero p{color:#e0ebda;max-width:47ch}.eyebrow{font-size:.79rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#a74e21}.hero .eyebrow{color:var(--gold)}.hero-art{justify-self:end;max-width:220px;width:100%;color:var(--gold)}.button{display:inline-block;border:0;border-radius:10px;padding:11px 17px;font-weight:750;text-decoration:none;background:var(--forest);color:white;cursor:pointer}.button:hover{filter:brightness(1.14)}.hero .button{background:var(--gold);color:#2c2414}.button.secondary{background:var(--mint);color:var(--forest)}.button:disabled{opacity:.55;cursor:default}.row,.cards,.fields{display:grid;gap:16px}.row{grid-template-columns:1fr 1fr}.cards{grid-template-columns:repeat(3,1fr);margin:20px 0}.fields{grid-template-columns:1fr 1fr}.card,.panel{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;min-width:0}.card p,.muted,small{color:var(--muted)}.metric{display:block;font:500 clamp(1.4rem,3vw,2rem)/1.2 Georgia,serif;margin-top:8px;overflow-wrap:anywhere}.panel h2,.card h2{margin:0 0 10px;font-size:1.15rem}.panel p:last-child{margin-bottom:0}.intro{max-width:65ch}.intro p{margin-bottom:22px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}label{display:block;font-weight:650}input,select{display:block;width:100%;margin-top:6px;padding:10px;border:1px solid #aab6ac;border-radius:8px;background:white;color:var(--ink);min-height:46px}fieldset{border:0;padding:0;margin:0;min-width:0}legend{font-weight:750;margin-bottom:12px}.wide{grid-column:1/-1}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;text-align:left}th,td{padding:11px 12px;border-bottom:1px solid var(--line);white-space:nowrap}.result{margin-top:18px;background:var(--mint);border-radius:12px;padding:16px}.result:empty{display:none}.result p{margin:.3em 0}.foot{border-top:1px solid var(--line);padding-block:18px;color:var(--muted);font-size:.88rem}.notice{min-height:1.5em;color:var(--forest);font-weight:650}.score-fields label small{display:block;font-weight:400}.score-fields select{margin-bottom:4px}.score-fields label{border-bottom:1px solid var(--line);padding-bottom:12px}
 @media(max-width:680px){.wrap{padding-inline:15px}.top .wrap{align-items:flex-start;flex-direction:column;gap:5px;padding-block:12px}.nav a{padding-inline:8px}.hero,.row,.fields{grid-template-columns:1fr}.hero-art{display:none}.cards{grid-template-columns:1fr;gap:8px}.card,.panel{padding:16px}.wide{grid-column:auto}}
 .role-intro{max-width:62ch;margin-bottom:28px}.role-picker{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:18px}.role-card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:clamp(18px,4vw,32px);border-top:4px solid var(--green)}.role-card + .role-card{border-top-color:#a74e21}.role-card h2{font:500 2rem/1.05 Georgia,serif;margin:0}.role-card p,.role-card ul{margin:0}.role-card ul{padding-inline-start:20px}.role-card .button{margin-top:auto}
+
+.role-icon{display:grid;place-items:center;width:56px;height:56px;background:#dceadf;border-radius:16px;font-size:1.6rem}.role-card+.role-card .role-icon{background:#f8ead5}.role-card .button{margin-top:auto}.role-card ul{display:grid;gap:8px}.panel{box-shadow:0 3px 10px #173b2e0a}.intro h1.page,.role-intro h1.page{font-size:clamp(2.15rem,5vw,3.5rem)}.nav a{min-height:44px}.button{min-height:44px}#forecast fieldset+fieldset{margin-top:22px;padding-top:17px;border-top:1px solid var(--line)}#forecast legend{padding-right:8px;color:var(--forest);font-size:1.1rem}#forecast .fields{gap:14px 18px}#forecast input,#forecast select{min-width:0}.forecast-metrics{margin:0 0 18px;grid-template-columns:repeat(2,minmax(0,1fr))}.forecast-metrics .card{padding:14px}.forecast-tips{padding-left:0;list-style:none;display:grid;gap:8px}.forecast-tips li{padding:10px 12px;background:var(--white);border-left:3px solid var(--green);border-radius:8px}#coop-distribution{list-style:none;padding:0;display:grid;gap:10px}.score-row{display:grid;gap:4px}.score-bar{width:100%;height:12px;accent-color:var(--green)}.score-row[data-level="support"] .score-bar{accent-color:#a45615}.score-row[data-level="urgent"] .score-bar{accent-color:#a53633}
+@media(max-width:480px){.role-card .button{width:100%;text-align:center}.forecast-metrics{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="top"><div class="wrap"><a class="brand" href="#espaces"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19C2 13 9 4 19 4c0 10-6 17-14 15Zm0 0 9-9m-7 7 1-6m3 3 5-1"/></svg></span>Mon Cacao</a>
-<nav class="nav" aria-label="Navigation principale"><a href="#espaces" data-scope="both">Changer d’espace</a><a href="#accueil" data-scope="producer">Producteur</a><a href="#recoltes" data-scope="producer">Récoltes</a><a href="#prevision" data-scope="producer">Prévision</a><a href="#durabilite" data-scope="producer">Durabilité</a><a href="#cooperative" data-scope="coop">Coopérative</a></nav></div></header>
+<nav class="nav" aria-label="Navigation principale"><a href="#espaces" data-scope="both">Changer d’espace</a><a href="#accueil" data-scope="producer">Producteur</a><a href="#recoltes" data-scope="producer">Récoltes</a><a href="#prevision" data-scope="producer">Estimer ma récolte</a><a href="#durabilite" data-scope="producer">Mes pratiques</a><a href="#cooperative" data-scope="coop">Coopérative</a></nav></div></header>
 <main class="wrap" id="contenu" tabindex="-1">
 <section id="espaces" data-page>
 <div class="role-intro"><h1 class="page">Choisissez votre espace</h1><p class="muted">Suivez votre parcelle ou accompagnez les producteurs de votre coopérative.</p></div>
 <div class="row role-picker">
-<article class="panel role-card"><h2>Producteur</h2><p>Pour gérer votre exploitation de cacao.</p><ul><li>Prévoir le rendement de votre parcelle</li><li>Enregistrer vos récoltes et calculer votre marge</li><li>Évaluer vos pratiques et transmettre votre bilan à votre coopérative</li></ul><a class="button" href="#accueil">Entrer dans l’espace Producteur</a></article>
-<article class="panel role-card"><h2>Coopérative</h2><p>Pour suivre les parcelles de vos membres.</p><ul><li>Importer les bilans transmis par les producteurs</li><li>Repérer les parcelles à accompagner et consigner les vérifications terrain</li><li>Exporter la synthèse écologique ou explorer la démo de 300 producteurs</li></ul><a class="button" href="#cooperative">Entrer dans l’espace Coopérative</a></article>
+<article class="panel role-card"><span class="role-icon" aria-hidden="true">🌱</span><h2>Producteur</h2><p>Pour gérer votre exploitation de cacao.</p><ul><li>Prévoir le rendement de votre parcelle</li><li>Enregistrer vos récoltes et calculer votre marge</li><li>Évaluer vos pratiques et transmettre votre bilan à votre coopérative</li></ul><a class="button" href="#accueil">Je suis producteur</a></article>
+<article class="panel role-card"><span class="role-icon" aria-hidden="true">🤝</span><h2>Coopérative</h2><p>Pour suivre les parcelles de vos membres.</p><ul><li>Importer les bilans transmis par les producteurs</li><li>Repérer les parcelles à accompagner et consigner les vérifications terrain</li><li>Exporter la synthèse écologique ou explorer la démo de 300 producteurs</li></ul><a class="button" href="#cooperative">Je représente une coopérative</a></article>
 </div></section>
 <section id="accueil" data-page hidden>
 <div class="hero"><div><span class="eyebrow">Carnet de parcelle</span><h1>Pilotez votre<br>culture du cacao.</h1><p>Suivez vos récoltes, estimez votre marge et repérez les pratiques à améliorer sur votre parcelle.</p><a class="button" href="#prevision">Prévoir ma récolte</a></div>
@@ -32,48 +35,48 @@
 <div class="row"><article class="panel"><h2>Suivre une campagne</h2><p class="muted">Renseignez la superficie, le poids récolté, le prix de vente et les dépenses.</p><a class="button secondary" href="#recoltes">Voir mes relevés</a></article><article class="panel"><h2>Évaluer mes pratiques</h2><p class="muted">Faites un bilan sur dix pratiques et identifiez vos prochaines actions.</p><a class="button secondary" href="#durabilite">Faire le bilan</a></article></div>
 </section>
 <section id="recoltes" data-page hidden>
-<div class="intro"><h1 class="page">Mes récoltes</h1><p class="muted">Enregistrez un relevé réel ou calculez une estimation à partir de vos propres hypothèses.</p></div>
+<div class="intro"><h1 class="page">Mes récoltes</h1><p class="muted">Notez le cacao déjà récolté ou la quantité que vous pensez récolter.</p></div>
 <div class="panel"><form id="harvest"><fieldset><legend>Données de la parcelle</legend><div class="fields">
 <label>Parcelle <input name="parcel" required maxlength="60" placeholder="Ex. Parcelle Nord"></label>
 <label>Campagne <input name="season" required maxlength="30" placeholder="Ex. 2026–2027"></label>
 <label>Type de relevé <select name="kind"><option value="observed">Récolte réelle</option><option value="scenario">Estimation</option></select></label>
-<label>Superficie en hectares <input name="area" type="number" min="0.01" max="100000" step="0.01" required inputmode="decimal"></label>
+<label>Surface de la parcelle (ha) <input name="area" type="number" min="0.01" max="100000" step="0.01" required inputmode="decimal"></label>
 <label><span id="weight-label">Poids récolté en kg</span> <input name="weight" type="number" min="0" max="1000000000" step="0.01" required inputmode="decimal"></label>
 <label>Prix par kg en FCFA <input name="price" type="number" min="0" max="10000000" step="1" required inputmode="numeric"></label>
 <label>Dépenses de la campagne en FCFA <input name="cost" type="number" min="0" max="1000000000000" step="1" required inputmode="numeric"></label>
 </div></fieldset><div class="actions"><button class="button" type="submit">Calculer et enregistrer</button></div></form><div class="result" id="harvest-result" role="status"></div></div>
-<div class="panel" style="margin-top:16px"><h2>Historique des relevés</h2><p id="empty" class="muted">Aucun relevé enregistré.</p><div class="table-wrap" id="history" hidden><table><thead><tr><th scope="col">Parcelle</th><th scope="col">Campagne</th><th scope="col">Type</th><th scope="col">Rendement</th><th scope="col">Marge brute</th></tr></thead><tbody></tbody></table></div><div class="actions"><button class="button secondary" id="export" type="button" disabled>Exporter les relevés en CSV</button></div></div>
+<div class="panel" style="margin-top:16px"><h2>Mes récoltes enregistrées</h2><p id="empty" class="muted">Aucun relevé enregistré.</p><div class="table-wrap" id="history" hidden><table><thead><tr><th scope="col">Parcelle</th><th scope="col">Campagne</th><th scope="col">Type</th><th scope="col">Rendement</th><th scope="col">Après dépenses</th></tr></thead><tbody></tbody></table></div><div class="actions"><button class="button secondary" id="export" type="button" disabled>Exporter les relevés en CSV</button></div></div>
 </section>
 <section id="durabilite" data-page hidden>
-<div class="intro"><h1 class="page">Bilan de durabilité</h1><p class="muted">Évaluez chaque pratique pour obtenir un score indicatif sur 100 et des pistes d’amélioration.</p></div>
+<div class="intro"><h1 class="page">Les pratiques de ma parcelle</h1><p class="muted">Répondez aux questions pour obtenir une note sur 100 et des conseils.</p></div>
 <div class="panel"><form id="eco"><fieldset><legend>Pratiques de la parcelle</legend><div class="fields score-fields"><label for="indicator-0">Ombrage<small>Arbres d’ombrage répartis sur la parcelle</small><select id="indicator-0" name="indicator-0" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-1">Couverture du sol<small>Sol protégé par de la végétation ou du paillis</small><select id="indicator-1" name="indicator-1" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-2">Fertilisation<small>Apports raisonnés selon les besoins de la parcelle</small><select id="indicator-2" name="indicator-2" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-3">Protection phytosanitaire<small>Surveillance des maladies et traitements raisonnés</small><select id="indicator-3" name="indicator-3" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-4">Taille sanitaire<small>Entretien et retrait des branches malades</small><select id="indicator-4" name="indicator-4" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-5">Protection des berges<small>Protection des abords des cours d’eau</small><select id="indicator-5" name="indicator-5" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-6">Gestion des déchets<small>Tri et collecte des déchets de la parcelle</small><select id="indicator-6" name="indicator-6" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-7">Biodiversité<small>Présence de plusieurs espèces végétales</small><select id="indicator-7" name="indicator-7" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-8">Préservation des arbres<small>Mesures pour éviter le défrichement</small><select id="indicator-8" name="indicator-8" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-9">Certification<small>Démarches liées aux pratiques durables</small><select id="indicator-9" name="indicator-9" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label></div></fieldset><div class="actions"><button class="button" type="submit">Calculer mon score</button></div></form><div class="result" id="eco-result" role="status"></div></div><div class="panel" style="margin-top:16px"><h2>Transmettre mon bilan à ma coopérative</h2><p class="muted">Après le calcul, téléchargez votre bilan puis envoyez-le à la coopérative de votre choix.</p><form id="eco-share"><div class="fields"><label>Code de la coopérative <input name="coop" required maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Code producteur <input name="producer" required maxlength="32"></label><label>Code ou nom de la parcelle <input name="parcel" required maxlength="60"></label></div><div class="actions"><button class="button" id="eco-download" type="submit" disabled>Télécharger le bilan</button></div></form><p class="muted" id="eco-share-status" role="status"></p></div>
 </section>
 <section id="prevision" data-page hidden>
-<div class="intro"><h1 class="page">Prévision de récolte</h1><p class="muted">Renseignez les caractéristiques de la parcelle pour estimer le rendement et le poids total de récolte.</p></div>
-<div class="panel"><form id="forecast"><fieldset><legend>Caractéristiques de la parcelle</legend><div class="fields">
-<label>Superficie en hectares <input name="area" type="number" min="0.01" max="100000" step="0.01" required></label>
-<label>Âge du verger en années <input name="age" type="number" min="1" max="30" step="any" required></label>
+<div class="intro"><h1 class="page">Estimer ma récolte</h1><p class="muted">Répondez aux questions pour savoir combien de cacao vous pourriez récolter.</p></div>
+<div class="panel"><form id="forecast"><fieldset><legend>Ma parcelle</legend><div class="fields">
+<label>Surface de la parcelle (ha) <input name="area" type="number" min="0.01" max="100000" step="0.01" required></label>
+<label>Âge des cacaoyers (en années) <input name="age" type="number" min="1" max="30" step="any" required></label>
 <label>Dépenses par hectare en FCFA <input name="cost" type="number" min="0" step="any" required></label>
 <label>Région <select name="region" required><option value="">Choisir</option><option value="Grand-Ponts">Grand-Ponts</option><option value="Indenie-Djuablin">Indénié-Djuablin</option><option value="La Me">La Mé</option><option value="San-Pedro">San-Pedro</option><option value="Yamoussoukro">Yamoussoukro</option></select></label>
-<label>Pluviométrie <select name="rain" required><option value="">Choisir</option><option value="Faible">Faible</option><option value="Moyenne">Moyenne</option><option value="Élevée">Élevée</option></select></label>
-<label>Sexe du producteur <select name="sex" required><option value="">Choisir</option><option value="Feminin">Féminin</option><option value="Masculin">Masculin</option></select></label>
-<label>Niveau scolaire <select name="school" required><option value="">Choisir</option><option value="Non renseigné">Non renseigné</option><option value="Primaire">Primaire</option><option value="Secondaire">Secondaire</option><option value="Supérieur">Supérieur</option></select></label>
-<label>Lecture et écriture <select name="literacy" required><option value="">Choisir</option><option value="non">non</option><option value="oui, lire et écrire">oui, lire et écrire</option><option value="oui, lire seulement">oui, lire seulement</option></select></label>
-<label>Engrais chimique <select name="fertilizer" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
-<label>Agroforesterie <select name="shade" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
+<label>Quantité de pluie <select name="rain" required><option value="">Choisir</option><option value="Faible">Faible</option><option value="Moyenne">Moyenne</option><option value="Élevée">Élevée</option></select></label>
+</div></fieldset><fieldset><legend>À propos de vous</legend><div class="fields"><label>Sexe du producteur <select name="sex" required><option value="">Choisir</option><option value="Feminin">Féminin</option><option value="Masculin">Masculin</option></select></label>
+<label>Jusqu’où avez-vous étudié ? <select name="school" required><option value="">Choisir</option><option value="Non renseigné">Non renseigné</option><option value="Primaire">Primaire</option><option value="Secondaire">Secondaire</option><option value="Supérieur">Supérieur</option></select></label>
+<label>Savez-vous lire et écrire ? <select name="literacy" required><option value="">Choisir</option><option value="non">non</option><option value="oui, lire et écrire">oui, lire et écrire</option><option value="oui, lire seulement">oui, lire seulement</option></select></label>
+</div></fieldset><fieldset><legend>Ce que vous faites sur la parcelle</legend><div class="fields"><label>Utilisez-vous de l’engrais chimique ? <select name="fertilizer" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
+<label>Arbres d’ombrage <select name="shade" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Fumier ou compost <select name="compost" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
-<label>Herbicide <select name="herbicide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
-<label>Insecticide <select name="insecticide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
-<label>Fongicide <select name="fungicide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
-<label>Maladie observée <select name="disease" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option><option value="Un peu">Un peu</option></select></label>
-</div></fieldset><p class="muted">Prévision indicative. Le script d’entraînement du dépôt utilise des données synthétiques.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
+<label>Produit contre les mauvaises herbes <select name="herbicide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
+<label>Produit contre les insectes <select name="insecticide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
+<label>Produit contre les champignons <select name="fungicide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
+<label>Avez-vous vu des signes de maladie ? <select name="disease" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option><option value="Un peu">Un peu</option></select></label>
+</div></fieldset><p class="muted">Cette estimation est indicative. Le modèle a été entraîné avec des données simulées.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
 </section>
 <section id="cooperative" data-page hidden>
-<div class="intro"><h1 class="page">Espace coopérative</h1><p class="muted">Centralisez les bilans de vos membres, repérez les parcelles à accompagner et exportez une synthèse.</p></div>
-<div class="panel"><div class="fields"><label>Code de votre coopérative <input id="coop-code" maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Importer des bilans de producteurs <input type="file" id="coop-import" accept=".json,application/json" multiple></label></div><p class="muted">Communiquez ce code aux membres. Ils vous transmettent leur fichier depuis l’espace producteur. Le tableau de bord est enregistré dans ce navigateur.</p><div class="actions"><button class="button secondary" id="coop-demo" type="button">Voir la démo de 300 producteurs</button><button class="button secondary" id="coop-export" type="button">Exporter la synthèse CSV</button></div><p class="muted" id="coop-status" role="status"></p></div>
-<div class="cards"><div class="card">Producteurs avec bilan<strong class="metric" id="coop-members">0</strong></div><div class="card">Score moyen des parcelles<strong class="metric" id="coop-average">—</strong></div><div class="card">Parcelles sous 70/100<strong class="metric" id="coop-priority">0</strong></div></div>
-<div class="row"><article class="panel"><h2>Répartition des scores</h2><ul id="coop-distribution"></ul></article><article class="panel"><h2>Pratiques à accompagner</h2><ul id="coop-practices"></ul></article></div>
-<div class="panel" style="margin-top:16px"><h2>Suivi des bilans</h2><div class="fields"><label>Rechercher un code producteur ou une parcelle <input id="coop-search" type="search"></label><label>Filtrer par score <select id="coop-filter"><option value="all">Tous les scores</option><option value="good">Bonnes pratiques · 70 et plus</option><option value="support">À accompagner · 40 à 69</option><option value="urgent">Prioritaire · moins de 40</option></select></label></div><p id="coop-count" class="muted" role="status"></p>
+<div class="intro"><h1 class="page">Espace coopérative</h1><p class="muted">Rassemblez les bilans des membres. Voyez quelles parcelles ont besoin d’aide.</p></div>
+<div class="panel"><div class="fields"><label>Code de votre coopérative <input id="coop-code" maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Importer des bilans de producteurs <input type="file" id="coop-import" accept=".json,application/json" multiple></label></div><p class="muted">Donnez ce code à vos membres. Ils vous envoient leur fichier de bilan. Vos bilans restent sur cet appareil.</p><div class="actions"><button class="button secondary" id="coop-demo" type="button">Voir la démo de 300 producteurs</button><button class="button secondary" id="coop-export" type="button">Télécharger le résumé (CSV)</button></div><p class="muted" id="coop-status" role="status"></p></div>
+<div class="cards"><div class="card">Producteurs avec bilan<strong class="metric" id="coop-members">0</strong></div><div class="card">Note moyenne des parcelles<strong class="metric" id="coop-average">—</strong></div><div class="card">Parcelles sous 70/100<strong class="metric" id="coop-priority">0</strong></div></div>
+<div class="row"><article class="panel"><h2>Les parcelles par niveau</h2><ul id="coop-distribution"></ul></article><article class="panel"><h2>Pratiques à améliorer</h2><ul id="coop-practices"></ul></article></div>
+<div class="panel" style="margin-top:16px"><h2>Liste des parcelles</h2><div class="fields"><label>Rechercher un code producteur ou une parcelle <input id="coop-search" type="search"></label><label>Filtrer par score <select id="coop-filter"><option value="all">Tous les scores</option><option value="good">Bonnes pratiques · 70 et plus</option><option value="support">À accompagner · 40 à 69</option><option value="urgent">Prioritaire · moins de 40</option></select></label></div><p id="coop-count" class="muted" role="status"></p>
 <div class="table-wrap"><table><thead><tr><th scope="col">Producteur</th><th scope="col">Parcelle</th><th scope="col">Date</th><th scope="col">Score</th><th scope="col">Vérification</th><th scope="col">Accompagnement</th></tr></thead><tbody id="coop-rows"></tbody></table></div>
 <div class="actions"><button id="coop-prev" class="button secondary" type="button">Précédent</button><button id="coop-next" class="button secondary" type="button">Suivant</button></div>
 <p class="muted">Les scores reposent sur les pratiques déclarées. La vérification terrain peut être consignée pour chaque bilan. Le score est indicatif.</p></div>
@@ -266,19 +269,32 @@ find("#forecast").addEventListener("submit", (event) => {
     const estimate = predictYield(model, input);
     if (!Number.isFinite(estimate) || estimate < 0) throw new Error("Prévision indisponible");
     const kgPerHa = estimate * 1000;
-    result.textContent = "Rendement estimé · " + format.format(kgPerHa) + " kg/ha. Récolte totale estimée · " +
-      format.format(kgPerHa * Number(input.get("area"))) + " kg.";
+    const metrics = document.createElement("div");
+    metrics.className = "cards forecast-metrics";
+    for (const [label, value] of [
+      ["Cacao estimé par hectare", format.format(kgPerHa) + " kg/ha"],
+      ["Cacao estimé pour toute la parcelle", format.format(kgPerHa * Number(input.get("area"))) + " kg"]
+    ]) {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.textContent = label;
+      const metric = document.createElement("strong");
+      metric.className = "metric";
+      metric.textContent = value;
+      card.append(metric);
+      metrics.append(card);
+    }
+    result.replaceChildren(metrics);
     const heading = document.createElement("h2");
-    heading.textContent = "Recommandations pour votre parcelle";
-    const context = document.createElement("p");
-    context.textContent = "Conseils fondés sur vos réponses concernant la parcelle.";
+    heading.textContent = "Que faire sur ma parcelle ?";
     const list = document.createElement("ul");
+    list.className = "forecast-tips";
     for (const advice of forecastAdvice(input)) {
       const item = document.createElement("li");
       item.textContent = advice;
       list.append(item);
     }
-    result.append(heading, context, list);
+    result.append(heading, list);
   } catch {
     result.textContent = "Le calcul est indisponible. Réessayez.";
   } finally {
@@ -383,7 +399,23 @@ function renderCoop() {
   find("#coop-average").textContent = reports.length ? format.format(reports.reduce((sum, r) => sum + r.score, 0) / reports.length) + " / 100" : "—";
   find("#coop-priority").textContent = format.format(counts.support + counts.urgent);
   find("#coop-export").disabled = !reports.length;
-  renderList("#coop-distribution", Object.entries(levels).map(([key, label]) => label + " · " + counts[key]), "");
+  const distribution = find("#coop-distribution");
+  distribution.replaceChildren();
+  for (const [key, label] of Object.entries(levels)) {
+    const row = document.createElement("li");
+    row.className = "score-row";
+    row.dataset.level = key;
+    row.textContent = label + " · " + counts[key] + " parcelle(s)";
+    if (reports.length) {
+      const bar = document.createElement("progress");
+      bar.className = "score-bar";
+      bar.max = reports.length;
+      bar.value = counts[key];
+      bar.setAttribute("aria-label", label + " sur l’ensemble des parcelles");
+      row.append(bar);
+    }
+    distribution.append(row);
+  }
   const practices = indicators.map(({ name }, i) => [name, reports.filter(({ answers }) => answers[i] === "0" || answers[i] === "1").length])
     .filter(([, count]) => count).sort((a, b) => b[1] - a[1]).slice(0, 5);
   renderList("#coop-practices", practices.map(([name, count]) => name + " · " + count + " parcelle(s)"), "Aucune pratique à afficher.");
