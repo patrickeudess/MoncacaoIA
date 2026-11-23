@@ -82,7 +82,10 @@
 <label>Produit contre les insectes <select name="insecticide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Produit contre les champignons <select name="fungicide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Avez-vous vu des signes de maladie ? <select name="disease" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option><option value="Un peu">Un peu</option></select></label>
-</div></fieldset><p class="muted">Estimation calculée à partir de données de simulation.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
+</div></fieldset><fieldset><legend>Ventes et scénarios</legend><div class="fields">
+<label>Prix de vente envisagé (FCFA/kg)<input type="number" name="salePrice" min="0" max="1000000000" step="any" inputmode="decimal"></label>
+<label>Variation de récolte à tester (%)<input type="number" name="variation" min="0" max="100" step="any" inputmode="decimal" placeholder="Ex. 10"></label>
+</div><p class="muted">Facultatif. Le prix sert à estimer les ventes si tout le cacao est vendu. La variation sert à tester un scénario plus bas et un scénario plus haut.</p></fieldset><p class="muted">Estimation calculée à partir de données de simulation.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
 </section>
 <section id="cooperative" data-page hidden>
 <div class="intro"><h1 class="page">Tableau de bord coopérative</h1><p id="coop-example-label" class="muted" hidden>Exemple fictif avec 300 producteurs.</p></div><div class="cards home-actions"><button class="card home-action" type="button" data-jump="coop-production-title"><strong>Voir la production</strong><small>Comparer les récoltes et les prévisions.</small></button><button class="card home-action" type="button" data-action="visit" aria-describedby="coop-visit-rule"><strong>Parcelles à visiter</strong><span class="metric" id="coop-visit">0</span></button><button class="card home-action" type="button" data-jump="coop-actions-title"><strong>Suivre l’aide aux producteurs</strong><small>Voir les actions à prévoir, programmées et terminées.</small></button><button class="card home-action" type="button" data-jump="coop-receive-title"><strong>Recevoir les bilans</strong><small>Ajouter les fichiers envoyés par les membres.</small></button><button class="card home-action" type="button" data-jump="coop-summary-title"><strong>Voir et télécharger le résumé</strong><small>Consulter les chiffres et télécharger le fichier CSV.</small></button></div>
@@ -419,12 +422,23 @@ find("#forecast").addEventListener("submit", (event) => {
     const estimate = predictYield(model, input);
     if (!Number.isFinite(estimate) || estimate < 0) throw new Error("Prévision indisponible");
     const kgPerHa = estimate * 1000;
+    const totalKg = kgPerHa * Number(input.get("area"));
+    const costs = Number(input.get("cost")) * Number(input.get("area"));
+    const price = input.get("salePrice");
+    const variation = input.get("variation");
+    const estimates = [
+      ["Cacao estimé par hectare", format.format(kgPerHa) + " kg/ha"],
+      ["Cacao estimé pour toute la parcelle", format.format(totalKg) + " kg"],
+      ["Dépenses estimées pour la parcelle", format.format(costs) + " FCFA"]
+    ];
+    if (price !== "") {
+      const sales = totalKg * Number(price);
+      estimates.push(["Ventes estimées", format.format(sales) + " FCFA"],
+        ["Reste estimé après dépenses", format.format(sales - costs) + " FCFA"]);
+    }
     const metrics = document.createElement("div");
     metrics.className = "cards forecast-metrics";
-    for (const [label, value] of [
-      ["Cacao estimé par hectare", format.format(kgPerHa) + " kg/ha"],
-      ["Cacao estimé pour toute la parcelle", format.format(kgPerHa * Number(input.get("area"))) + " kg"]
-    ]) {
+    for (const [label, value] of estimates) {
       const card = document.createElement("div");
       card.className = "card";
       card.textContent = label;
@@ -435,6 +449,22 @@ find("#forecast").addEventListener("submit", (event) => {
       metrics.append(card);
     }
     result.replaceChildren(metrics);
+    const uncertainty = document.createElement("p");
+    uncertainty.textContent = "Intervalle statistique indisponible. Il faudra comparer les prévisions aux récoltes réelles avant d’en publier un.";
+    result.append(uncertainty);
+    if (variation !== "") {
+      const rate = Number(variation) / 100;
+      const low = totalKg * (1 - rate);
+      const high = totalKg * (1 + rate);
+      const scenarios = document.createElement("p");
+      scenarios.textContent = "Scénarios à ±" + format.format(Number(variation)) + " % : de " +
+        format.format(low) + " à " + format.format(high) + " kg pour la parcelle.";
+      if (price !== "") {
+        scenarios.textContent += " Reste après dépenses : de " + format.format(low * Number(price) - costs) +
+          " à " + format.format(high * Number(price) - costs) + " FCFA.";
+      }
+      result.append(scenarios);
+    }
     const heading = document.createElement("h2");
     heading.textContent = "Que faire sur ma parcelle ?";
     const list = document.createElement("ul");
