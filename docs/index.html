@@ -23,7 +23,7 @@
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="top"><div class="wrap"><a class="brand" href="#espaces"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19C2 13 9 4 19 4c0 10-6 17-14 15Zm0 0 9-9m-7 7 1-6m3 3 5-1"/></svg></span>Mon Cacao</a>
-<nav class="nav" aria-label="Navigation principale"><a href="#espaces" data-scope="both">Changer d’espace</a><a href="#accueil" data-scope="producer">Producteur</a><a href="#recoltes" data-scope="producer">Récoltes</a><a href="#prevision" data-scope="producer">Estimer ma récolte</a><a href="#durabilite" data-scope="producer">Mes pratiques</a><a href="#cooperative" data-scope="coop">Coopérative</a></nav></div></header>
+<nav class="nav" aria-label="Navigation principale"><a href="#espaces" data-scope="both">Changer d’espace</a><a href="#accueil" data-scope="producer">Producteur</a><a href="#depenses" data-scope="producer">Mes dépenses</a><a href="#recoltes" data-scope="producer">Récoltes</a><a href="#bilan" data-scope="producer">Mon bilan</a><a href="#prevision" data-scope="producer">Estimer ma récolte</a><a href="#durabilite" data-scope="producer">Mes pratiques</a><a href="#cooperative" data-scope="coop">Coopérative</a></nav></div></header>
 <main class="wrap" id="contenu" tabindex="-1">
 <aside id="producer-example" class="panel" style="margin-bottom:16px" hidden><p id="producer-example-label" style="margin:0 0 8px"></p><button class="button secondary" id="producer-example-toggle" type="button"></button></aside>
 <section id="espaces" data-page>
@@ -36,22 +36,22 @@
 <div class="hero"><div><span class="eyebrow">Carnet de parcelle</span><h1>Pilotez votre<br>culture du cacao.</h1><p>Retrouvez vos chiffres et choisissez votre prochaine action.</p></div>
 <svg class="hero-art" viewBox="0 0 240 204" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="120" cy="102" r="94" opacity=".24"/><ellipse cx="120" cy="102" rx="80" ry="93" transform="rotate(55 120 102)" opacity=".18"/><path d="M150 45c-36 1-89 30-97 73-6 32 17 48 45 43 43-8 79-59 75-95-1-15-10-21-23-21Z" fill="#315741"/><path d="M58 149c28-7 71-58 100-101M56 139c3-38 55-59 93-92M67 156c41-2 73-43 98-101M173 55c10-7 16-15 19-28M180 48c17 1 27-4 35-16-15-3-26 3-35 16ZM181 43c-14-8-19-18-17-30 12 5 20 16 17 30Z"/></svg>
 </div>
-<h2>Que voulez-vous faire ?</h2><div class="cards home-actions"><a class="card home-action" href="#prevision"><strong>Estimer ma récolte</strong></a><a class="card home-action" href="#recoltes"><strong>Noter ma récolte</strong><small>Enregistrer la quantité récoltée, le prix et les dépenses.</small></a><a class="card home-action" href="#recoltes" data-jump="harvest-history-title"><strong>Voir mes dépenses et mes ventes</strong><small>Retrouver les montants et ce qui reste après les dépenses.</small></a><a class="card home-action" href="#durabilite"><strong>Améliorer ma parcelle</strong><small>Faire mon bilan et obtenir des conseils.</small></a></div><h2>Mes derniers résultats</h2><div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Reste après dépenses<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernière note de la parcelle<strong class="metric" id="latest-score">À renseigner</strong></div></div>
+<h2>Que voulez-vous faire ?</h2><div class="cards home-actions"><a class="card home-action" href="#depenses"><strong>Mes dépenses</strong><small>Noter ce que j’ai payé pour ma parcelle.</small></a><a class="card home-action" href="#prevision"><strong>Estimer ma récolte</strong></a><a class="card home-action" href="#recoltes"><strong>Noter ma récolte</strong><small>Enregistrer la quantité récoltée, le prix et les dépenses.</small></a><a class="card home-action" href="#bilan"><strong>Mon bilan</strong><small>Voir les ventes, les dépenses et le cacao à vendre.</small></a><a class="card home-action" href="#durabilite"><strong>Améliorer ma parcelle</strong><small>Faire mon bilan et obtenir des conseils.</small></a></div><h2>Mes derniers résultats</h2><div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Reste après dépenses<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernière note de la parcelle<strong class="metric" id="latest-score">À renseigner</strong></div></div>
 
 </section>
-<section id="recoltes" data-page hidden>
-<div class="intro"><h1 class="page">Mes récoltes</h1><p class="muted">Notez le cacao déjà récolté ou la quantité que vous pensez récolter.</p></div>
-<div class="panel"><form id="harvest"><fieldset><legend>Données de la parcelle</legend><div class="fields">
-<label>Parcelle <input name="parcel" required maxlength="60" placeholder="Ex. Parcelle Nord"></label>
-<label>Campagne <input name="season" required maxlength="30" placeholder="Ex. 2026 à 2027"></label>
-<label>Type de relevé <select name="kind"><option value="observed">Récolte réelle</option><option value="scenario">Estimation</option></select></label>
-<label>Surface de la parcelle (ha) <input name="area" type="number" min="0.01" max="100000" step="0.01" required inputmode="decimal"></label>
-<label><span id="weight-label">Poids récolté en kg</span> <input name="weight" type="number" min="0" max="1000000000" step="0.01" required inputmode="decimal"></label>
-<label>Prix par kg en FCFA <input name="price" type="number" min="0" max="10000000" step="1" required inputmode="numeric"></label>
-<label>Dépenses de la campagne en FCFA <input name="cost" type="number" min="0" max="1000000000000" step="1" required inputmode="numeric"></label>
-</div></fieldset><div class="actions"><button class="button" type="submit">Calculer et enregistrer</button></div></form><div class="result" id="harvest-result" role="status"></div></div>
-<div class="panel" style="margin-top:16px"><h2 id="harvest-history-title" tabindex="-1">Mes dépenses et mes ventes</h2><p id="empty" class="muted">Aucun relevé enregistré.</p><div class="table-wrap" id="history" hidden><table><thead><tr><th scope="col">Parcelle</th><th scope="col">Campagne</th><th scope="col">Type</th><th scope="col">Rendement</th><th scope="col">Ventes</th><th scope="col">Dépenses</th><th scope="col">Après dépenses</th></tr></thead><tbody></tbody></table></div><div class="actions"><button class="button secondary" id="export" type="button" disabled>Exporter les relevés en CSV</button></div></div>
+<datalist id="known-parcels"></datalist><datalist id="known-seasons"></datalist>
+<section id="depenses" data-page hidden><div class="intro"><h1 class="page">Mes dépenses</h1><p class="muted">Notez ce que vous payez pour votre parcelle, même avant de récolter.</p></div>
+<div class="panel"><h2>Noter une dépense</h2><form id="expense" autocomplete="off"><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label><label>Ce que vous avez payé <input name="description" required maxlength="80" placeholder="Ex. Désherbage ou transport"></label><label>Montant payé (FCFA) <input name="amount" type="number" min="1" max="1000000000" step="1" inputmode="numeric" required></label></div><div class="actions"><button class="button" type="submit">Enregistrer la dépense</button></div></form><p class="result" id="expense-result" role="status"></p></div>
 </section>
+<section id="recoltes" data-page hidden><div class="intro"><h1 class="page">Mes récoltes</h1><p class="muted">Notez les kilos récoltés. Ajoutez la vente quand vous vendez votre cacao.</p></div>
+<div class="row"><div class="panel"><h2>Noter une récolte</h2><form id="harvest" autocomplete="off"><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label><label>Cacao récolté (kg) <input name="weight" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label><label>Surface de la parcelle (ha) <input name="area" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label></div><div class="actions"><button class="button" type="submit">Enregistrer la récolte</button></div></form><p class="result" id="harvest-result" role="status"></p></div>
+<div class="panel"><h2>Noter une vente</h2><form id="sale" autocomplete="off"><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label><label>Cacao vendu (kg) <input name="weight" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label><label>Prix reçu par kg (FCFA) <input name="price" type="number" min="1" max="1000000000" step="1" inputmode="numeric" required></label></div><div class="actions"><button class="button" type="submit">Enregistrer la vente</button></div></form><p class="result" id="sale-result" role="status"></p></div></div></section>
+<section id="bilan" data-page hidden><div class="intro"><h1 class="page">Mon bilan</h1><p class="muted">Choisissez une parcelle et une campagne pour voir vos ventes, vos dépenses et le cacao qu’il vous reste à vendre.</p></div>
+<div class="panel"><label>Parcelle et campagne <select id="ledger-group"></select></label>
+<div class="cards"><div class="card">Argent reçu<strong class="metric" id="ledger-sales"></strong></div><div class="card">Total dépensé<strong class="metric" id="ledger-costs"></strong></div><div class="card">Reste après dépenses<strong class="metric" id="ledger-balance"></strong></div><div class="card">Cacao récolté<strong class="metric" id="ledger-harvest"></strong></div><div class="card">Cacao vendu<strong class="metric" id="ledger-sold"></strong></div><div class="card">Cacao à vendre<strong class="metric" id="ledger-stock"></strong></div></div>
+<h2>Relevés enregistrés</h2><p class="muted">Les anciens relevés sont indiqués dans la liste. Pour chaque parcelle et campagne, le dernier ancien relevé réel sert de point de départ. Il reprend la vente estimée et les dépenses saisies à l’époque.</p>
+<div class="table-wrap"><table><thead><tr><th>Date</th><th>Relevé</th><th>Quantité</th><th>Montant</th></tr></thead><tbody id="ledger-rows"></tbody></table></div>
+<div class="actions"><button class="button secondary" id="export" type="button">Télécharger le bilan (CSV)</button></div></div></section>
 <section id="durabilite" data-page hidden>
 <div class="intro"><h1 class="page">Les pratiques de ma parcelle</h1><p class="muted">Faites le point sur vos pratiques. La note sur 100 sert à choisir les actions à améliorer. Elle est calculée par Mon Cacao à partir de vos réponses.</p></div>
 <div class="panel"><form id="eco"><fieldset><legend>Questions sur votre parcelle</legend><div class="fields score-fields"><label for="indicator-0">Arbres d’ombre<small>Des arbres donnent-ils de l’ombre aux cacaoyers dans les différentes zones de la parcelle ?</small><select id="indicator-0" name="indicator-0" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-1">Sol couvert<small>Gardez-vous le sol couvert par des plantes ou des matières végétales pour limiter l’érosion ?</small><select id="indicator-1" name="indicator-1" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-2">Engrais et compost<small>Ajustez-vous les apports d’engrais ou de compost aux besoins du sol et des cacaoyers ?</small><select id="indicator-2" name="indicator-2" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-3">Maladies et ravageurs<small>Surveillez-vous la parcelle pour repérer les maladies et les ravageurs avant de décider d’un traitement ?</small><select id="indicator-3" name="indicator-3" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-4">Entretien des cacaoyers<small>Entretenez-vous les cacaoyers et retirez-vous les branches malades ?</small><select id="indicator-4" name="indicator-4" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-5">Protection de l’eau<small>Si un cours d’eau borde la parcelle, gardez-vous une bande de végétation le long de l’eau ?</small><select id="indicator-5" name="indicator-5" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-6">Déchets de la parcelle<small>Triez-vous et rassemblez-vous les déchets pour les remettre à un point de collecte adapté ?</small><select id="indicator-6" name="indicator-6" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-7">Variété des plantes<small>Gardez-vous plusieurs sortes d’arbres ou de plantes sur la parcelle ?</small><select id="indicator-7" name="indicator-7" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-8">Forêts et zones naturelles<small>Prenez-vous des mesures pour éviter de défricher les zones naturelles lors des travaux ou de l’agrandissement de la parcelle ?</small><select id="indicator-8" name="indicator-8" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-9">Démarche de certification<small>Avez-vous engagé des démarches de certification des pratiques avec votre coopérative ou un organisme ?</small><select id="indicator-9" name="indicator-9" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label></div></fieldset><div class="actions"><button class="button" type="submit">Calculer mon score</button></div></form><div class="result" id="eco-result" role="status"></div><details style="margin-top:16px"><summary>Références du questionnaire</summary><p>Les questions reprennent des thèmes du cacao durable. La certification suit une procédure distincte.</p><ul><li><a href="https://knowledge.rainforest-alliance.org/docs/rainforest-alliance-sustainable-agriculture-standard-farm-requirements/">Rainforest Alliance, exigences pour les exploitations agricoles</a></li><li><a href="https://www.iso.org/standard/64766.html">ISO 34101-2, cacao durable et traçable</a></li></ul></details></div><div class="panel" style="margin-top:16px"><h2>Transmettre mon bilan à ma coopérative</h2><p class="muted">Après le calcul, téléchargez votre bilan et envoyez-le à votre coopérative. Pour transmettre un bilan, passez à vos données.</p><form id="eco-share"><div class="fields"><label>Code de la coopérative <input name="coop" required maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Code producteur <input name="producer" required maxlength="32"></label><label>Code ou nom de la parcelle <input name="parcel" required maxlength="60"></label></div><p><label class="share-choice"><input type="checkbox" name="actual"> Ajouter les récoltes réelles enregistrées sous ce nom de parcelle</label></p>
@@ -92,7 +92,7 @@
 <button class="card coop-action" type="button" data-action="done"><span>Aide apportée</span><strong class="metric" id="coop-done">0</strong><small>Voir les actions terminées</small></button>
 </div></section>
 <section class="panel" style="margin-bottom:18px" aria-labelledby="coop-production-title"><h2 id="coop-production-title" tabindex="-1">Production des membres</h2>
-<p class="muted">Seules les données partagées sont comptées. Pour chaque parcelle, le dernier relevé réel de la campagne est retenu.</p>
+<p class="muted">Seules les données partagées sont comptées. Pour chaque parcelle, les récoltes de la campagne sont additionnées.</p>
 <label>Campagne <select id="coop-season"><option value="">Choisir une campagne</option></select></label>
 <div class="cards"><div class="card">Cacao récolté<strong class="metric" id="coop-actual">À renseigner</strong><small id="coop-actual-count"></small></div><div class="card">Cacao prévu<strong class="metric" id="coop-forecast">À renseigner</strong><small id="coop-forecast-count"></small></div><div class="card">Écart réel par rapport à la prévision<strong class="metric" id="coop-gap">À renseigner</strong><small id="coop-gap-count"></small></div></div>
 <h3>Conseils de prévision les plus fréquents</h3><ul id="coop-forecast-advice"></ul></section>
@@ -123,15 +123,17 @@ try {
 const realProducerState = state;
 const exampleAnswers = ["2","1","1","2","2","na","1","2","2","0"];
 const exampleProducerState = {
-  records: [
-    { parcel: "Parcelle exemple de Méagui", season: "2026 à 2027", kind: "observed", area: 2, weight: 1460, price: 1500, cost: 480000 },
-    { parcel: "Parcelle exemple de Méagui", season: "2025 à 2026", kind: "observed", area: 2, weight: 1280, price: 1450, cost: 430000 }
+  records: [],
+  transactions: [
+    { type: "sale", parcel: "Parcelle exemple de Méagui", season: "2026 à 2027", date: "2026-11-21", weight: 1000, price: 1500 },
+    { type: "harvest", parcel: "Parcelle exemple de Méagui", season: "2026 à 2027", date: "2026-11-17", weight: 1460, area: 2 },
+    { type: "expense", parcel: "Parcelle exemple de Méagui", season: "2026 à 2027", date: "2026-10-12", description: "Main-d’œuvre et entretien", amount: 480000 }
   ],
   score: reportScore(exampleAnswers),
   ecoReport: { date: "2026-11-23T00:00:00.000Z", answers: exampleAnswers },
   lastForecast: { kg: 1510, advice: ["shade", "soil"] }
 };
-let producerExample = !state.records.length && !state.ecoReport && !state.lastForecast && state.score == null;
+let producerExample = !state.records.length && !state.transactions?.length && !state.ecoReport && !state.lastForecast && state.score == null;
 if (producerExample) state = exampleProducerState;
 function save() {
   if (producerExample) return;
@@ -142,31 +144,88 @@ function save() {
     find("#notice").textContent = "Stockage indisponible. Exportez les relevés avant de fermer la page.";
   }
 }
+const ledgerTypes = { harvest: "Récolte", sale: "Vente", expense: "Dépense" };
+const ledgerKey = (item) => JSON.stringify([normalizeField(item.parcel), normalizeField(item.season)]);
+function ledgerGroups() {
+  const groups = new Map();
+  function group(item) {
+    const key = ledgerKey(item);
+    if (!groups.has(key)) groups.set(key, { parcel: item.parcel, season: item.season, rows: [], harvested: 0, sold: 0, sales: 0, expenses: 0, area: 0 });
+    return groups.get(key);
+  }
+  for (const item of state.transactions || []) {
+    const g = group(item);
+    g.rows.push(item);
+    if (item.type === "harvest") {
+      g.harvested += item.weight;
+      g.area ||= item.area;
+    }
+    if (item.type === "sale") { g.sold += item.weight; g.sales += item.weight * item.price; }
+    if (item.type === "expense") g.expenses += item.amount;
+  }
+  for (const item of state.records) {
+    const g = group(item);
+    g.rows.push({ ...item, type: "legacy" });
+    if (g.legacy || item.kind !== "observed") continue;
+    g.legacy = true;
+    g.harvested += item.weight;
+    g.sold += item.weight;
+    g.sales += item.weight * item.price;
+    g.expenses += item.cost;
+    g.area ||= item.area;
+  }
+  return groups;
+}
+function ledgerRow(item) {
+  if (item.type === "legacy") return ["", item.kind === "observed" ? "Ancien relevé réel" : "Ancienne estimation", item.weight, item.weight * item.price, item.cost];
+  return [item.date, ledgerTypes[item.type] + (item.description ? " : " + item.description : ""), item.weight ?? "",
+    item.type === "sale" ? item.weight * item.price : "", item.amount ?? ""];
+}
+function renderLedger() {
+  const groups = ledgerGroups();
+  const select = find("#ledger-group");
+  const previous = select.value;
+  select.replaceChildren();
+  for (const [key, group] of groups) select.add(new Option(group.parcel + ", " + group.season, key));
+  if (groups.has(previous)) select.value = previous;
+  select.disabled = !groups.size;
+  if (!groups.size) select.add(new Option("Aucun relevé", ""));
+  for (const [id, key] of [["#known-parcels","parcel"],["#known-seasons","season"]]) {
+    const list = find(id);
+    list.replaceChildren();
+    for (const value of new Set([...groups.values()].map(g => g[key]))) list.append(new Option(value, value));
+  }
+  const current = groups.get(select.value);
+  const measures = current ? { sales: current.sales, costs: current.expenses, balance: current.sales - current.expenses,
+    harvest: current.harvested, sold: current.sold, stock: Math.max(0, current.harvested - current.sold) } : {};
+  for (const key of ["sales","costs","balance","harvest","sold","stock"]) {
+    find("#ledger-" + key).textContent = current ? format.format(measures[key]) + (["sales","costs","balance"].includes(key) ? " FCFA" : " kg") : "À renseigner";
+  }
+  const body = find("#ledger-rows");
+  body.replaceChildren();
+  for (const item of current?.rows || []) {
+    const [date, label, kg, sales, costs] = ledgerRow(item);
+    const row = body.insertRow();
+    const amounts = [sales, costs].filter(x => x !== "").map(x => format.format(x) + " FCFA");
+    for (const text of [date || "Ancien relevé", label, kg === "" ? "" : format.format(kg) + " kg", amounts.join(" / ")]) row.insertCell().textContent = text;
+  }
+  find("#export").disabled = !current;
+  return groups;
+}
 function render() {
   find("#producer-example-label").textContent = producerExample ? "Exemple fictif : parcelle de Méagui, 2 hectares. Les essais restent dans cet exemple." : "Vos données de producteur";
   find("#producer-example-toggle").textContent = producerExample ? "Utiliser mes données" : "Voir l’exemple fictif";
   find("#share-forecast").hidden = !state.lastForecast;
   find("#eco-download").disabled = producerExample || !state.ecoReport;
-  const last = state.records.find((record) => record.kind === "observed");
-  find("#yield").textContent = last ? format.format(last.weight / last.area) + " kg/ha" : "À renseigner";
-  find("#margin").textContent = last ? format.format(last.weight * last.price - last.cost) + " FCFA" : "À renseigner";
-  find("#latest-score").textContent = state.score === null ? "À renseigner" : state.score + " / 100";
-  const body = find("tbody");
-  body.replaceChildren();
-  for (const record of state.records) {
-    const row = body.insertRow();
-    const values = [record.parcel, record.season, record.kind === "observed" ? "Réelle" : "Estimation",
-      format.format(record.weight / record.area) + " kg/ha", format.format(record.weight * record.price) + " FCFA",
-      format.format(record.cost) + " FCFA", format.format(record.weight * record.price - record.cost) + " FCFA"];
-    for (const value of values) row.insertCell().textContent = value;
-  }
-  find("#history").hidden = !state.records.length;
-  find("#empty").hidden = !!state.records.length;
-  find("#export").disabled = !state.records.length;
+  const groups = [...renderLedger().values()];
+  const latestHarvest = groups.find(g => g.area);
+  find("#yield").textContent = latestHarvest ? format.format(latestHarvest.harvested / latestHarvest.area) + " kg/ha" : "À renseigner";
+  find("#margin").textContent = groups.length ? format.format(groups[0].sales - groups[0].expenses) + " FCFA" : "À renseigner";
+  find("#latest-score").textContent = state.score == null ? "À renseigner" : state.score + " / 100";
 }
 let pendingHomeJump;
 function route(moveFocus) {
-  const pages = ["espaces", "accueil", "recoltes", "prevision", "durabilite", "cooperative"];
+  const pages = ["espaces", "accueil", "recoltes", "depenses", "bilan", "prevision", "durabilite", "cooperative"];
   const target = location.hash.slice(1);
   if (target === "contenu" && moveFocus) return;
   const active = pages.includes(target) ? target : "espaces";
@@ -188,29 +247,43 @@ function route(moveFocus) {
     }
   }
 }
-find("[name=kind]").addEventListener("change", (event) => {
-  find("#weight-label").textContent = event.target.value === "scenario" ? "Poids attendu en kg" : "Poids récolté en kg";
-});
-find("#harvest").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const form = new FormData(event.currentTarget);
-  const parcel = form.get("parcel").trim();
-  const season = form.get("season").trim();
-  const result = find("#harvest-result");
-  if (!parcel || !season) {
-    result.textContent = "Renseignez le nom de la parcelle et la campagne.";
-    return;
-  }
-  const record = { parcel, season, kind: form.get("kind"), area: Number(form.get("area")),
-    weight: Number(form.get("weight")), price: Number(form.get("price")), cost: Number(form.get("cost")) };
-  const revenue = record.weight * record.price;
-  state.records.unshift(record);
-  save();
-  render();
-  result.textContent = (record.kind === "scenario" ? "Estimation" : "Récolte") + " enregistrée. " +
-    format.format(record.weight / record.area) + " kg/ha. Recettes : " + format.format(revenue) +
-    " FCFA. Reste après dépenses : " + format.format(revenue - record.cost) + " FCFA.";
-});
+find("#ledger-group").addEventListener("change", renderLedger);
+for (const type of Object.keys(ledgerTypes)) {
+  find("#" + type).addEventListener("submit", (event) => {
+    event.preventDefault();
+    const fields = new FormData(event.currentTarget);
+    const entry = { type, parcel: fields.get("parcel").trim(), season: fields.get("season").trim(), date: fields.get("date") };
+    const result = find("#" + type + "-result");
+    if (!entry.parcel || !entry.season) {
+      result.textContent = "Renseignez la parcelle et la campagne.";
+      return;
+    }
+    if (type === "expense") {
+      entry.description = fields.get("description").trim();
+      if (!entry.description) { result.textContent = "Indiquez ce que vous avez payé."; return; }
+      entry.amount = Number(fields.get("amount"));
+    } else {
+      entry.weight = Number(fields.get("weight"));
+      if (type === "harvest") entry.area = Number(fields.get("area"));
+      else {
+        entry.price = Number(fields.get("price"));
+        const group = ledgerGroups().get(ledgerKey(entry));
+        const available = group ? Math.max(0, group.harvested - group.sold) : 0;
+        if (Math.round(entry.weight * 100) > Math.round(available * 100)) {
+          result.textContent = "Cacao disponible pour cette parcelle et cette campagne : " + format.format(available) + " kg. Vérifiez la quantité ou notez d’abord votre récolte.";
+          return;
+        }
+      }
+    }
+    (state.transactions ||= []).unshift(entry);
+    save();
+    render();
+    find("#ledger-group").value = ledgerKey(entry);
+    renderLedger();
+    event.currentTarget.reset();
+    result.textContent = "Enregistré dans votre bilan.";
+  });
+}
 find("#eco").addEventListener("submit", (event) => {
   event.preventDefault();
   const form = new FormData(event.currentTarget);
@@ -243,23 +316,19 @@ find("#eco").addEventListener("submit", (event) => {
   result.append(list);
 });
 find("#export").addEventListener("click", () => {
-  function cell(value) {
-    let text = String(value);
-    if (typeof value === "string" && /^[\\s]*[=+@-]/.test(text)) text = "'" + text;
-    return '"' + text.replaceAll('"', '""') + '"';
-  }
-  const rows = [["Parcelle", "Campagne", "Type", "Hectares", "Poids (kg)", "Prix/kg (FCFA)", "Dépenses (FCFA)", "Rendement (kg/ha)", "Marge brute (FCFA)"]];
-  for (const item of state.records) {
-    rows.push([item.parcel, item.season, item.kind === "observed" ? "Réelle" : "Estimation",
-      item.area, item.weight, item.price, item.cost, item.weight / item.area, item.weight * item.price - item.cost]);
-  }
-  const csv = "\ufeff" + rows.map((row) => row.map(cell).join(";")).join("\r\n");
-  const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = producerExample ? "mon-cacao-releves-fictifs.csv" : "mon-cacao-releves.csv";
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  const group = ledgerGroups().get(find("#ledger-group").value);
+  if (!group) return;
+  const rows = [["Parcelle", group.parcel], ["Campagne", group.season],
+    ["Récolté (kg)", group.harvested], ["Vendu (kg)", group.sold], ["À vendre (kg)", Math.max(0, group.harvested - group.sold)],
+    ["Ventes (FCFA)", group.sales], ["Dépenses (FCFA)", group.expenses], ["Reste (FCFA)", group.sales - group.expenses], [],
+    ["Date", "Relevé", "Quantité (kg)", "Ventes (FCFA)", "Dépenses (FCFA)"],
+    ...group.rows.map(ledgerRow)];
+  const csv = "\ufeff" + rows.map(row => row.map(value => {
+    const text = String(value);
+    const safe = typeof value === "string" && /^\s*[=+@-]/.test(text) ? "'" + text : text;
+    return '"' + safe.replaceAll('"', '""') + '"';
+  }).join(";")).join("\r\n");
+  downloadReport(csv, "text/csv;charset=utf-8", producerExample ? "mon-cacao-bilan-fictif.csv" : "mon-cacao-bilan.csv");
 });
 function predictYield(model, input) {
   const numeric = [Number(input.get("cost")), Number(input.get("age"))];
@@ -424,10 +493,9 @@ find("#eco-share").addEventListener("submit", (event) => {
   }
   const actual = new Map();
   if (fields.has("actual")) {
-    for (const record of state.records) {
-      if (record.kind !== "observed" || normalizeField(record.parcel) !== normalizeField(parcel)) continue;
-      const key = normalizeField(record.season);
-      if (!actual.has(key)) actual.set(key, { season: record.season, kg: record.weight });
+    for (const group of ledgerGroups().values()) {
+      if (!group.area || normalizeField(group.parcel) !== normalizeField(parcel)) continue;
+      actual.set(normalizeField(group.season), { season: group.season, kg: group.harvested });
     }
     if (!actual.size) {
       status.textContent = "Aucune récolte réelle sous ce nom de parcelle. Vérifiez le nom ou décochez l’ajout des récoltes.";
@@ -760,9 +828,8 @@ for (const shortcut of document.querySelectorAll(".home-action[data-jump]")) {
 find("#producer-example-toggle").addEventListener("click", () => {
   producerExample = !producerExample;
   state = producerExample ? exampleProducerState : realProducerState;
-  for (const selector of ["#harvest", "#forecast", "#eco", "#eco-share"]) find(selector).reset();
-  for (const selector of ["#harvest-result", "#forecast-result", "#eco-result", "#eco-share-status"]) find(selector).replaceChildren();
-  find("#weight-label").textContent = "Poids récolté en kg";
+  for (const selector of ["#harvest", "#sale", "#expense", "#forecast", "#eco", "#eco-share"]) find(selector).reset();
+  for (const selector of ["#harvest-result", "#sale-result", "#expense-result", "#forecast-result", "#eco-result", "#eco-share-status"]) find(selector).replaceChildren();
   render();
 });
 window.addEventListener("hashchange", () => route(true));
