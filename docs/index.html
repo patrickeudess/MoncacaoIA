@@ -228,6 +228,31 @@ function predictYield(model, input) {
   return yieldPerHa;
 }
 
+function forecastAdvice(input) {
+  const advice = [];
+  const disease = input.get("disease");
+  const rain = input.get("rain");
+  if (disease === "Oui" || disease === "Un peu") {
+    advice.push("Inspectez les cacaoyers, notez les symptômes et les zones touchées, puis demandez à un conseiller agricole de confirmer le diagnostic avant de traiter.");
+  }
+  if (rain === "Faible") {
+    advice.push("Repérez les zones où le sol sèche le plus vite. Vérifiez la couverture du sol et discutez des options de paillage adaptées à votre parcelle.");
+  } else if (rain === "Élevée") {
+    advice.push("Repérez les zones où l’eau stagne après la pluie et surveillez les cabosses qui présentent des taches ou des signes de pourriture.");
+  }
+  if (input.get("shade") === "Non") {
+    advice.push("Identifiez les zones les plus exposées au soleil et discutez avec un conseiller des arbres d’ombrage adaptés à votre parcelle.");
+  }
+  if (input.get("compost") === "Non") {
+    advice.push("Faites le point sur l’état du sol avec un conseiller avant de choisir un apport organique adapté.");
+  }
+  if (!advice.length) {
+    advice.push("Poursuivez le suivi de l’ombrage, de l’état du sol et des symptômes observés pour orienter vos prochaines visites de parcelle.");
+  }
+  advice.push("Pesez et enregistrez la récolte réelle pour la comparer à la prévision et ajuster votre planification.");
+  return advice;
+}
+
 find("#forecast").addEventListener("submit", (event) => {
   event.preventDefault();
   const form = event.currentTarget;
@@ -243,6 +268,17 @@ find("#forecast").addEventListener("submit", (event) => {
     const kgPerHa = estimate * 1000;
     result.textContent = "Rendement estimé · " + format.format(kgPerHa) + " kg/ha. Récolte totale estimée · " +
       format.format(kgPerHa * Number(input.get("area"))) + " kg.";
+    const heading = document.createElement("h2");
+    heading.textContent = "Recommandations pour votre parcelle";
+    const context = document.createElement("p");
+    context.textContent = "Conseils fondés sur vos réponses concernant la parcelle.";
+    const list = document.createElement("ul");
+    for (const advice of forecastAdvice(input)) {
+      const item = document.createElement("li");
+      item.textContent = advice;
+      list.append(item);
+    }
+    result.append(heading, context, list);
   } catch {
     result.textContent = "Le calcul est indisponible. Réessayez.";
   } finally {
