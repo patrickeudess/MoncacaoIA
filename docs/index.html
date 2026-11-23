@@ -25,6 +25,7 @@
 <header class="top"><div class="wrap"><a class="brand" href="#espaces"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19C2 13 9 4 19 4c0 10-6 17-14 15Zm0 0 9-9m-7 7 1-6m3 3 5-1"/></svg></span>Mon Cacao</a>
 <nav class="nav" aria-label="Navigation principale"><a href="#espaces" data-scope="both">Changer d’espace</a><a href="#accueil" data-scope="producer">Producteur</a><a href="#recoltes" data-scope="producer">Récoltes</a><a href="#prevision" data-scope="producer">Estimer ma récolte</a><a href="#durabilite" data-scope="producer">Mes pratiques</a><a href="#cooperative" data-scope="coop">Coopérative</a></nav></div></header>
 <main class="wrap" id="contenu" tabindex="-1">
+<aside id="producer-example" class="panel" style="margin-bottom:16px" hidden><p id="producer-example-label" style="margin:0 0 8px"></p><button class="button secondary" id="producer-example-toggle" type="button"></button></aside>
 <section id="espaces" data-page>
 <div class="role-intro"><h1 class="page">Choisissez votre espace</h1><p class="muted">Mon Cacao aide à suivre les récoltes et les pratiques de culture. Les producteurs peuvent partager leurs bilans avec leur coopérative.</p></div>
 <div class="row role-picker">
@@ -53,7 +54,7 @@
 </section>
 <section id="durabilite" data-page hidden>
 <div class="intro"><h1 class="page">Les pratiques de ma parcelle</h1><p class="muted">Faites le point sur vos pratiques. La note sur 100 sert à choisir les actions à améliorer. Elle est calculée par Mon Cacao à partir de vos réponses.</p></div>
-<div class="panel"><form id="eco"><fieldset><legend>Questions sur votre parcelle</legend><div class="fields score-fields"><label for="indicator-0">Arbres d’ombre<small>Des arbres donnent-ils de l’ombre aux cacaoyers dans les différentes zones de la parcelle ?</small><select id="indicator-0" name="indicator-0" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-1">Sol couvert<small>Gardez-vous le sol couvert par des plantes ou des matières végétales pour limiter l’érosion ?</small><select id="indicator-1" name="indicator-1" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-2">Engrais et compost<small>Ajustez-vous les apports d’engrais ou de compost aux besoins du sol et des cacaoyers ?</small><select id="indicator-2" name="indicator-2" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-3">Maladies et ravageurs<small>Surveillez-vous la parcelle pour repérer les maladies et les ravageurs avant de décider d’un traitement ?</small><select id="indicator-3" name="indicator-3" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-4">Entretien des cacaoyers<small>Entretenez-vous les cacaoyers et retirez-vous les branches malades ?</small><select id="indicator-4" name="indicator-4" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-5">Protection de l’eau<small>Si un cours d’eau borde la parcelle, gardez-vous une bande de végétation le long de l’eau ?</small><select id="indicator-5" name="indicator-5" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-6">Déchets de la parcelle<small>Triez-vous et rassemblez-vous les déchets pour les remettre à un point de collecte adapté ?</small><select id="indicator-6" name="indicator-6" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-7">Variété des plantes<small>Gardez-vous plusieurs sortes d’arbres ou de plantes sur la parcelle ?</small><select id="indicator-7" name="indicator-7" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-8">Forêts et zones naturelles<small>Prenez-vous des mesures pour éviter de défricher les zones naturelles lors des travaux ou de l’agrandissement de la parcelle ?</small><select id="indicator-8" name="indicator-8" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-9">Démarche de certification<small>Avez-vous engagé des démarches de certification des pratiques avec votre coopérative ou un organisme ?</small><select id="indicator-9" name="indicator-9" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label></div></fieldset><div class="actions"><button class="button" type="submit">Calculer mon score</button></div></form><div class="result" id="eco-result" role="status"></div><details style="margin-top:16px"><summary>Références du questionnaire</summary><p>Les questions reprennent des thèmes du cacao durable. La certification suit une procédure distincte.</p><ul><li><a href="https://knowledge.rainforest-alliance.org/docs/rainforest-alliance-sustainable-agriculture-standard-farm-requirements/">Rainforest Alliance, exigences pour les exploitations agricoles</a></li><li><a href="https://www.iso.org/standard/64766.html">ISO 34101-2, cacao durable et traçable</a></li></ul></details></div><div class="panel" style="margin-top:16px"><h2>Transmettre mon bilan à ma coopérative</h2><p class="muted">Après le calcul, téléchargez votre bilan puis envoyez-le à la coopérative de votre choix.</p><form id="eco-share"><div class="fields"><label>Code de la coopérative <input name="coop" required maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Code producteur <input name="producer" required maxlength="32"></label><label>Code ou nom de la parcelle <input name="parcel" required maxlength="60"></label></div><p><label class="share-choice"><input type="checkbox" name="actual"> Ajouter les récoltes réelles enregistrées sous ce nom de parcelle</label></p>
+<div class="panel"><form id="eco"><fieldset><legend>Questions sur votre parcelle</legend><div class="fields score-fields"><label for="indicator-0">Arbres d’ombre<small>Des arbres donnent-ils de l’ombre aux cacaoyers dans les différentes zones de la parcelle ?</small><select id="indicator-0" name="indicator-0" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-1">Sol couvert<small>Gardez-vous le sol couvert par des plantes ou des matières végétales pour limiter l’érosion ?</small><select id="indicator-1" name="indicator-1" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-2">Engrais et compost<small>Ajustez-vous les apports d’engrais ou de compost aux besoins du sol et des cacaoyers ?</small><select id="indicator-2" name="indicator-2" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-3">Maladies et ravageurs<small>Surveillez-vous la parcelle pour repérer les maladies et les ravageurs avant de décider d’un traitement ?</small><select id="indicator-3" name="indicator-3" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-4">Entretien des cacaoyers<small>Entretenez-vous les cacaoyers et retirez-vous les branches malades ?</small><select id="indicator-4" name="indicator-4" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-5">Protection de l’eau<small>Si un cours d’eau borde la parcelle, gardez-vous une bande de végétation le long de l’eau ?</small><select id="indicator-5" name="indicator-5" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-6">Déchets de la parcelle<small>Triez-vous et rassemblez-vous les déchets pour les remettre à un point de collecte adapté ?</small><select id="indicator-6" name="indicator-6" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-7">Variété des plantes<small>Gardez-vous plusieurs sortes d’arbres ou de plantes sur la parcelle ?</small><select id="indicator-7" name="indicator-7" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-8">Forêts et zones naturelles<small>Prenez-vous des mesures pour éviter de défricher les zones naturelles lors des travaux ou de l’agrandissement de la parcelle ?</small><select id="indicator-8" name="indicator-8" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-9">Démarche de certification<small>Avez-vous engagé des démarches de certification des pratiques avec votre coopérative ou un organisme ?</small><select id="indicator-9" name="indicator-9" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label></div></fieldset><div class="actions"><button class="button" type="submit">Calculer mon score</button></div></form><div class="result" id="eco-result" role="status"></div><details style="margin-top:16px"><summary>Références du questionnaire</summary><p>Les questions reprennent des thèmes du cacao durable. La certification suit une procédure distincte.</p><ul><li><a href="https://knowledge.rainforest-alliance.org/docs/rainforest-alliance-sustainable-agriculture-standard-farm-requirements/">Rainforest Alliance, exigences pour les exploitations agricoles</a></li><li><a href="https://www.iso.org/standard/64766.html">ISO 34101-2, cacao durable et traçable</a></li></ul></details></div><div class="panel" style="margin-top:16px"><h2>Transmettre mon bilan à ma coopérative</h2><p class="muted">Après le calcul, téléchargez votre bilan et envoyez-le à votre coopérative. Pour transmettre un bilan, passez à vos données.</p><form id="eco-share"><div class="fields"><label>Code de la coopérative <input name="coop" required maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Code producteur <input name="producer" required maxlength="32"></label><label>Code ou nom de la parcelle <input name="parcel" required maxlength="60"></label></div><p><label class="share-choice"><input type="checkbox" name="actual"> Ajouter les récoltes réelles enregistrées sous ce nom de parcelle</label></p>
 <div id="share-forecast" hidden><p><label class="share-choice"><input type="checkbox" name="forecast"> Ajouter la dernière prévision et ses conseils. Je confirme qu’elle concerne cette parcelle.</label></p><label>Campagne de la prévision <input name="forecastSeason" maxlength="30" placeholder="Ex. 2026 à 2027"></label></div>
 <div class="actions"><button class="button" id="eco-download" type="submit" disabled>Télécharger le bilan</button></div></form><p class="muted" id="eco-share-status" role="status"></p></div>
 </section>
@@ -78,7 +79,7 @@
 </div></fieldset><p class="muted">Estimation calculée à partir de données de simulation.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
 </section>
 <section id="cooperative" data-page hidden>
-<div class="intro"><h1 class="page">Tableau de bord coopérative</h1></div><div class="cards home-actions"><button class="card home-action" type="button" data-jump="coop-production-title"><strong>Voir la production</strong><small>Comparer les récoltes et les prévisions.</small></button><button class="card home-action" type="button" data-action="visit" aria-describedby="coop-visit-rule"><strong>Parcelles à visiter</strong><span class="metric" id="coop-visit">0</span></button><button class="card home-action" type="button" data-jump="coop-actions-title"><strong>Suivre l’aide aux producteurs</strong><small>Voir les actions à prévoir, programmées et terminées.</small></button><button class="card home-action" type="button" data-jump="coop-receive-title"><strong>Recevoir les bilans</strong><small>Ajouter les fichiers envoyés par les membres.</small></button><button class="card home-action" type="button" data-jump="coop-summary-title"><strong>Voir et télécharger le résumé</strong><small>Consulter les chiffres et télécharger le fichier CSV.</small></button></div>
+<div class="intro"><h1 class="page">Tableau de bord coopérative</h1><p id="coop-example-label" class="muted" hidden>Exemple fictif avec 300 producteurs.</p></div><div class="cards home-actions"><button class="card home-action" type="button" data-jump="coop-production-title"><strong>Voir la production</strong><small>Comparer les récoltes et les prévisions.</small></button><button class="card home-action" type="button" data-action="visit" aria-describedby="coop-visit-rule"><strong>Parcelles à visiter</strong><span class="metric" id="coop-visit">0</span></button><button class="card home-action" type="button" data-jump="coop-actions-title"><strong>Suivre l’aide aux producteurs</strong><small>Voir les actions à prévoir, programmées et terminées.</small></button><button class="card home-action" type="button" data-jump="coop-receive-title"><strong>Recevoir les bilans</strong><small>Ajouter les fichiers envoyés par les membres.</small></button><button class="card home-action" type="button" data-jump="coop-summary-title"><strong>Voir et télécharger le résumé</strong><small>Consulter les chiffres et télécharger le fichier CSV.</small></button></div>
 <div class="panel"><h2 id="coop-receive-title" tabindex="-1">Recevoir les bilans</h2><div class="fields"><label>Code de votre coopérative <input id="coop-code" maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Importer des bilans de producteurs <input type="file" id="coop-import" accept=".json,application/json" multiple></label></div><p class="muted">Donnez ce code à vos membres. Ils vous envoient leur fichier de bilan. </p><div class="actions"><button class="button secondary" id="coop-demo" type="button">Voir la démo de 300 producteurs</button></div><p class="muted" id="coop-status" role="status"></p></div>
 <h2 class="coop-section-title" id="coop-summary-title" tabindex="-1">Résumé de la coopérative</h2><div class="actions"><button class="button secondary" id="coop-export" type="button">Télécharger le résumé (CSV)</button></div><div class="cards"><div class="card">Producteurs avec bilan<strong class="metric" id="coop-members">0</strong></div><div class="card">Note moyenne des parcelles<strong class="metric" id="coop-average">À renseigner</strong></div><div class="card">Bilans vérifiés sur le terrain<strong class="metric" id="coop-verified">0</strong></div></div>
 <section class="panel coop-actions-panel" aria-labelledby="coop-actions-title">
@@ -119,7 +120,21 @@ try {
 } catch {
   find("#notice").textContent = "Les relevés précédents n’ont pas pu être chargés.";
 }
+const realProducerState = state;
+const exampleAnswers = ["2","1","1","2","2","na","1","2","2","0"];
+const exampleProducerState = {
+  records: [
+    { parcel: "Parcelle exemple de Méagui", season: "2026 à 2027", kind: "observed", area: 2, weight: 1460, price: 1500, cost: 480000 },
+    { parcel: "Parcelle exemple de Méagui", season: "2025 à 2026", kind: "observed", area: 2, weight: 1280, price: 1450, cost: 430000 }
+  ],
+  score: reportScore(exampleAnswers),
+  ecoReport: { date: "2026-11-23T00:00:00.000Z", answers: exampleAnswers },
+  lastForecast: { kg: 1510, advice: ["shade", "soil"] }
+};
+let producerExample = !state.records.length && !state.ecoReport && !state.lastForecast && state.score == null;
+if (producerExample) state = exampleProducerState;
 function save() {
+  if (producerExample) return;
   try {
     localStorage.setItem(storageKey, JSON.stringify(state));
     find("#notice").textContent = "";
@@ -128,6 +143,10 @@ function save() {
   }
 }
 function render() {
+  find("#producer-example-label").textContent = producerExample ? "Exemple fictif : parcelle de Méagui, 2 hectares. Les essais restent dans cet exemple." : "Vos données de producteur";
+  find("#producer-example-toggle").textContent = producerExample ? "Utiliser mes données" : "Voir l’exemple fictif";
+  find("#share-forecast").hidden = !state.lastForecast;
+  find("#eco-download").disabled = producerExample || !state.ecoReport;
   const last = state.records.find((record) => record.kind === "observed");
   find("#yield").textContent = last ? format.format(last.weight / last.area) + " kg/ha" : "À renseigner";
   find("#margin").textContent = last ? format.format(last.weight * last.price - last.cost) + " FCFA" : "À renseigner";
@@ -152,6 +171,7 @@ function route(moveFocus) {
   if (target === "contenu" && moveFocus) return;
   const active = pages.includes(target) ? target : "espaces";
   const scope = active === "espaces" ? "" : active === "cooperative" ? "coop" : "producer";
+  find("#producer-example").hidden = scope !== "producer";
   for (const page of document.querySelectorAll("[data-page]")) page.hidden = page.id !== active;
   for (const link of document.querySelectorAll(".nav a")) {
     link.hidden = !scope || (link.dataset.scope !== "both" && (active === "accueil" || active === "cooperative" || link.dataset.scope !== scope));
@@ -205,7 +225,7 @@ find("#eco").addEventListener("submit", (event) => {
   const answers = indicators.map((_, index) => form.get("indicator-" + index));
   state.score = reportScore(answers);
   state.ecoReport = { date: new Date().toISOString(), answers };
-  find("#eco-download").disabled = false;
+  find("#eco-download").disabled = producerExample;
   save();
   render();
   const title = document.createElement("strong");
@@ -237,7 +257,7 @@ find("#export").addEventListener("click", () => {
   const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
   const link = document.createElement("a");
   link.href = url;
-  link.download = "mon-cacao-releves.csv";
+  link.download = producerExample ? "mon-cacao-releves-fictifs.csv" : "mon-cacao-releves.csv";
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
@@ -387,7 +407,7 @@ function downloadReport(text, type, name) {
 find("#eco-download").disabled = !state.ecoReport;
 find("#eco-share").addEventListener("submit", (event) => {
   event.preventDefault();
-  if (!state.ecoReport) return;
+  if (producerExample || !state.ecoReport) return;
   const fields = new FormData(event.currentTarget);
   const coop = codeOf(fields.get("coop"));
   const producer = codeOf(fields.get("producer"));
@@ -675,7 +695,8 @@ find("#coop-demo").addEventListener("click", (event) => {
         score: reportScore(answers), verified: i % 5 === 0, followup: "none" };
     });
   }
-  event.currentTarget.textContent = demoMode ? "Revenir à ma coopérative" : "Voir la démo de 300 producteurs";
+  find("#coop-example-label").hidden = !demoMode;
+  event.currentTarget.textContent = demoMode ? "Voir les données de ma coopérative" : "Voir la démo de 300 producteurs";
   coopStatus(demoMode ? "Démo avec 300 producteurs fictifs." : "Espace de votre coopérative.");
   find("#coop-action-filter").value = "all";
   find("#coop-filter").value = "all";
@@ -726,7 +747,8 @@ find("#coop-export").addEventListener("click", () => {
   }).join(";")).join("\r\n");
   downloadReport(csv, "text/csv;charset=utf-8", "synthese-mon-cacao-" + prefix + ".csv");
 });
-renderCoop();
+if (!coopState.reports.length) find("#coop-demo").click();
+else renderCoop();
 
 for (const shortcut of document.querySelectorAll(".home-action[data-jump]")) {
   shortcut.addEventListener("click", () => {
@@ -735,6 +757,14 @@ for (const shortcut of document.querySelectorAll(".home-action[data-jump]")) {
     else destination.focus();
   });
 }
+find("#producer-example-toggle").addEventListener("click", () => {
+  producerExample = !producerExample;
+  state = producerExample ? exampleProducerState : realProducerState;
+  for (const selector of ["#harvest", "#forecast", "#eco", "#eco-share"]) find(selector).reset();
+  for (const selector of ["#harvest-result", "#forecast-result", "#eco-result", "#eco-share-status"]) find(selector).replaceChildren();
+  find("#weight-label").textContent = "Poids récolté en kg";
+  render();
+});
 window.addEventListener("hashchange", () => route(true));
 route(false);
 render();
