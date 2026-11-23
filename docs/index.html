@@ -15,7 +15,7 @@
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="top"><div class="wrap"><a class="brand" href="#accueil"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19C2 13 9 4 19 4c0 10-6 17-14 15Zm0 0 9-9m-7 7 1-6m3 3 5-1"/></svg></span>Mon Cacao</a>
-<nav class="nav" aria-label="Navigation principale"><a href="#accueil">Vue d’ensemble</a><a href="#recoltes">Récoltes</a><a href="#prevision">Prévision</a><a href="#durabilite">Durabilité</a></nav></div></header>
+<nav class="nav" aria-label="Navigation principale"><a href="#accueil">Producteur</a><a href="#recoltes">Récoltes</a><a href="#prevision">Prévision</a><a href="#durabilite">Durabilité</a><a href="#cooperative">Coopérative</a></nav></div></header>
 <main class="wrap" id="contenu" tabindex="-1">
 <section id="accueil" data-page>
 <div class="hero"><div><span class="eyebrow">Carnet de parcelle</span><h1>Pilotez votre<br>culture du cacao.</h1><p>Suivez vos récoltes, estimez votre marge et repérez les pratiques à améliorer sur votre parcelle.</p><a class="button" href="#prevision">Prévoir ma récolte</a></div>
@@ -39,7 +39,7 @@
 </section>
 <section id="durabilite" data-page hidden>
 <div class="intro"><h1 class="page">Bilan de durabilité</h1><p class="muted">Évaluez chaque pratique pour obtenir un score indicatif sur 100 et des pistes d’amélioration.</p></div>
-<div class="panel"><form id="eco"><fieldset><legend>Pratiques de la parcelle</legend><div class="fields score-fields"><label for="indicator-0">Ombrage<small>Arbres d’ombrage répartis sur la parcelle</small><select id="indicator-0" name="indicator-0" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-1">Couverture du sol<small>Sol protégé par de la végétation ou du paillis</small><select id="indicator-1" name="indicator-1" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-2">Fertilisation<small>Apports raisonnés selon les besoins de la parcelle</small><select id="indicator-2" name="indicator-2" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-3">Protection phytosanitaire<small>Surveillance des maladies et traitements raisonnés</small><select id="indicator-3" name="indicator-3" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-4">Taille sanitaire<small>Entretien et retrait des branches malades</small><select id="indicator-4" name="indicator-4" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-5">Protection des berges<small>Protection des abords des cours d’eau</small><select id="indicator-5" name="indicator-5" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-6">Gestion des déchets<small>Tri et collecte des déchets de la parcelle</small><select id="indicator-6" name="indicator-6" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-7">Biodiversité<small>Présence de plusieurs espèces végétales</small><select id="indicator-7" name="indicator-7" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-8">Préservation des arbres<small>Mesures pour éviter le défrichement</small><select id="indicator-8" name="indicator-8" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-9">Certification<small>Démarches liées aux pratiques durables</small><select id="indicator-9" name="indicator-9" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label></div></fieldset><div class="actions"><button class="button" type="submit">Calculer mon score</button></div></form><div class="result" id="eco-result" role="status"></div></div>
+<div class="panel"><form id="eco"><fieldset><legend>Pratiques de la parcelle</legend><div class="fields score-fields"><label for="indicator-0">Ombrage<small>Arbres d’ombrage répartis sur la parcelle</small><select id="indicator-0" name="indicator-0" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-1">Couverture du sol<small>Sol protégé par de la végétation ou du paillis</small><select id="indicator-1" name="indicator-1" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-2">Fertilisation<small>Apports raisonnés selon les besoins de la parcelle</small><select id="indicator-2" name="indicator-2" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-3">Protection phytosanitaire<small>Surveillance des maladies et traitements raisonnés</small><select id="indicator-3" name="indicator-3" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-4">Taille sanitaire<small>Entretien et retrait des branches malades</small><select id="indicator-4" name="indicator-4" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-5">Protection des berges<small>Protection des abords des cours d’eau</small><select id="indicator-5" name="indicator-5" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-6">Gestion des déchets<small>Tri et collecte des déchets de la parcelle</small><select id="indicator-6" name="indicator-6" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-7">Biodiversité<small>Présence de plusieurs espèces végétales</small><select id="indicator-7" name="indicator-7" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-8">Préservation des arbres<small>Mesures pour éviter le défrichement</small><select id="indicator-8" name="indicator-8" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label><label for="indicator-9">Certification<small>Démarches liées aux pratiques durables</small><select id="indicator-9" name="indicator-9" required><option value="">Choisir une réponse</option><option value="0">Pas en place</option><option value="1">Partiellement en place</option><option value="2">En place</option><option value="na">Sans objet</option></select></label></div></fieldset><div class="actions"><button class="button" type="submit">Calculer mon score</button></div></form><div class="result" id="eco-result" role="status"></div></div><div class="panel" style="margin-top:16px"><h2>Transmettre mon bilan à ma coopérative</h2><p class="muted">Après le calcul, téléchargez votre bilan puis envoyez-le à la coopérative de votre choix.</p><form id="eco-share"><div class="fields"><label>Code de la coopérative <input name="coop" required maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Code producteur <input name="producer" required maxlength="32"></label><label>Code ou nom de la parcelle <input name="parcel" required maxlength="60"></label></div><div class="actions"><button class="button" id="eco-download" type="submit" disabled>Télécharger le bilan</button></div></form><p class="muted" id="eco-share-status" role="status"></p></div>
 </section>
 <section id="prevision" data-page hidden>
 <div class="intro"><h1 class="page">Prévision de récolte</h1><p class="muted">Renseignez les caractéristiques de la parcelle pour estimer le rendement et le poids total de récolte.</p></div>
@@ -60,6 +60,16 @@
 <label>Fongicide <select name="fungicide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Maladie observée <select name="disease" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option><option value="Un peu">Un peu</option></select></label>
 </div></fieldset><p class="muted">Prévision indicative. Le script d’entraînement du dépôt utilise des données synthétiques.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
+</section>
+<section id="cooperative" data-page hidden>
+<div class="intro"><h1 class="page">Espace coopérative</h1><p class="muted">Centralisez les bilans de vos membres, repérez les parcelles à accompagner et exportez une synthèse.</p></div>
+<div class="panel"><div class="fields"><label>Code de votre coopérative <input id="coop-code" maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Importer des bilans de producteurs <input type="file" id="coop-import" accept=".json,application/json" multiple></label></div><p class="muted">Communiquez ce code aux membres. Ils vous transmettent leur fichier depuis l’espace producteur. Le tableau de bord est enregistré dans ce navigateur.</p><div class="actions"><button class="button secondary" id="coop-demo" type="button">Voir la démo de 300 producteurs</button><button class="button secondary" id="coop-export" type="button">Exporter la synthèse CSV</button></div><p class="muted" id="coop-status" role="status"></p></div>
+<div class="cards"><div class="card">Producteurs avec bilan<strong class="metric" id="coop-members">0</strong></div><div class="card">Score moyen des parcelles<strong class="metric" id="coop-average">—</strong></div><div class="card">Parcelles sous 70/100<strong class="metric" id="coop-priority">0</strong></div></div>
+<div class="row"><article class="panel"><h2>Répartition des scores</h2><ul id="coop-distribution"></ul></article><article class="panel"><h2>Pratiques à accompagner</h2><ul id="coop-practices"></ul></article></div>
+<div class="panel" style="margin-top:16px"><h2>Suivi des bilans</h2><div class="fields"><label>Rechercher un code producteur ou une parcelle <input id="coop-search" type="search"></label><label>Filtrer par score <select id="coop-filter"><option value="all">Tous les scores</option><option value="good">Bonnes pratiques · 70 et plus</option><option value="support">À accompagner · 40 à 69</option><option value="urgent">Prioritaire · moins de 40</option></select></label></div><p id="coop-count" class="muted" role="status"></p>
+<div class="table-wrap"><table><thead><tr><th scope="col">Producteur</th><th scope="col">Parcelle</th><th scope="col">Date</th><th scope="col">Score</th><th scope="col">Vérification</th><th scope="col">Accompagnement</th></tr></thead><tbody id="coop-rows"></tbody></table></div>
+<div class="actions"><button id="coop-prev" class="button secondary" type="button">Précédent</button><button id="coop-next" class="button secondary" type="button">Suivant</button></div>
+<p class="muted">Les scores reposent sur les pratiques déclarées. La vérification terrain peut être consignée pour chaque bilan. Le score est indicatif.</p></div>
 </section>
 <p class="notice" id="notice" role="status"></p>
 </main>
@@ -105,7 +115,7 @@ function render() {
   find("#export").disabled = !state.records.length;
 }
 function route(moveFocus) {
-  const pages = ["accueil", "recoltes", "prevision", "durabilite"];
+  const pages = ["accueil", "recoltes", "prevision", "durabilite", "cooperative"];
   const target = location.hash.slice(1);
   if (target === "contenu") return;
   const active = pages.includes(target) ? target : "accueil";
@@ -153,9 +163,10 @@ find("#eco").addEventListener("submit", (event) => {
     result.textContent = "Évaluez au moins une pratique applicable.";
     return;
   }
-  const total = applicable.reduce((sum, item) => sum + item.weight * Number(item.answer), 0);
-  const maximum = applicable.reduce((sum, item) => sum + item.weight * 2, 0);
-  state.score = Math.round(100 * total / maximum);
+  const answers = indicators.map((_, index) => form.get("indicator-" + index));
+  state.score = reportScore(answers);
+  state.ecoReport = { date: new Date().toISOString(), answers };
+  find("#eco-download").disabled = false;
   save();
   render();
   const title = document.createElement("strong");
@@ -229,6 +240,227 @@ find("#forecast").addEventListener("submit", (event) => {
     button.disabled = false;
   }
 });
+const coopKey = "mon-cacao-cooperative-v1";
+let coopState = { code: "", reports: [] };
+try {
+  const saved = JSON.parse(localStorage.getItem(coopKey));
+  if (saved && Array.isArray(saved.reports)) coopState = saved;
+} catch {
+  find("#coop-status").textContent = "Les bilans précédents n’ont pas pu être chargés.";
+}
+let demoMode = false;
+let demoReports;
+let coopPage = 0;
+const pageSize = 20;
+const dateFormat = new Intl.DateTimeFormat("fr-FR", { timeZone: "UTC" });
+const codeOf = (value) => value.trim().toUpperCase();
+const validCode = (value, max) => typeof value === "string" && value.length <= max && /^[A-Z0-9_-]+$/.test(value);
+const coopStatus = (message) => { find("#coop-status").textContent = message; };
+function saveCoop(message) {
+  try {
+    localStorage.setItem(coopKey, JSON.stringify(coopState));
+    coopStatus(message);
+  } catch {
+    coopStatus(message + " Le stockage local est indisponible. Exportez la synthèse avant de quitter.");
+  }
+}
+function reportScore(answers) {
+  let total = 0;
+  let maximum = 0;
+  indicators.forEach(({ weight }, index) => {
+    if (answers[index] === "na") return;
+    total += weight * Number(answers[index]);
+    maximum += weight * 2;
+  });
+  return Math.round(100 * total / maximum);
+}
+function downloadReport(text, type, name) {
+  const url = URL.createObjectURL(new Blob([text], { type }));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = name;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+find("#eco-download").disabled = !state.ecoReport;
+find("#eco-share").addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!state.ecoReport) return;
+  const fields = new FormData(event.currentTarget);
+  const coop = codeOf(fields.get("coop"));
+  const producer = codeOf(fields.get("producer"));
+  const parcel = fields.get("parcel").trim();
+  const status = find("#eco-share-status");
+  if (!validCode(coop, 24) || !validCode(producer, 32) || !parcel) {
+    status.textContent = "Renseignez la parcelle et utilisez des lettres sans accents, chiffres, tirets ou tirets bas pour les codes.";
+    return;
+  }
+  const report = { type: "mon-cacao-bilan-v1", coop, producer, parcel, ...state.ecoReport };
+  downloadReport(JSON.stringify(report), "application/json", "bilan-mon-cacao-" + producer + ".json");
+  status.textContent = "Bilan téléchargé. Transmettez ce fichier à votre coopérative.";
+});
+function parseReport(text, coop) {
+  const raw = JSON.parse(text);
+  if (!raw || raw.type !== "mon-cacao-bilan-v1" || raw.coop !== coop || !validCode(raw.producer, 32) ||
+      typeof raw.parcel !== "string" || !raw.parcel.trim() || raw.parcel.length > 60 ||
+      typeof raw.date !== "string" || !/^\d{4}-\d{2}-\d{2}T/.test(raw.date) || !Number.isFinite(Date.parse(raw.date)) ||
+      !Array.isArray(raw.answers) || raw.answers.length !== indicators.length ||
+      !raw.answers.every((value) => ["0", "1", "2", "na"].includes(value)) || raw.answers.every((value) => value === "na")) {
+    throw new Error("Bilan incompatible");
+  }
+  const { producer, date, answers } = raw;
+  return { producer, parcel: raw.parcel.trim(), date: new Date(date).toISOString(), answers,
+    score: reportScore(answers), verified: false, followup: "none" };
+}
+const reportKey = (report) => JSON.stringify([report.producer, report.parcel.toLowerCase()]);
+function classify(score) {
+  return score >= 70 ? "good" : score >= 40 ? "support" : "urgent";
+}
+const levels = { good: "Bonnes pratiques", support: "À accompagner", urgent: "Prioritaire" };
+const followupLabels = { none: "À planifier", planned: "Planifié", done: "Réalisé" };
+function renderList(selector, entries, fallback) {
+  const list = find(selector);
+  list.replaceChildren();
+  for (const value of entries.length ? entries : [fallback]) {
+    const item = document.createElement("li");
+    item.textContent = value;
+    list.append(item);
+  }
+}
+function currentReports() {
+  return demoMode ? demoReports : coopState.reports;
+}
+function renderCoop() {
+  const reports = currentReports();
+  const counts = { good: 0, support: 0, urgent: 0 };
+  for (const report of reports) counts[classify(report.score)]++;
+  find("#coop-members").textContent = format.format(new Set(reports.map(({ producer }) => producer)).size);
+  find("#coop-average").textContent = reports.length ? format.format(reports.reduce((sum, r) => sum + r.score, 0) / reports.length) + " / 100" : "—";
+  find("#coop-priority").textContent = format.format(counts.support + counts.urgent);
+  find("#coop-export").disabled = !reports.length;
+  renderList("#coop-distribution", Object.entries(levels).map(([key, label]) => label + " · " + counts[key]), "");
+  const practices = indicators.map(({ name }, i) => [name, reports.filter(({ answers }) => answers[i] === "0" || answers[i] === "1").length])
+    .filter(([, count]) => count).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  renderList("#coop-practices", practices.map(([name, count]) => name + " · " + count + " parcelle(s)"), "Aucune pratique à afficher.");
+  const search = find("#coop-search").value.trim().toLowerCase();
+  const filter = find("#coop-filter").value;
+  const filtered = reports.filter((r) => (filter === "all" || classify(r.score) === filter) &&
+    (r.producer.toLowerCase().includes(search) || r.parcel.toLowerCase().includes(search)));
+  const lastPage = Math.max(0, Math.ceil(filtered.length / pageSize) - 1);
+  coopPage = Math.min(coopPage, lastPage);
+  find("#coop-count").textContent = filtered.length ? filtered.length + " bilan(s) · Page " + (coopPage + 1) + " sur " + (lastPage + 1) : "Aucun bilan à afficher.";
+  find("#coop-prev").disabled = coopPage === 0;
+  find("#coop-next").disabled = coopPage === lastPage;
+  const body = find("#coop-rows");
+  body.replaceChildren();
+  for (const report of filtered.slice(coopPage * pageSize, (coopPage + 1) * pageSize)) {
+    const row = body.insertRow();
+    for (const value of [report.producer, report.parcel, dateFormat.format(new Date(report.date)), report.score + " / 100"]) row.insertCell().textContent = value;
+    const verified = document.createElement("input");
+    verified.type = "checkbox";
+    verified.checked = report.verified;
+    verified.style.cssText = "width:24px;min-height:24px";
+    verified.setAttribute("aria-label", "Bilan vérifié sur le terrain pour " + report.producer + " · " + report.parcel);
+    verified.addEventListener("change", () => {
+      report.verified = verified.checked;
+      if (!demoMode) saveCoop("Vérification mise à jour.");
+    });
+    row.insertCell().append(verified);
+    const followup = document.createElement("select");
+    followup.setAttribute("aria-label", "Accompagnement de " + report.producer + " · " + report.parcel);
+    for (const [value, label] of Object.entries(followupLabels)) followup.add(new Option(label, value));
+    followup.value = report.followup;
+    followup.addEventListener("change", () => {
+      report.followup = followup.value;
+      if (!demoMode) saveCoop("Accompagnement mis à jour.");
+    });
+    row.insertCell().append(followup);
+  }
+}
+const codeField = find("#coop-code");
+codeField.value = coopState.code;
+codeField.addEventListener("change", () => {
+  const code = codeOf(codeField.value);
+  if ((code && !validCode(code, 24)) || (coopState.reports.length && code !== coopState.code)) {
+    codeField.value = coopState.code;
+    coopStatus("Utilisez un code valide. Le code reste associé aux bilans déjà importés.");
+    return;
+  }
+  codeField.value = coopState.code = code;
+  saveCoop(code ? "Code de la coopérative enregistré." : "");
+});
+find("#coop-import").addEventListener("change", async (event) => {
+  const input = event.currentTarget;
+  const files = Array.from(input.files);
+  input.value = "";
+  const code = coopState.code;
+  if (!code) { coopStatus("Renseignez d’abord le code de votre coopérative."); return; }
+  input.disabled = true;
+  let rejected = 0;
+  let updated = 0;
+  let unchanged = 0;
+  try {
+    const parsed = [];
+    for (const file of files) {
+      try {
+        if (file.size > 10000) throw new Error("Fichier trop volumineux");
+        parsed.push(parseReport(await file.text(), code));
+      } catch { rejected++; }
+    }
+    if (code !== coopState.code) { coopStatus("Le code a changé. Relancez l’import."); return; }
+    const reports = new Map(coopState.reports.map((r) => [reportKey(r), r]));
+    for (const report of parsed) {
+      const key = reportKey(report);
+      const existing = reports.get(key);
+      if (existing && existing.date >= report.date) { unchanged++; continue; }
+      if (existing) report.followup = existing.followup;
+      reports.set(key, report);
+      updated++;
+    }
+    coopState.reports = Array.from(reports.values()).sort((a, b) => b.date.localeCompare(a.date));
+    if (updated && demoMode) find("#coop-demo").click();
+    saveCoop(updated + " bilan(s) ajouté(s) ou actualisé(s), " + unchanged + " déjà à jour, " + rejected + " écarté(s). Vérifiez le code et le format des fichiers écartés.");
+    renderCoop();
+  } finally { input.disabled = false; }
+});
+find("#coop-demo").addEventListener("click", (event) => {
+  demoMode = !demoMode;
+  if (demoMode && !demoReports) {
+    demoReports = Array.from({ length: 300 }, (_, i) => {
+      const answers = indicators.map((_, j) => String(i % 3 === 0 ? ((i + j) % 7 ? 2 : 1) :
+        i % 3 === 1 ? ((i + j * 7) % 10 < 5 ? 2 : 0) : ((i + j * 3) % 8 < 3 ? 1 : 0)));
+      return { producer: "DEMO-" + String(i + 1).padStart(3, "0"), parcel: "Parcelle " + (i + 1),
+        date: "2026-11-23T00:00:00.000Z", answers, score: reportScore(answers), verified: i % 5 === 0, followup: "none" };
+    });
+  }
+  event.currentTarget.textContent = demoMode ? "Revenir à ma coopérative" : "Voir la démo de 300 producteurs";
+  coopStatus(demoMode ? "Mode démonstration · 300 producteurs fictifs." : "Espace de votre coopérative.");
+  coopPage = 0;
+  renderCoop();
+});
+for (const [selector, event] of [["#coop-search", "input"], ["#coop-filter", "change"]]) {
+  find(selector).addEventListener(event, () => { coopPage = 0; renderCoop(); });
+}
+find("#coop-prev").addEventListener("click", () => { coopPage--; renderCoop(); });
+find("#coop-next").addEventListener("click", () => { coopPage++; renderCoop(); });
+find("#coop-export").addEventListener("click", () => {
+  const reports = currentReports();
+  const prefix = demoMode ? "DEMO" : coopState.code;
+  const rows = [["Mon Cacao", prefix], ["Producteurs avec bilan", new Set(reports.map((r) => r.producer)).size],
+    ["Parcelles évaluées", reports.length], ["Score moyen sur 100", format.format(reports.reduce((sum, r) => sum + r.score, 0) / reports.length)],
+    ...Object.entries(levels).map(([key, label]) => [label, reports.filter((r) => classify(r.score) === key).length]), [],
+    ["Producteur", "Parcelle", "Date", "Score sur 100", "Catégorie", "Vérifié sur le terrain", "Accompagnement", ...indicators.map(({ name }) => name)],
+    ...reports.map((r) => [r.producer, r.parcel, r.date.slice(0, 10), r.score, levels[classify(r.score)], r.verified ? "Oui" : "Non", followupLabels[r.followup],
+      ...r.answers.map((answer) => ({ "0": "Pas en place", "1": "Partiellement en place", "2": "En place", "na": "Sans objet" })[answer])])];
+  const csv = "\ufeff" + rows.map((row) => row.map((v) => {
+    const value = String(v);
+    const safe = /^\s*[=+@-]/.test(value) ? "'" + value : value;
+    return '"' + safe.replaceAll('"', '""') + '"';
+  }).join(";")).join("\r\n");
+  downloadReport(csv, "text/csv;charset=utf-8", "synthese-mon-cacao-" + prefix + ".csv");
+});
+renderCoop();
+
 window.addEventListener("hashchange", () => route(true));
 route(false);
 render();
