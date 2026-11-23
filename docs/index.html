@@ -21,13 +21,14 @@
 
 .top{position:sticky;top:0;z-index:10;box-shadow:0 2px 14px #173b2e12}.top .wrap{gap:clamp(8px,2vw,16px)}.brand{flex:none}.current-space{color:var(--forest);font-size:.85rem;font-weight:750;background:var(--mint);padding:5px 9px;border-radius:8px}.top .nav{margin-left:auto}.mobile-dock{display:none}.hero{padding-block:clamp(22px,4vw,40px)}[id]{scroll-margin-top:95px}
 @media(max-width:850px){.top .wrap{min-height:60px;flex-direction:row;align-items:center;flex-wrap:wrap;padding-block:8px;gap:6px}.top .nav a:not([data-scope="both"]){display:none}.top .nav a{padding-inline:5px;font-size:.8rem}.brand{font-size:1rem;gap:6px}.mark{width:32px;height:32px}.current-space{font-size:.72rem;padding:4px 6px}.mobile-dock:not([hidden]){display:flex;position:fixed;z-index:20;inset:auto 0 0;min-height:60px;padding:6px 6px calc(6px + env(safe-area-inset-bottom));gap:3px;background:var(--white);border-top:1px solid var(--line);box-shadow:0 -4px 16px #173b2e12}.mobile-dock a,.mobile-dock button{display:grid;place-items:center;flex:1;min-width:0;min-height:44px;padding:3px;border:0;border-radius:8px;text-align:center;background:transparent;color:var(--forest);text-decoration:none;font:700 clamp(.65rem,2.5vw,.85rem)/1.15 system-ui;cursor:pointer}.mobile-dock [aria-current]{background:var(--mint)}body.has-dock{padding-bottom:calc(64px + env(safe-area-inset-bottom))}}
+#finance textarea{display:block;width:100%;margin:6px 0 12px;padding:8px;font:inherit;border:1px solid var(--line);border-radius:8px}#finance input{margin-bottom:12px}.fin-case{padding:14px 0;border-bottom:1px solid var(--line)}.fin-case:last-child{border:0}#fin-request label{font-weight:500;margin-bottom:8px}#fin-preview ul{padding-left:22px}
 </style>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="top"><div class="wrap"><a class="brand" href="#espaces"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19C2 13 9 4 19 4c0 10-6 17-14 15Zm0 0 9-9m-7 7 1-6m3 3 5-1"/></svg></span>Mon Cacao</a><span class="current-space" id="current-space" hidden></span>
-<nav class="nav" aria-label="Navigation principale"><a href="#espaces" data-scope="both">Changer d’espace</a><a href="#accueil" data-scope="producer">Producteur</a><a href="#depenses" data-scope="producer">Mes dépenses</a><a href="#recoltes" data-scope="producer">Récoltes</a><a href="#bilan" data-scope="producer">Mon bilan</a><a href="#prevision" data-scope="producer">Estimer ma récolte</a><a href="#durabilite" data-scope="producer">Mes pratiques</a><a href="#cooperative" data-scope="coop">Coopérative</a></nav></div></header>
-<nav class="mobile-dock" aria-label="Raccourcis de l’espace" hidden><a href="#accueil" data-dock="producer">Accueil</a><a href="#depenses" data-dock="producer">Dépenses</a><a href="#recoltes" data-dock="producer">Récoltes</a><a href="#bilan" data-dock="producer">Bilan</a><a href="#prevision" data-dock="producer">Prévision</a><button type="button" data-dock="coop" data-jump="coop-summary-title">Résumé</button><button type="button" data-dock="coop" data-jump="coop-receive-title">Bilans</button><button type="button" data-dock="coop" data-jump="coop-production-title">Production</button><button type="button" data-dock="coop" data-jump="coop-actions-title">Suivi</button></nav>
+<nav class="nav" aria-label="Navigation principale"><a href="#espaces" data-scope="both">Changer d’espace</a><a href="#accueil" data-scope="producer">Producteur</a><a href="#depenses" data-scope="producer">Mes dépenses</a><a href="#recoltes" data-scope="producer">Récoltes</a><a href="#bilan" data-scope="producer">Mon bilan</a><a href="#prevision" data-scope="producer">Estimer ma récolte</a><a href="#durabilite" data-scope="producer">Mes pratiques</a><a href="#financement" data-scope="producer">Financement</a><a href="#cooperative" data-scope="coop">Coopérative</a></nav></div></header>
+<nav class="mobile-dock" aria-label="Raccourcis de l’espace" hidden><a href="#accueil" data-dock="producer">Accueil</a><a href="#depenses" data-dock="producer">Dépenses</a><a href="#recoltes" data-dock="producer">Récoltes</a><a href="#bilan" data-dock="producer">Bilan</a><a href="#financement" data-dock="producer">Financement</a><button type="button" data-dock="coop" data-jump="coop-summary-title">Résumé</button><button type="button" data-dock="coop" data-jump="coop-receive-title">Bilans</button><button type="button" data-dock="coop" data-jump="coop-production-title">Production</button><button type="button" data-dock="coop" data-jump="coop-actions-title">Suivi</button></nav>
 <main class="wrap" id="contenu" tabindex="-1">
 <aside id="producer-example" class="panel" style="margin-bottom:16px" hidden><p id="producer-example-label" style="margin:0 0 8px"></p><button class="button secondary" id="producer-example-toggle" type="button"></button></aside>
 <section id="espaces" data-page>
@@ -35,12 +36,13 @@
 <div class="row role-picker">
 <article class="panel role-card"><h2>Producteur</h2><ul><li>Prévoir le rendement de votre parcelle</li><li>Enregistrer vos récoltes et calculer votre marge</li><li>Évaluer vos pratiques et transmettre votre bilan à votre coopérative</li></ul><a class="button" href="#accueil">Je suis producteur</a></article>
 <article class="panel role-card"><h2>Coopérative</h2><ul><li>Importer les bilans transmis par les producteurs</li><li>Repérer les parcelles à accompagner et consigner les vérifications terrain</li><li>Télécharger le résumé des bilans</li></ul><a class="button" href="#cooperative">Je représente une coopérative</a></article>
+<article class="panel role-card"><h2>Structure financière</h2><ul><li>Publier des offres de financement</li><li>Examiner les demandes reçues</li></ul><a class="button" href="#finance">Je représente une structure financière</a></article>
 </div></section>
 <section id="accueil" data-page hidden>
 <div class="hero"><div><h1>Mon carnet</h1><p>Retrouvez vos chiffres et choisissez votre prochaine action.</p></div>
 <svg class="hero-art" viewBox="0 0 240 204" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="120" cy="102" r="94" opacity=".24"/><ellipse cx="120" cy="102" rx="80" ry="93" transform="rotate(55 120 102)" opacity=".18"/><path d="M150 45c-36 1-89 30-97 73-6 32 17 48 45 43 43-8 79-59 75-95-1-15-10-21-23-21Z" fill="#315741"/><path d="M58 149c28-7 71-58 100-101M56 139c3-38 55-59 93-92M67 156c41-2 73-43 98-101M173 55c10-7 16-15 19-28M180 48c17 1 27-4 35-16-15-3-26 3-35 16ZM181 43c-14-8-19-18-17-30 12 5 20 16 17 30Z"/></svg>
 </div>
-<h2>Que voulez-vous faire ?</h2><div class="cards home-actions"><a class="card home-action" href="#depenses"><strong>Mes dépenses</strong><small>Noter ce que j’ai payé pour ma parcelle.</small></a><a class="card home-action" href="#prevision"><strong>Estimer ma récolte</strong></a><a class="card home-action" href="#recoltes"><strong>Noter ma récolte</strong><small>Enregistrer la quantité récoltée, le prix et les dépenses.</small></a><a class="card home-action" href="#bilan"><strong>Mon bilan</strong><small>Voir les ventes, les dépenses et le cacao à vendre.</small></a><a class="card home-action" href="#durabilite"><strong>Améliorer ma parcelle</strong><small>Faire mon bilan et obtenir des conseils.</small></a></div><h2>Mes derniers résultats</h2><div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Reste après dépenses<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernière note de la parcelle<strong class="metric" id="latest-score">À renseigner</strong></div></div>
+<h2>Que voulez-vous faire ?</h2><div class="cards home-actions"><a class="card home-action" href="#financement"><strong>Financer ma parcelle</strong><small>Consulter les offres et suivre mes demandes.</small></a><a class="card home-action" href="#depenses"><strong>Mes dépenses</strong><small>Noter ce que j’ai payé pour ma parcelle.</small></a><a class="card home-action" href="#prevision"><strong>Estimer ma récolte</strong></a><a class="card home-action" href="#recoltes"><strong>Noter ma récolte</strong><small>Enregistrer la quantité récoltée, le prix et les dépenses.</small></a><a class="card home-action" href="#bilan"><strong>Mon bilan</strong><small>Voir les ventes, les dépenses et le cacao à vendre.</small></a><a class="card home-action" href="#durabilite"><strong>Améliorer ma parcelle</strong><small>Faire mon bilan et obtenir des conseils.</small></a></div><h2>Mes derniers résultats</h2><div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Reste après dépenses<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernière note de la parcelle<strong class="metric" id="latest-score">À renseigner</strong></div></div>
 
 </section>
 <datalist id="known-parcels"></datalist><datalist id="known-seasons"></datalist>
@@ -105,6 +107,24 @@
 <div class="table-wrap"><table><thead><tr><th scope="col">Producteur</th><th scope="col">Parcelle</th><th scope="col">Date</th><th scope="col">Score</th><th scope="col">Vérification</th><th scope="col">Accompagnement</th></tr></thead><tbody id="coop-rows"></tbody></table></div>
 <div class="actions"><button id="coop-prev" class="button secondary" type="button">Précédent</button><button id="coop-next" class="button secondary" type="button">Suivant</button></div>
 <p class="muted">Les scores reposent sur les pratiques déclarées. La vérification terrain peut être consignée pour chaque bilan. Le score est indicatif.</p></div>
+</section>
+<section id="financement" data-page hidden>
+<div class="intro"><h1 class="page">Financer ma parcelle</h1><p class="muted">Démonstration. Utilisez des données fictives. Les offres et demandes restent dans ce navigateur et le parcours ne réalise aucun envoi externe.</p></div>
+<div id="fin-offers" class="cards home-actions"></div>
+<form id="fin-request" class="panel" hidden><h2>Vérifier les informations à partager</h2><p id="fin-selection"></p>
+<fieldset><legend>Dossier de démonstration</legend>
+<label class="share-choice"><input type="checkbox" name="harvest" checked> Récolte et prévision de la parcelle fictive</label>
+<label class="share-choice"><input type="checkbox" name="budget"> Ventes et dépenses fictives</label>
+<label class="share-choice"><input type="checkbox" name="eco"> Bilan écologique fictif et état de la vérification</label>
+</fieldset><div id="fin-preview"></div><p><label class="share-choice"><input type="checkbox" name="consent" required> J’accepte de partager les informations cochées avec la structure de démonstration.</label></p>
+<button class="button" type="submit">Envoyer ma demande</button></form>
+<p id="fin-producer-status" role="status"></p><div class="panel"><h2>Mes demandes</h2><div id="fin-mine"></div></div>
+</section>
+<section id="finance" data-page hidden>
+<div class="intro"><h1 class="page">Espace structure financière</h1><p class="muted">Démonstration. Utilisez des données fictives. Les offres et demandes restent dans ce navigateur et le parcours ne réalise aucun envoi externe.</p></div>
+<div class="row"><form class="panel" id="fin-profile"><h2>Profil de démonstration</h2><label>Nom de la structure fictive <input name="organization" required maxlength="80"></label><button type="submit" class="button">Créer ou modifier le profil</button><p id="fin-profile-status" role="status"></p></form>
+<form class="panel" id="fin-publish"><h2>Publier une offre</h2><label>Nom de l’offre <input name="title" required maxlength="80"></label><label>Conditions de l’offre <textarea name="terms" required maxlength="400" rows="3"></textarea></label><button type="submit" class="button">Publier</button><p id="fin-publish-status" role="status"></p></form></div>
+<div class="panel" style="margin-top:16px"><h2>Demandes reçues</h2><p id="fin-review-status" role="status"></p><div id="fin-inbox"></div></div>
 </section>
 <p class="notice" id="notice" role="status"></p>
 </main>
@@ -229,17 +249,17 @@ function render() {
 }
 let pendingHomeJump;
 function route(moveFocus) {
-  const pages = ["espaces", "accueil", "recoltes", "depenses", "bilan", "prevision", "durabilite", "cooperative"];
+  const pages = ["espaces", "accueil", "recoltes", "depenses", "bilan", "prevision", "durabilite", "cooperative", "finance", "financement"];
   const target = location.hash.slice(1);
   if (target === "contenu" && moveFocus) return;
   const active = pages.includes(target) ? target : "espaces";
-  const scope = active === "espaces" ? "" : active === "cooperative" ? "coop" : "producer";
+  const scope = active === "espaces" ? "" : active === "cooperative" ? "coop" : active === "finance" ? "finance" : "producer";
   find("#producer-example").hidden = scope !== "producer";
   const spaceLabel = find("#current-space");
   spaceLabel.hidden = !scope;
-  spaceLabel.textContent = scope === "producer" ? "Producteur" : "Coopérative";
-  find(".mobile-dock").hidden = !scope;
-  document.body.classList.toggle("has-dock", !!scope);
+  spaceLabel.textContent = scope === "producer" ? "Producteur" : scope === "finance" ? "Structure financière" : "Coopérative";
+  find(".mobile-dock").hidden = !scope || scope === "finance";
+  document.body.classList.toggle("has-dock", scope === "producer" || scope === "coop");
   for (const shortcut of document.querySelectorAll("[data-dock]")) {
     shortcut.hidden = shortcut.dataset.dock !== scope;
     if (shortcut.hash === "#" + active) shortcut.setAttribute("aria-current", "page");
@@ -846,6 +866,149 @@ find("#producer-example-toggle").addEventListener("click", () => {
   for (const selector of ["#harvest-result", "#sale-result", "#expense-result", "#forecast-result", "#eco-result", "#eco-share-status"]) find(selector).replaceChildren();
   render();
 });
+const financeKey = "mon-cacao-finance-demo-v1";
+let finance = { organization: "", offers: [{ id: "demo", organization: "Partenaire fictif", title: "Entretien de la parcelle", terms: "Exemple de soutien pour l’entretien et la protection du sol." }], requests: [] };
+try {
+  const saved = JSON.parse(localStorage.getItem(financeKey));
+  if (saved && typeof saved.organization === "string" && Array.isArray(saved.offers) && Array.isArray(saved.requests)) finance = saved;
+} catch {}
+const financeStages = ["Reçue", "En cours d’examen", "Complément demandé", "Acceptée en démo", "Refusée en démo"];
+const fiction = {
+  harvest: "Parcelle fictive de Méagui, 2 ha. Campagne 2026 à 2027. Récolte : 1 460 kg. Prévision : 1 510 kg.",
+  budget: "Ventes : 1 500 000 FCFA. Dépenses : 480 000 FCFA.",
+  eco: "Note écologique indicative : 74 sur 100. Vérification terrain non renseignée."
+};
+let selectedOffer;
+const requestForm = find("#fin-request");
+function financeNode(tag, text) {
+  const node = document.createElement(tag);
+  node.textContent = text;
+  return node;
+}
+function financeSave(next, status, message) {
+  try {
+    localStorage.setItem(financeKey, JSON.stringify(next));
+  } catch {
+    find(status).textContent = "Impossible d’enregistrer. Vérifiez le stockage du navigateur.";
+    return false;
+  }
+  finance = next;
+  renderFinance();
+  find(status).textContent = message;
+  return true;
+}
+function selectedFinanceData() {
+  const form = new FormData(requestForm);
+  return Object.keys(fiction).filter(key => form.has(key)).map(key => fiction[key]);
+}
+function financeList(data) {
+  const list = document.createElement("ul");
+  for (const item of data) list.append(financeNode("li", item));
+  return list;
+}
+function updateFinancePreview() {
+  const data = selectedFinanceData();
+  find("#fin-preview").replaceChildren(data.length ? financeList(data) : financeNode("p", "Choisissez au moins une information à partager."));
+}
+function renderFinance() {
+  const cards = find("#fin-offers");
+  cards.replaceChildren();
+  for (const offer of finance.offers) {
+    const card = document.createElement("article");
+    card.className = "card";
+    const button = financeNode("button", "Préparer ma demande");
+    button.className = "button secondary";
+    button.type = "button";
+    button.disabled = finance.requests.some(request => request.offerId === offer.id);
+    if (button.disabled) button.textContent = "Demande déjà envoyée";
+    button.addEventListener("click", () => {
+      selectedOffer = offer.id;
+      requestForm.reset();
+      requestForm.hidden = false;
+      find("#fin-selection").textContent = offer.title + " proposée par " + offer.organization;
+      updateFinancePreview();
+      find("#fin-selection").scrollIntoView({ block: "center" });
+      requestForm.elements.harvest.focus({ preventScroll: true });
+    });
+    card.append(financeNode("h2", offer.title), financeNode("p", offer.organization), financeNode("p", offer.terms), button);
+    cards.append(card);
+  }
+  for (const [selector, review] of [["#fin-mine", false], ["#fin-inbox", true]]) {
+    const container = find(selector);
+    container.replaceChildren();
+    if (!finance.requests.length) container.append(financeNode("p", "Aucune demande pour l’instant."));
+    for (const request of finance.requests) {
+      const card = document.createElement("article");
+      card.className = "fin-case";
+      card.append(financeNode("h3", request.title), financeNode("p", request.organization + " : " + request.stage));
+      if (review) {
+        card.append(financeList(request.data));
+        const form = document.createElement("form");
+        const label = financeNode("label", "État de la demande pour " + request.title);
+        const select = document.createElement("select");
+        for (const stage of financeStages) select.add(new Option(stage, stage));
+        select.value = request.stage;
+        label.append(select);
+        const note = financeNode("label", "Message au producteur (fictif)");
+        const input = document.createElement("input");
+        input.maxLength = 240;
+        input.value = request.note || "";
+        note.append(input);
+        const submit = financeNode("button", "Enregistrer le traitement");
+        submit.className = "button secondary";
+        form.append(label, note, submit);
+        form.addEventListener("submit", event => {
+          event.preventDefault();
+          if (select.value === "Complément demandé" && !input.value.trim()) {
+            input.setCustomValidity("Précisez le complément à demander.");
+            input.reportValidity();
+            return;
+          }
+          financeSave({ ...finance, requests: finance.requests.map(item => item.offerId === request.offerId
+            ? { ...item, stage: select.value, note: input.value.trim() } : item) }, "#fin-review-status", "Dossier mis à jour.");
+        });
+        input.addEventListener("input", () => input.setCustomValidity(""));
+        select.addEventListener("change", () => input.setCustomValidity(""));
+        card.append(form);
+      } else if (request.note) card.append(financeNode("p", request.note));
+      container.append(card);
+    }
+  }
+}
+find("#fin-profile").elements.organization.value = finance.organization;
+find("#fin-profile").addEventListener("submit", event => {
+  event.preventDefault();
+  const organization = new FormData(event.currentTarget).get("organization").trim();
+  if (!organization) { find("#fin-profile-status").textContent = "Indiquez le nom de la structure."; return; }
+  financeSave({ ...finance, organization }, "#fin-profile-status", "Profil de démonstration enregistré.");
+});
+find("#fin-publish").addEventListener("submit", event => {
+  event.preventDefault();
+  const data = new FormData(event.currentTarget);
+  const title = data.get("title").trim();
+  const terms = data.get("terms").trim();
+  if (!finance.organization || !title || !terms) {
+    find("#fin-publish-status").textContent = "Enregistrez le profil puis renseignez l’offre et ses conditions.";
+    return;
+  }
+  const offer = { id: crypto.randomUUID(), organization: finance.organization, title, terms };
+  if (financeSave({ ...finance, offers: [offer, ...finance.offers] }, "#fin-publish-status", "Offre visible dans l’espace Producteur.")) event.currentTarget.reset();
+});
+requestForm.addEventListener("change", updateFinancePreview);
+requestForm.addEventListener("submit", event => {
+  event.preventDefault();
+  const offer = finance.offers.find(item => item.id === selectedOffer);
+  const data = selectedFinanceData();
+  if (!offer || !new FormData(requestForm).has("consent") || finance.requests.some(item => item.offerId === offer.id)) return;
+  if (!data.length) { updateFinancePreview(); return; }
+  const request = { offerId: offer.id, title: offer.title, organization: offer.organization, data, stage: financeStages[0] };
+  if (financeSave({ ...finance, requests: [request, ...finance.requests] }, "#fin-producer-status", "Demande de démonstration enregistrée.")) {
+    requestForm.hidden = true;
+    selectedOffer = undefined;
+  }
+});
+renderFinance();
+
 window.addEventListener("hashchange", () => route(true));
 route(false);
 render();
