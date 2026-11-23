@@ -12,7 +12,7 @@
 @media(max-width:680px){.wrap{padding-inline:15px}.top .wrap{align-items:flex-start;flex-direction:column;gap:5px;padding-block:12px}.nav a{padding-inline:8px}.hero,.row,.fields{grid-template-columns:1fr}.hero-art{display:none}.cards{grid-template-columns:1fr;gap:8px}.card,.panel{padding:16px}.wide{grid-column:auto}}
 .role-intro{max-width:62ch;margin-bottom:28px}.role-picker{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:18px}.role-card{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:clamp(18px,4vw,32px);border-top:4px solid var(--green)}.role-card + .role-card{border-top-color:#a74e21}.role-card h2{font:500 2rem/1.05 Georgia,serif;margin:0}.role-card p,.role-card ul{margin:0}.role-card ul{padding-inline-start:20px}.role-card .button{margin-top:auto}
 
-.role-icon{display:grid;place-items:center;width:56px;height:56px;background:#dceadf;border-radius:16px;font-size:1.6rem}.role-card+.role-card .role-icon{background:#f8ead5}.role-card .button{margin-top:auto}.role-card ul{display:grid;gap:8px}.panel{box-shadow:0 3px 10px #173b2e0a}.intro h1.page,.role-intro h1.page{font-size:clamp(2.15rem,5vw,3.5rem)}.nav a{min-height:44px}.button{min-height:44px}#forecast fieldset+fieldset{margin-top:22px;padding-top:17px;border-top:1px solid var(--line)}#forecast legend{padding-right:8px;color:var(--forest);font-size:1.1rem}#forecast .fields{gap:14px 18px}#forecast input,#forecast select{min-width:0}.forecast-metrics{margin:0 0 18px;grid-template-columns:repeat(2,minmax(0,1fr))}.forecast-metrics .card{padding:14px}.forecast-tips{padding-left:0;list-style:none;display:grid;gap:8px}.forecast-tips li{padding:10px 12px;background:var(--white);border-left:3px solid var(--green);border-radius:8px}#coop-distribution{list-style:none;padding:0;display:grid;gap:10px}.score-row{display:grid;gap:4px}.score-bar{width:100%;height:12px;accent-color:var(--green)}.score-row[data-level="support"] .score-bar{accent-color:#a45615}.score-row[data-level="urgent"] .score-bar{accent-color:#a53633}
+.role-card .button{margin-top:auto}.role-card ul{display:grid;gap:8px}.panel{box-shadow:0 3px 10px #173b2e0a}.intro h1.page,.role-intro h1.page{font-size:clamp(2.15rem,5vw,3.5rem)}.nav a{min-height:44px}.button{min-height:44px}#forecast fieldset+fieldset{margin-top:22px;padding-top:17px;border-top:1px solid var(--line)}#forecast legend{padding-right:8px;color:var(--forest);font-size:1.1rem}#forecast .fields{gap:14px 18px}#forecast input,#forecast select{min-width:0}.forecast-metrics{margin:0 0 18px;grid-template-columns:repeat(2,minmax(0,1fr))}.forecast-metrics .card{padding:14px}.forecast-tips{padding-left:0;list-style:none;display:grid;gap:8px}.forecast-tips li{padding:10px 12px;background:var(--white);border-left:3px solid var(--green);border-radius:8px}#coop-distribution{list-style:none;padding:0;display:grid;gap:10px}.score-row{display:grid;gap:4px}.score-bar{width:100%;height:12px;accent-color:var(--green)}.score-row[data-level="support"] .score-bar{accent-color:#a45615}.score-row[data-level="urgent"] .score-bar{accent-color:#a53633}
 @media(max-width:480px){.role-card .button{width:100%;text-align:center}.forecast-metrics{grid-template-columns:1fr}}
 
 .coop-section-title{margin:24px 0 0;font-size:1.25rem}.coop-actions-panel{margin-bottom:18px}.coop-action-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,185px),1fr));margin:14px 0 0}.coop-action{font:inherit;text-align:left;cursor:pointer;color:var(--ink);border-left:4px solid var(--green)}.coop-action:hover{background:var(--mint)}.coop-action:disabled{cursor:default;opacity:.75}.coop-action small{display:block;margin-top:8px}.coop-action[data-action="visit"]{border-left-color:#a53633}.coop-action[data-action="plan"]{border-left-color:#a45615}
@@ -26,21 +26,21 @@
 <section id="espaces" data-page>
 <div class="role-intro"><h1 class="page">Choisissez votre espace</h1><p class="muted">Suivez votre parcelle ou accompagnez les producteurs de votre coopérative.</p></div>
 <div class="row role-picker">
-<article class="panel role-card"><span class="role-icon" aria-hidden="true">🌱</span><h2>Producteur</h2><p>Pour gérer votre exploitation de cacao.</p><ul><li>Prévoir le rendement de votre parcelle</li><li>Enregistrer vos récoltes et calculer votre marge</li><li>Évaluer vos pratiques et transmettre votre bilan à votre coopérative</li></ul><a class="button" href="#accueil">Je suis producteur</a></article>
-<article class="panel role-card"><span class="role-icon" aria-hidden="true">🤝</span><h2>Coopérative</h2><p>Pour suivre les parcelles de vos membres.</p><ul><li>Importer les bilans transmis par les producteurs</li><li>Repérer les parcelles à accompagner et consigner les vérifications terrain</li><li>Exporter la synthèse écologique ou explorer la démo de 300 producteurs</li></ul><a class="button" href="#cooperative">Je représente une coopérative</a></article>
+<article class="panel role-card"><h2>Producteur</h2><p>Pour gérer votre exploitation de cacao.</p><ul><li>Prévoir le rendement de votre parcelle</li><li>Enregistrer vos récoltes et calculer votre marge</li><li>Évaluer vos pratiques et transmettre votre bilan à votre coopérative</li></ul><a class="button" href="#accueil">Je suis producteur</a></article>
+<article class="panel role-card"><h2>Coopérative</h2><p>Pour suivre les parcelles de vos membres.</p><ul><li>Importer les bilans transmis par les producteurs</li><li>Repérer les parcelles à accompagner et consigner les vérifications terrain</li><li>Exporter la synthèse écologique ou explorer la démo de 300 producteurs</li></ul><a class="button" href="#cooperative">Je représente une coopérative</a></article>
 </div></section>
 <section id="accueil" data-page hidden>
 <div class="hero"><div><span class="eyebrow">Carnet de parcelle</span><h1>Pilotez votre<br>culture du cacao.</h1><p>Suivez vos récoltes, estimez votre marge et repérez les pratiques à améliorer sur votre parcelle.</p><a class="button" href="#prevision">Prévoir ma récolte</a></div>
 <svg class="hero-art" viewBox="0 0 240 204" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="120" cy="102" r="94" opacity=".24"/><ellipse cx="120" cy="102" rx="80" ry="93" transform="rotate(55 120 102)" opacity=".18"/><path d="M150 45c-36 1-89 30-97 73-6 32 17 48 45 43 43-8 79-59 75-95-1-15-10-21-23-21Z" fill="#315741"/><path d="M58 149c28-7 71-58 100-101M56 139c3-38 55-59 93-92M67 156c41-2 73-43 98-101M173 55c10-7 16-15 19-28M180 48c17 1 27-4 35-16-15-3-26 3-35 16ZM181 43c-14-8-19-18-17-30 12 5 20 16 17 30Z"/></svg>
 </div>
-<div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">—</strong></div><div class="card">Dernière marge brute<strong class="metric" id="margin">—</strong></div><div class="card">Dernier score écologique<strong class="metric" id="latest-score">—</strong></div></div>
+<div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Dernière marge brute<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernier score écologique<strong class="metric" id="latest-score">À renseigner</strong></div></div>
 <div class="row"><article class="panel"><h2>Suivre une campagne</h2><p class="muted">Renseignez la superficie, le poids récolté, le prix de vente et les dépenses.</p><a class="button secondary" href="#recoltes">Voir mes relevés</a></article><article class="panel"><h2>Évaluer mes pratiques</h2><p class="muted">Faites un bilan sur dix pratiques et identifiez vos prochaines actions.</p><a class="button secondary" href="#durabilite">Faire le bilan</a></article></div>
 </section>
 <section id="recoltes" data-page hidden>
 <div class="intro"><h1 class="page">Mes récoltes</h1><p class="muted">Notez le cacao déjà récolté ou la quantité que vous pensez récolter.</p></div>
 <div class="panel"><form id="harvest"><fieldset><legend>Données de la parcelle</legend><div class="fields">
 <label>Parcelle <input name="parcel" required maxlength="60" placeholder="Ex. Parcelle Nord"></label>
-<label>Campagne <input name="season" required maxlength="30" placeholder="Ex. 2026–2027"></label>
+<label>Campagne <input name="season" required maxlength="30" placeholder="Ex. 2026 à 2027"></label>
 <label>Type de relevé <select name="kind"><option value="observed">Récolte réelle</option><option value="scenario">Estimation</option></select></label>
 <label>Surface de la parcelle (ha) <input name="area" type="number" min="0.01" max="100000" step="0.01" required inputmode="decimal"></label>
 <label><span id="weight-label">Poids récolté en kg</span> <input name="weight" type="number" min="0" max="1000000000" step="0.01" required inputmode="decimal"></label>
@@ -71,12 +71,12 @@
 <label>Produit contre les insectes <select name="insecticide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Produit contre les champignons <select name="fungicide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Avez-vous vu des signes de maladie ? <select name="disease" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option><option value="Un peu">Un peu</option></select></label>
-</div></fieldset><p class="muted">Cette estimation est indicative. Le modèle a été entraîné avec des données simulées.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
+</div></fieldset><p class="muted">Estimation calculée à partir de données de simulation.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
 </section>
 <section id="cooperative" data-page hidden>
 <div class="intro"><h1 class="page">Tableau de bord coopérative</h1><p class="muted">Repérez les parcelles à visiter et suivez les actions de votre équipe.</p></div>
 <div class="panel"><div class="fields"><label>Code de votre coopérative <input id="coop-code" maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Importer des bilans de producteurs <input type="file" id="coop-import" accept=".json,application/json" multiple></label></div><p class="muted">Donnez ce code à vos membres. Ils vous envoient leur fichier de bilan. Vos bilans restent sur cet appareil.</p><div class="actions"><button class="button secondary" id="coop-demo" type="button">Voir la démo de 300 producteurs</button><button class="button secondary" id="coop-export" type="button">Télécharger le résumé (CSV)</button></div><p class="muted" id="coop-status" role="status"></p></div>
-<h2 class="coop-section-title">Vue d’ensemble</h2><div class="cards"><div class="card">Producteurs avec bilan<strong class="metric" id="coop-members">0</strong></div><div class="card">Note moyenne des parcelles<strong class="metric" id="coop-average">—</strong></div><div class="card">Parcelles sous 70/100<strong class="metric" id="coop-priority">0</strong></div></div>
+<h2 class="coop-section-title">Vue d’ensemble</h2><div class="cards"><div class="card">Producteurs avec bilan<strong class="metric" id="coop-members">0</strong></div><div class="card">Note moyenne des parcelles<strong class="metric" id="coop-average">À renseigner</strong></div><div class="card">Parcelles sous 70/100<strong class="metric" id="coop-priority">0</strong></div></div>
 <section class="panel coop-actions-panel" aria-labelledby="coop-actions-title">
 <h2 id="coop-actions-title">Quelles actions prévoir ?</h2>
 <p id="coop-guidance" class="muted" aria-live="polite"></p>
@@ -87,7 +87,7 @@
 <button class="card coop-action" type="button" data-action="done"><span>Aide apportée</span><strong class="metric" id="coop-done">0</strong><small>Voir les actions terminées</small></button>
 </div></section>
 <div class="row"><article class="panel"><h2>Les parcelles par niveau</h2><ul id="coop-distribution"></ul></article><article class="panel"><h2>Pratiques à améliorer</h2><ul id="coop-practices"></ul></article></div>
-<div class="panel" style="margin-top:16px"><h2 id="coop-list" tabindex="-1">Liste des parcelles</h2><div class="fields"><label>Rechercher un code producteur ou une parcelle <input id="coop-search" type="search"></label><label>Filtrer par score <select id="coop-filter"><option value="all">Tous les scores</option><option value="good">Bonnes pratiques · 70 et plus</option><option value="support">À accompagner · 40 à 69</option><option value="urgent">Prioritaire · moins de 40</option></select></label><label>Filtrer par action <select id="coop-action-filter"><option value="all">Toutes les actions</option><option value="visit">Visites à prévoir</option><option value="plan">Aide à organiser</option><option value="progress">Aide programmée</option><option value="done">Aide apportée</option></select></label></div><p id="coop-count" class="muted" role="status"></p>
+<div class="panel" style="margin-top:16px"><h2 id="coop-list" tabindex="-1">Liste des parcelles</h2><div class="fields"><label>Rechercher un code producteur ou une parcelle <input id="coop-search" type="search"></label><label>Filtrer par score <select id="coop-filter"><option value="all">Tous les scores</option><option value="good">Bonnes pratiques (70 et plus)</option><option value="support">À accompagner (40 à 69)</option><option value="urgent">Prioritaire (moins de 40)</option></select></label><label>Filtrer par action <select id="coop-action-filter"><option value="all">Toutes les actions</option><option value="visit">Visites à prévoir</option><option value="plan">Aide à organiser</option><option value="progress">Aide programmée</option><option value="done">Aide apportée</option></select></label></div><p id="coop-count" class="muted" role="status"></p>
 <div class="table-wrap"><table><thead><tr><th scope="col">Producteur</th><th scope="col">Parcelle</th><th scope="col">Date</th><th scope="col">Score</th><th scope="col">Vérification</th><th scope="col">Accompagnement</th></tr></thead><tbody id="coop-rows"></tbody></table></div>
 <div class="actions"><button id="coop-prev" class="button secondary" type="button">Précédent</button><button id="coop-next" class="button secondary" type="button">Suivant</button></div>
 <p class="muted">Les scores reposent sur les pratiques déclarées. La vérification terrain peut être consignée pour chaque bilan. Le score est indicatif.</p></div>
@@ -120,9 +120,9 @@ function save() {
 }
 function render() {
   const last = state.records.find((record) => record.kind === "observed");
-  find("#yield").textContent = last ? format.format(last.weight / last.area) + " kg/ha" : "—";
-  find("#margin").textContent = last ? format.format(last.weight * last.price - last.cost) + " FCFA" : "—";
-  find("#latest-score").textContent = state.score === null ? "—" : state.score + " / 100";
+  find("#yield").textContent = last ? format.format(last.weight / last.area) + " kg/ha" : "À renseigner";
+  find("#margin").textContent = last ? format.format(last.weight * last.price - last.cost) + " FCFA" : "À renseigner";
+  find("#latest-score").textContent = state.score === null ? "À renseigner" : state.score + " / 100";
   const body = find("tbody");
   body.replaceChildren();
   for (const record of state.records) {
@@ -171,9 +171,9 @@ find("#harvest").addEventListener("submit", (event) => {
   state.records.unshift(record);
   save();
   render();
-  result.textContent = (record.kind === "scenario" ? "Estimation" : "Récolte") + " enregistrée · " +
-    format.format(record.weight / record.area) + " kg/ha · Recettes " + format.format(revenue) +
-    " FCFA · Marge brute " + format.format(revenue - record.cost) + " FCFA.";
+  result.textContent = (record.kind === "scenario" ? "Estimation" : "Récolte") + " enregistrée. " +
+    format.format(record.weight / record.area) + " kg/ha. Recettes : " + format.format(revenue) +
+    " FCFA. Reste après dépenses : " + format.format(revenue - record.cost) + " FCFA.";
 });
 find("#eco").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -193,7 +193,7 @@ find("#eco").addEventListener("submit", (event) => {
   save();
   render();
   const title = document.createElement("strong");
-  title.textContent = state.score + " / 100 · " + applicable.length + " pratique(s) évaluée(s)";
+  title.textContent = state.score + " sur 100 (" + applicable.length + (applicable.length === 1 ? " pratique évaluée)" : " pratiques évaluées)");
   result.append(title);
   const priorities = applicable.filter((item) => item.answer !== "2")
     .sort((a, b) => (2 - Number(b.answer)) * b.weight - (2 - Number(a.answer)) * a.weight).slice(0, 3);
@@ -201,7 +201,7 @@ find("#eco").addEventListener("submit", (event) => {
   const list = document.createElement("ul");
   for (const item of priorities) {
     const entry = document.createElement("li");
-    entry.textContent = item.name + " — " + item.tip;
+    entry.textContent = item.name + " : " + item.tip;
     list.append(entry);
   }
   result.append(list);
@@ -274,7 +274,7 @@ find("#forecast").addEventListener("submit", (event) => {
   const result = find("#forecast-result");
   const input = new FormData(form);
   button.disabled = true;
-  result.textContent = "Calcul en cours…";
+  result.textContent = "Calcul en cours";
   try {
     const model = JSON.parse(find("#yield-model").textContent);
     const estimate = predictYield(model, input);
@@ -433,7 +433,7 @@ function renderCoop() {
   const counts = { good: 0, support: 0, urgent: 0 };
   for (const report of reports) counts[classify(report.score)]++;
   find("#coop-members").textContent = format.format(new Set(reports.map(({ producer }) => producer)).size);
-  find("#coop-average").textContent = reports.length ? format.format(reports.reduce((sum, r) => sum + r.score, 0) / reports.length) + " / 100" : "—";
+  find("#coop-average").textContent = reports.length ? format.format(reports.reduce((sum, r) => sum + r.score, 0) / reports.length) + " / 100" : "À renseigner";
   find("#coop-priority").textContent = format.format(counts.support + counts.urgent);
   find("#coop-export").disabled = !reports.length;
   const distribution = find("#coop-distribution");
@@ -442,7 +442,7 @@ function renderCoop() {
     const row = document.createElement("li");
     row.className = "score-row";
     row.dataset.level = key;
-    row.textContent = label + " · " + counts[key] + " parcelle(s)";
+    row.textContent = label + " : " + counts[key] + (counts[key] === 1 ? " parcelle" : " parcelles");
     if (reports.length) {
       const bar = document.createElement("progress");
       bar.className = "score-bar";
@@ -455,7 +455,7 @@ function renderCoop() {
   }
   const practices = indicators.map(({ name }, i) => [name, reports.filter(({ answers }) => answers[i] === "0" || answers[i] === "1").length])
     .filter(([, count]) => count).sort((a, b) => b[1] - a[1]).slice(0, 5);
-  renderList("#coop-practices", practices.map(([name, count]) => name + " · " + count + " parcelle(s)"), "Aucune pratique à afficher.");
+  renderList("#coop-practices", practices.map(([name, count]) => name + " : " + count + (count === 1 ? " parcelle" : " parcelles")), "Aucune pratique à afficher.");
   const search = find("#coop-search").value.trim().toLowerCase();
   const filter = find("#coop-filter").value;
   const action = find("#coop-action-filter").value;
@@ -465,7 +465,7 @@ function renderCoop() {
   if (action === "visit" || action === "plan") filtered.sort((a, b) => a.score - b.score);
   const lastPage = Math.max(0, Math.ceil(filtered.length / pageSize) - 1);
   coopPage = Math.min(coopPage, lastPage);
-  find("#coop-count").textContent = filtered.length ? filtered.length + " bilan(s) · Page " + (coopPage + 1) + " sur " + (lastPage + 1) : "Aucun bilan à afficher.";
+  find("#coop-count").textContent = filtered.length ? filtered.length + (filtered.length === 1 ? " bilan. Page " : " bilans. Page ") + (coopPage + 1) + " sur " + (lastPage + 1) : "Aucun bilan à afficher.";
   find("#coop-prev").disabled = coopPage === 0;
   find("#coop-next").disabled = coopPage === lastPage;
   const body = find("#coop-rows");
@@ -477,7 +477,7 @@ function renderCoop() {
     verified.type = "checkbox";
     verified.checked = report.verified;
     verified.style.cssText = "width:24px;min-height:24px";
-    verified.setAttribute("aria-label", "Bilan vérifié sur le terrain pour " + report.producer + " · " + report.parcel);
+    verified.setAttribute("aria-label", "Bilan vérifié sur le terrain pour " + report.producer + ", " + report.parcel);
     verified.addEventListener("change", () => {
       report.verified = verified.checked;
       if (!demoMode) saveCoop("Vérification mise à jour.");
@@ -489,7 +489,7 @@ function renderCoop() {
     });
     row.insertCell().append(verified);
     const followup = document.createElement("select");
-    followup.setAttribute("aria-label", "Accompagnement de " + report.producer + " · " + report.parcel);
+    followup.setAttribute("aria-label", "Accompagnement de " + report.producer + ", " + report.parcel);
     for (const [value, label] of Object.entries(followupLabels)) followup.add(new Option(label, value));
     followup.value = report.followup;
     followup.addEventListener("change", () => {
@@ -561,7 +561,7 @@ find("#coop-demo").addEventListener("click", (event) => {
     });
   }
   event.currentTarget.textContent = demoMode ? "Revenir à ma coopérative" : "Voir la démo de 300 producteurs";
-  coopStatus(demoMode ? "Mode démonstration · 300 producteurs fictifs." : "Espace de votre coopérative.");
+  coopStatus(demoMode ? "Démo avec 300 producteurs fictifs." : "Espace de votre coopérative.");
   find("#coop-action-filter").value = "all";
   find("#coop-filter").value = "all";
   find("#coop-search").value = "";
