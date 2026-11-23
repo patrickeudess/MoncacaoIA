@@ -18,12 +18,16 @@
 .coop-section-title{margin:24px 0 0;font-size:1.25rem}.coop-actions-panel{margin-bottom:18px}.coop-action-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,185px),1fr));margin:14px 0 0}.coop-action{font:inherit;text-align:left;cursor:pointer;color:var(--ink);border-left:4px solid var(--green)}.coop-action:hover{background:var(--mint)}.coop-action:disabled{cursor:default;opacity:.75}.coop-action small{display:block;margin-top:8px}.coop-action[data-action="visit"]{border-left-color:#a53633}.coop-action[data-action="plan"]{border-left-color:#a45615}
 .home-actions{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}.home-action{display:flex;flex-direction:column;gap:8px;text-decoration:none;font:inherit;text-align:left;color:var(--ink);cursor:pointer;border-top:4px solid var(--green);min-height:118px}.home-action:disabled{opacity:.75;cursor:default}.home-action:not(:disabled):hover{background:var(--mint);border-color:var(--green)}.home-action strong{font-weight:750}.home-action small{color:var(--muted)}.home-action:focus-visible,[tabindex="-1"]:focus-visible{outline:3px solid #a45615;outline-offset:3px}
 .share-choice{display:flex;align-items:flex-start;gap:10px}.share-choice input{flex:none;width:22px;min-height:22px;margin:2px 0 0}
+
+.top{position:sticky;top:0;z-index:10;box-shadow:0 2px 14px #173b2e12}.top .wrap{gap:clamp(8px,2vw,16px)}.brand{flex:none}.current-space{color:var(--forest);font-size:.85rem;font-weight:750;background:var(--mint);padding:5px 9px;border-radius:8px}.top .nav{margin-left:auto}.mobile-dock{display:none}.hero{padding-block:clamp(22px,4vw,40px)}[id]{scroll-margin-top:95px}
+@media(max-width:850px){.top .wrap{min-height:60px;flex-direction:row;align-items:center;flex-wrap:wrap;padding-block:8px;gap:6px}.top .nav a:not([data-scope="both"]){display:none}.top .nav a{padding-inline:5px;font-size:.8rem}.brand{font-size:1rem;gap:6px}.mark{width:32px;height:32px}.current-space{font-size:.72rem;padding:4px 6px}.mobile-dock:not([hidden]){display:flex;position:fixed;z-index:20;inset:auto 0 0;min-height:60px;padding:6px 6px calc(6px + env(safe-area-inset-bottom));gap:3px;background:var(--white);border-top:1px solid var(--line);box-shadow:0 -4px 16px #173b2e12}.mobile-dock a,.mobile-dock button{display:grid;place-items:center;flex:1;min-width:0;min-height:44px;padding:3px;border:0;border-radius:8px;text-align:center;background:transparent;color:var(--forest);text-decoration:none;font:700 clamp(.65rem,2.5vw,.85rem)/1.15 system-ui;cursor:pointer}.mobile-dock [aria-current]{background:var(--mint)}body.has-dock{padding-bottom:calc(64px + env(safe-area-inset-bottom))}}
 </style>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
-<header class="top"><div class="wrap"><a class="brand" href="#espaces"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19C2 13 9 4 19 4c0 10-6 17-14 15Zm0 0 9-9m-7 7 1-6m3 3 5-1"/></svg></span>Mon Cacao</a>
+<header class="top"><div class="wrap"><a class="brand" href="#espaces"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19C2 13 9 4 19 4c0 10-6 17-14 15Zm0 0 9-9m-7 7 1-6m3 3 5-1"/></svg></span>Mon Cacao</a><span class="current-space" id="current-space" hidden></span>
 <nav class="nav" aria-label="Navigation principale"><a href="#espaces" data-scope="both">Changer d’espace</a><a href="#accueil" data-scope="producer">Producteur</a><a href="#depenses" data-scope="producer">Mes dépenses</a><a href="#recoltes" data-scope="producer">Récoltes</a><a href="#bilan" data-scope="producer">Mon bilan</a><a href="#prevision" data-scope="producer">Estimer ma récolte</a><a href="#durabilite" data-scope="producer">Mes pratiques</a><a href="#cooperative" data-scope="coop">Coopérative</a></nav></div></header>
+<nav class="mobile-dock" aria-label="Raccourcis de l’espace" hidden><a href="#accueil" data-dock="producer">Accueil</a><a href="#depenses" data-dock="producer">Dépenses</a><a href="#recoltes" data-dock="producer">Récoltes</a><a href="#bilan" data-dock="producer">Bilan</a><a href="#prevision" data-dock="producer">Prévision</a><button type="button" data-dock="coop" data-jump="coop-summary-title">Résumé</button><button type="button" data-dock="coop" data-jump="coop-receive-title">Bilans</button><button type="button" data-dock="coop" data-jump="coop-production-title">Production</button><button type="button" data-dock="coop" data-jump="coop-actions-title">Suivi</button></nav>
 <main class="wrap" id="contenu" tabindex="-1">
 <aside id="producer-example" class="panel" style="margin-bottom:16px" hidden><p id="producer-example-label" style="margin:0 0 8px"></p><button class="button secondary" id="producer-example-toggle" type="button"></button></aside>
 <section id="espaces" data-page>
@@ -33,7 +37,7 @@
 <article class="panel role-card"><h2>Coopérative</h2><ul><li>Importer les bilans transmis par les producteurs</li><li>Repérer les parcelles à accompagner et consigner les vérifications terrain</li><li>Télécharger le résumé des bilans</li></ul><a class="button" href="#cooperative">Je représente une coopérative</a></article>
 </div></section>
 <section id="accueil" data-page hidden>
-<div class="hero"><div><span class="eyebrow">Carnet de parcelle</span><h1>Pilotez votre<br>culture du cacao.</h1><p>Retrouvez vos chiffres et choisissez votre prochaine action.</p></div>
+<div class="hero"><div><h1>Mon carnet</h1><p>Retrouvez vos chiffres et choisissez votre prochaine action.</p></div>
 <svg class="hero-art" viewBox="0 0 240 204" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="120" cy="102" r="94" opacity=".24"/><ellipse cx="120" cy="102" rx="80" ry="93" transform="rotate(55 120 102)" opacity=".18"/><path d="M150 45c-36 1-89 30-97 73-6 32 17 48 45 43 43-8 79-59 75-95-1-15-10-21-23-21Z" fill="#315741"/><path d="M58 149c28-7 71-58 100-101M56 139c3-38 55-59 93-92M67 156c41-2 73-43 98-101M173 55c10-7 16-15 19-28M180 48c17 1 27-4 35-16-15-3-26 3-35 16ZM181 43c-14-8-19-18-17-30 12 5 20 16 17 30Z"/></svg>
 </div>
 <h2>Que voulez-vous faire ?</h2><div class="cards home-actions"><a class="card home-action" href="#depenses"><strong>Mes dépenses</strong><small>Noter ce que j’ai payé pour ma parcelle.</small></a><a class="card home-action" href="#prevision"><strong>Estimer ma récolte</strong></a><a class="card home-action" href="#recoltes"><strong>Noter ma récolte</strong><small>Enregistrer la quantité récoltée, le prix et les dépenses.</small></a><a class="card home-action" href="#bilan"><strong>Mon bilan</strong><small>Voir les ventes, les dépenses et le cacao à vendre.</small></a><a class="card home-action" href="#durabilite"><strong>Améliorer ma parcelle</strong><small>Faire mon bilan et obtenir des conseils.</small></a></div><h2>Mes derniers résultats</h2><div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Reste après dépenses<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernière note de la parcelle<strong class="metric" id="latest-score">À renseigner</strong></div></div>
@@ -231,6 +235,16 @@ function route(moveFocus) {
   const active = pages.includes(target) ? target : "espaces";
   const scope = active === "espaces" ? "" : active === "cooperative" ? "coop" : "producer";
   find("#producer-example").hidden = scope !== "producer";
+  const spaceLabel = find("#current-space");
+  spaceLabel.hidden = !scope;
+  spaceLabel.textContent = scope === "producer" ? "Producteur" : "Coopérative";
+  find(".mobile-dock").hidden = !scope;
+  document.body.classList.toggle("has-dock", !!scope);
+  for (const shortcut of document.querySelectorAll("[data-dock]")) {
+    shortcut.hidden = shortcut.dataset.dock !== scope;
+    if (shortcut.hash === "#" + active) shortcut.setAttribute("aria-current", "page");
+    else shortcut.removeAttribute("aria-current");
+  }
   for (const page of document.querySelectorAll("[data-page]")) page.hidden = page.id !== active;
   for (const link of document.querySelectorAll(".nav a")) {
     link.hidden = !scope || (link.dataset.scope !== "both" && (active === "accueil" || active === "cooperative" || link.dataset.scope !== scope));
@@ -818,7 +832,7 @@ find("#coop-export").addEventListener("click", () => {
 if (!coopState.reports.length) find("#coop-demo").click();
 else renderCoop();
 
-for (const shortcut of document.querySelectorAll(".home-action[data-jump]")) {
+for (const shortcut of document.querySelectorAll("[data-jump]")) {
   shortcut.addEventListener("click", () => {
     const destination = document.getElementById(shortcut.dataset.jump);
     if (shortcut.hash && location.hash !== shortcut.hash) pendingHomeJump = destination;
