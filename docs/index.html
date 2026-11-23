@@ -16,6 +16,7 @@
 @media(max-width:480px){.role-card .button{width:100%;text-align:center}.forecast-metrics{grid-template-columns:1fr}}
 
 .coop-section-title{margin:24px 0 0;font-size:1.25rem}.coop-actions-panel{margin-bottom:18px}.coop-action-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,185px),1fr));margin:14px 0 0}.coop-action{font:inherit;text-align:left;cursor:pointer;color:var(--ink);border-left:4px solid var(--green)}.coop-action:hover{background:var(--mint)}.coop-action:disabled{cursor:default;opacity:.75}.coop-action small{display:block;margin-top:8px}.coop-action[data-action="visit"]{border-left-color:#a53633}.coop-action[data-action="plan"]{border-left-color:#a45615}
+.home-actions{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}.home-action{display:flex;flex-direction:column;gap:8px;text-decoration:none;font:inherit;text-align:left;color:var(--ink);cursor:pointer;border-top:4px solid var(--green);min-height:118px}.home-action:hover{background:var(--mint);border-color:var(--green)}.home-action strong{font-weight:750}.home-action small{color:var(--muted)}.home-action:focus-visible,[tabindex="-1"]:focus-visible{outline:3px solid #a45615;outline-offset:3px}
 </style>
 </head>
 <body>
@@ -30,11 +31,11 @@
 <article class="panel role-card"><h2>Coopérative</h2><p>Pour suivre les parcelles de vos membres.</p><ul><li>Importer les bilans transmis par les producteurs</li><li>Repérer les parcelles à accompagner et consigner les vérifications terrain</li><li>Exporter la synthèse écologique ou explorer la démo de 300 producteurs</li></ul><a class="button" href="#cooperative">Je représente une coopérative</a></article>
 </div></section>
 <section id="accueil" data-page hidden>
-<div class="hero"><div><span class="eyebrow">Carnet de parcelle</span><h1>Pilotez votre<br>culture du cacao.</h1><p>Suivez vos récoltes, estimez votre marge et repérez les pratiques à améliorer sur votre parcelle.</p><a class="button" href="#prevision">Prévoir ma récolte</a></div>
+<div class="hero"><div><span class="eyebrow">Carnet de parcelle</span><h1>Pilotez votre<br>culture du cacao.</h1><p>Suivez vos récoltes, estimez votre marge et repérez les pratiques à améliorer sur votre parcelle.</p></div>
 <svg class="hero-art" viewBox="0 0 240 204" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="120" cy="102" r="94" opacity=".24"/><ellipse cx="120" cy="102" rx="80" ry="93" transform="rotate(55 120 102)" opacity=".18"/><path d="M150 45c-36 1-89 30-97 73-6 32 17 48 45 43 43-8 79-59 75-95-1-15-10-21-23-21Z" fill="#315741"/><path d="M58 149c28-7 71-58 100-101M56 139c3-38 55-59 93-92M67 156c41-2 73-43 98-101M173 55c10-7 16-15 19-28M180 48c17 1 27-4 35-16-15-3-26 3-35 16ZM181 43c-14-8-19-18-17-30 12 5 20 16 17 30Z"/></svg>
 </div>
-<div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Dernière marge brute<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernier score écologique<strong class="metric" id="latest-score">À renseigner</strong></div></div>
-<div class="row"><article class="panel"><h2>Suivre une campagne</h2><p class="muted">Renseignez la superficie, le poids récolté, le prix de vente et les dépenses.</p><a class="button secondary" href="#recoltes">Voir mes relevés</a></article><article class="panel"><h2>Évaluer mes pratiques</h2><p class="muted">Faites un bilan sur dix pratiques et identifiez vos prochaines actions.</p><a class="button secondary" href="#durabilite">Faire le bilan</a></article></div>
+<h2>Que voulez-vous faire ?</h2><div class="cards home-actions"><a class="card home-action" href="#prevision"><strong>Estimer ma récolte</strong><small>Savoir combien de cacao je pourrais récolter.</small></a><a class="card home-action" href="#recoltes"><strong>Noter ma récolte</strong><small>Enregistrer la quantité récoltée, le prix et les dépenses.</small></a><a class="card home-action" href="#recoltes" data-jump="harvest-history-title"><strong>Voir mes dépenses et mes ventes</strong><small>Retrouver les montants et ce qui reste après les dépenses.</small></a><a class="card home-action" href="#durabilite"><strong>Améliorer ma parcelle</strong><small>Faire mon bilan et obtenir des conseils.</small></a></div><h2>Mes derniers résultats</h2><div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Dernière marge brute<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernier score écologique<strong class="metric" id="latest-score">À renseigner</strong></div></div>
+
 </section>
 <section id="recoltes" data-page hidden>
 <div class="intro"><h1 class="page">Mes récoltes</h1><p class="muted">Notez le cacao déjà récolté ou la quantité que vous pensez récolter.</p></div>
@@ -47,7 +48,7 @@
 <label>Prix par kg en FCFA <input name="price" type="number" min="0" max="10000000" step="1" required inputmode="numeric"></label>
 <label>Dépenses de la campagne en FCFA <input name="cost" type="number" min="0" max="1000000000000" step="1" required inputmode="numeric"></label>
 </div></fieldset><div class="actions"><button class="button" type="submit">Calculer et enregistrer</button></div></form><div class="result" id="harvest-result" role="status"></div></div>
-<div class="panel" style="margin-top:16px"><h2>Mes récoltes enregistrées</h2><p id="empty" class="muted">Aucun relevé enregistré.</p><div class="table-wrap" id="history" hidden><table><thead><tr><th scope="col">Parcelle</th><th scope="col">Campagne</th><th scope="col">Type</th><th scope="col">Rendement</th><th scope="col">Après dépenses</th></tr></thead><tbody></tbody></table></div><div class="actions"><button class="button secondary" id="export" type="button" disabled>Exporter les relevés en CSV</button></div></div>
+<div class="panel" style="margin-top:16px"><h2 id="harvest-history-title" tabindex="-1">Mes dépenses et mes ventes</h2><p id="empty" class="muted">Aucun relevé enregistré.</p><div class="table-wrap" id="history" hidden><table><thead><tr><th scope="col">Parcelle</th><th scope="col">Campagne</th><th scope="col">Type</th><th scope="col">Rendement</th><th scope="col">Ventes</th><th scope="col">Dépenses</th><th scope="col">Après dépenses</th></tr></thead><tbody></tbody></table></div><div class="actions"><button class="button secondary" id="export" type="button" disabled>Exporter les relevés en CSV</button></div></div>
 </section>
 <section id="durabilite" data-page hidden>
 <div class="intro"><h1 class="page">Les pratiques de ma parcelle</h1><p class="muted">Répondez aux questions pour obtenir une note sur 100 et des conseils.</p></div>
@@ -74,11 +75,11 @@
 </div></fieldset><p class="muted">Estimation calculée à partir de données de simulation.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
 </section>
 <section id="cooperative" data-page hidden>
-<div class="intro"><h1 class="page">Tableau de bord coopérative</h1><p class="muted">Repérez les parcelles à visiter et suivez les actions de votre équipe.</p></div>
-<div class="panel"><div class="fields"><label>Code de votre coopérative <input id="coop-code" maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Importer des bilans de producteurs <input type="file" id="coop-import" accept=".json,application/json" multiple></label></div><p class="muted">Donnez ce code à vos membres. Ils vous envoient leur fichier de bilan. Vos bilans restent sur cet appareil.</p><div class="actions"><button class="button secondary" id="coop-demo" type="button">Voir la démo de 300 producteurs</button><button class="button secondary" id="coop-export" type="button">Télécharger le résumé (CSV)</button></div><p class="muted" id="coop-status" role="status"></p></div>
-<h2 class="coop-section-title">Vue d’ensemble</h2><div class="cards"><div class="card">Producteurs avec bilan<strong class="metric" id="coop-members">0</strong></div><div class="card">Note moyenne des parcelles<strong class="metric" id="coop-average">À renseigner</strong></div><div class="card">Parcelles sous 70/100<strong class="metric" id="coop-priority">0</strong></div></div>
+<div class="intro"><h1 class="page">Tableau de bord coopérative</h1><p class="muted">Repérez les parcelles à visiter et suivez les actions de votre équipe.</p></div><div class="cards home-actions"><button class="card home-action" type="button" data-coop-shortcut="visit"><strong>Voir les parcelles à visiter</strong><span class="metric" id="coop-home-visit">0</span><small>Ouvrir la liste des visites à prévoir.</small></button><button class="card home-action" type="button" data-jump="coop-actions-title"><strong>Suivre l’aide aux producteurs</strong><small>Voir les actions à prévoir, programmées et terminées.</small></button><button class="card home-action" type="button" data-jump="coop-receive-title"><strong>Recevoir les bilans</strong><small>Ajouter les fichiers envoyés par les membres.</small></button><button class="card home-action" type="button" data-jump="coop-summary-title"><strong>Voir et télécharger le résumé</strong><small>Consulter les chiffres et télécharger le fichier CSV.</small></button></div>
+<div class="panel"><h2 id="coop-receive-title" tabindex="-1">Recevoir les bilans</h2><div class="fields"><label>Code de votre coopérative <input id="coop-code" maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Importer des bilans de producteurs <input type="file" id="coop-import" accept=".json,application/json" multiple></label></div><p class="muted">Donnez ce code à vos membres. Ils vous envoient leur fichier de bilan. Vos bilans restent sur cet appareil.</p><div class="actions"><button class="button secondary" id="coop-demo" type="button">Voir la démo de 300 producteurs</button></div><p class="muted" id="coop-status" role="status"></p></div>
+<h2 class="coop-section-title" id="coop-summary-title" tabindex="-1">Résumé de la coopérative</h2><div class="actions"><button class="button secondary" id="coop-export" type="button">Télécharger le résumé (CSV)</button></div><div class="cards"><div class="card">Producteurs avec bilan<strong class="metric" id="coop-members">0</strong></div><div class="card">Note moyenne des parcelles<strong class="metric" id="coop-average">À renseigner</strong></div><div class="card">Parcelles sous 70/100<strong class="metric" id="coop-priority">0</strong></div></div>
 <section class="panel coop-actions-panel" aria-labelledby="coop-actions-title">
-<h2 id="coop-actions-title">Quelles actions prévoir ?</h2>
+<h2 id="coop-actions-title" tabindex="-1">Quelles actions prévoir ?</h2>
 <p id="coop-guidance" class="muted" aria-live="polite"></p>
 <div class="cards coop-action-cards">
 <button class="card coop-action" type="button" data-action="visit"><span>Visites à prévoir</span><strong class="metric" id="coop-visit">0</strong><small>Voir les parcelles à vérifier</small></button>
@@ -128,13 +129,15 @@ function render() {
   for (const record of state.records) {
     const row = body.insertRow();
     const values = [record.parcel, record.season, record.kind === "observed" ? "Réelle" : "Estimation",
-      format.format(record.weight / record.area) + " kg/ha", format.format(record.weight * record.price - record.cost) + " FCFA"];
+      format.format(record.weight / record.area) + " kg/ha", format.format(record.weight * record.price) + " FCFA",
+      format.format(record.cost) + " FCFA", format.format(record.weight * record.price - record.cost) + " FCFA"];
     for (const value of values) row.insertCell().textContent = value;
   }
   find("#history").hidden = !state.records.length;
   find("#empty").hidden = !!state.records.length;
   find("#export").disabled = !state.records.length;
 }
+let pendingHomeJump;
 function route(moveFocus) {
   const pages = ["espaces", "accueil", "recoltes", "prevision", "durabilite", "cooperative"];
   const target = location.hash.slice(1);
@@ -148,8 +151,13 @@ function route(moveFocus) {
     else link.removeAttribute("aria-current");
   }
   if (moveFocus) {
-    find("main").focus();
-    window.scrollTo(0, 0);
+    const destination = pendingHomeJump;
+    pendingHomeJump = undefined;
+    if (destination) destination.focus();
+    else {
+      find("main").focus();
+      window.scrollTo(0, 0);
+    }
   }
 }
 find("[name=kind]").addEventListener("change", (event) => {
@@ -420,6 +428,7 @@ function renderCoopActions(reports) {
     find("#coop-" + key).textContent = format.format(count);
     find('[data-action="' + key + '"]').disabled = !count;
   }
+  find("#coop-home-visit").textContent = find("#coop-visit").textContent;
   const urgent = reports.filter((report) => report.score < 40 && coopActionRules.visit(report)).length;
   find("#coop-guidance").textContent = !reports.length
     ? "Importez des bilans ou ouvrez la démo pour voir les actions à prévoir."
@@ -602,6 +611,18 @@ find("#coop-export").addEventListener("click", () => {
 });
 renderCoop();
 
+for (const shortcut of document.querySelectorAll(".home-action[data-jump]")) {
+  shortcut.addEventListener("click", () => {
+    const destination = document.getElementById(shortcut.dataset.jump);
+    if (shortcut.hash && location.hash !== shortcut.hash) pendingHomeJump = destination;
+    else destination.focus();
+  });
+}
+find('[data-coop-shortcut="visit"]').addEventListener("click", () => {
+  const visit = find('.coop-action[data-action="visit"]');
+  if (visit.disabled) find("#coop-actions-title").focus();
+  else visit.click();
+});
 window.addEventListener("hashchange", () => route(true));
 route(false);
 render();
