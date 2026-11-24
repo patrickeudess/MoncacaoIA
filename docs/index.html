@@ -39,6 +39,28 @@
 #forecast-result:focus{outline:2px solid #315741;outline-offset:5px}
 @media(max-width:480px){.producer-actions{grid-template-columns:1fr 1fr}.producer-actions .producer-action{min-width:0;padding:12px}.producer-action strong{overflow-wrap:anywhere}.forecast-guide .forecast-listen{flex-basis:100%}}
 </style>
+
+<style>
+.producer-page-head{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:8px 12px}
+.producer-page-head .page,.producer-page-head p{margin:0}
+.producer-page-head p,.producer-page-head .producer-speech{grid-column:1/-1}
+.producer-page-head .producer-speech{justify-self:start;min-height:44px}
+.producer-choices{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.producer-choices button{min-height:48px;padding:9px 13px;border-radius:12px;border:1px solid #799584;background:#f2f7ed;color:#213d2f;font:inherit;font-weight:700;cursor:pointer}
+.producer-choices button[aria-pressed="true"]{background:#315741;color:#fff}
+.producer-task{margin-bottom:14px}
+.producer-ledger-entry[data-guided]{display:block}
+#depenses input,#recoltes input,#bilan select,#durabilite select{min-height:44px}
+#harvest-choice[hidden],.producer-ledger-entry [hidden],.eco-guide[hidden],#eco [hidden],.producer-speech[hidden]{display:none!important}
+#bilan .producer-icon,.score-fields .producer-icon{margin-bottom:6px}
+.score-fields[data-guided]{grid-template-columns:1fr}
+.eco-guide p{font-weight:700;margin-bottom:0}
+.eco-guide .producer-choices{margin-top:8px}
+#financement #fin-offers .card{border-top:4px solid #79a980;padding-top:16px}
+#financement .share-choice{display:flex;align-items:center;gap:9px;min-height:44px}
+#financement .share-choice input{width:22px;height:22px;flex:0 0 22px}
+@media(max-width:480px){.producer-choices button{flex:1 1 120px}.producer-page-head .page{font-size:1.55rem}}
+</style>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -69,21 +91,42 @@
 
 </section>
 <datalist id="known-parcels"></datalist><datalist id="known-seasons"></datalist>
-<section id="depenses" data-page hidden><div class="intro"><h1 class="page">Mes dépenses</h1><p class="muted">Notez ce que vous payez pour votre parcelle, même avant de récolter.</p></div>
-<div class="panel"><h2>Noter une dépense</h2><form id="expense" autocomplete="off"><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label><label>Ce que vous avez payé <input name="description" required maxlength="80" placeholder="Ex. Désherbage ou transport"></label><label>Montant payé (FCFA) <input name="amount" type="number" min="1" max="1000000000" step="1" inputmode="numeric" required></label></div><div class="actions"><button class="button" type="submit">Enregistrer la dépense</button></div></form><p class="result" id="expense-result" role="status"></p></div>
+<section id="depenses" data-page hidden><div class="intro producer-page-head">
+<span class="producer-icon" aria-hidden="true">🧾</span><h1 class="page">Mes dépenses</h1>
+<p class="producer-hint">Notez le montant, puis la dépense et la parcelle.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Notez ce que vous payez pour votre parcelle, même avant de récolter.</p></div>
+<div class="panel"><h2>Noter une dépense</h2><form id="expense" autocomplete="off">
+<fieldset class="producer-task"><legend>1. Qu’avez-vous payé ?</legend>
+<div class="producer-choices" aria-label="Exemples de dépenses">
+<button type="button" data-expense="Main-d’œuvre" aria-pressed="false">🧑🏾‍🌾 Travailleurs</button>
+<button type="button" data-expense="Transport" aria-pressed="false">🚚 Transport</button>
+<button type="button" data-expense="Produits" aria-pressed="false">📦 Produits</button>
+</div><div class="fields"><label>Ce que vous avez payé <input name="description" required maxlength="80" placeholder="Ex. Désherbage ou transport"></label><label>Montant payé (FCFA) <input name="amount" type="number" min="1" max="1000000000" step="1" inputmode="numeric" required></label></div></fieldset><fieldset class="producer-task"><legend>2. Pour quelle parcelle ?</legend><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label></div></fieldset><div class="actions"><button class="button" type="submit">Enregistrer la dépense</button></div></form><p class="result" id="expense-result" role="status"></p></div>
 </section>
-<section id="recoltes" data-page hidden><div class="intro"><h1 class="page">Mes récoltes</h1><p class="muted">Notez les kilos récoltés. Ajoutez la vente quand vous vendez votre cacao.</p></div>
-<div class="row"><div class="panel"><h2>Noter une récolte</h2><form id="harvest" autocomplete="off"><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label><label>Cacao récolté (kg) <input name="weight" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label><label>Surface de la parcelle (ha) <input name="area" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label></div><div class="actions"><button class="button" type="submit">Enregistrer la récolte</button></div></form><p class="result" id="harvest-result" role="status"></p></div>
-<div class="panel"><h2>Noter une vente</h2><form id="sale" autocomplete="off"><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label><label>Cacao vendu (kg) <input name="weight" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label><label>Prix reçu par kg (FCFA) <input name="price" type="number" min="1" max="1000000000" step="1" inputmode="numeric" required></label></div><div class="actions"><button class="button" type="submit">Enregistrer la vente</button></div></form><p class="result" id="sale-result" role="status"></p></div></div></section>
-<section id="bilan" data-page hidden><div class="intro"><h1 class="page">Mon bilan</h1><p class="muted">Choisissez une parcelle et une campagne pour voir vos ventes, vos dépenses et le cacao qu’il vous reste à vendre.</p></div>
+<section id="recoltes" data-page hidden><div class="intro producer-page-head">
+<span class="producer-icon" aria-hidden="true">🧺</span><h1 class="page">Mes récoltes</h1>
+<p class="producer-hint">Choisissez de noter une récolte ou une vente.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Notez les kilos récoltés. Ajoutez la vente quand vous vendez votre cacao.</p></div>
+<div class="producer-choices" id="harvest-choice" hidden>
+<button type="button" aria-controls="harvest-panel" aria-pressed="true">🧺 Noter une récolte</button>
+<button type="button" aria-controls="sale-panel" aria-pressed="false">💰 Noter une vente</button>
+</div>
+<div class="row producer-ledger-entry"><div class="panel" id="harvest-panel"><h2>Noter une récolte</h2><form id="harvest" autocomplete="off"><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label><label>Cacao récolté (kg) <input name="weight" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label><label>Surface de la parcelle (ha) <input name="area" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label></div><div class="actions"><button class="button" type="submit">Enregistrer la récolte</button></div></form><p class="result" id="harvest-result" role="status"></p></div>
+<div class="panel" id="sale-panel"><h2>Noter une vente</h2><form id="sale" autocomplete="off"><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label><label>Cacao vendu (kg) <input name="weight" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label><label>Prix reçu par kg (FCFA) <input name="price" type="number" min="1" max="1000000000" step="1" inputmode="numeric" required></label></div><div class="actions"><button class="button" type="submit">Enregistrer la vente</button></div></form><p class="result" id="sale-result" role="status"></p></div></div></section>
+<section id="bilan" data-page hidden><div class="intro producer-page-head">
+<span class="producer-icon" aria-hidden="true">📒</span><h1 class="page">Mon bilan</h1>
+<p class="producer-hint">Choisissez la parcelle et la campagne pour voir vos chiffres.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Choisissez une parcelle et une campagne pour voir vos ventes, vos dépenses et le cacao qu’il vous reste à vendre.</p></div>
 <div class="panel"><label>Parcelle et campagne <select id="ledger-group"></select></label>
-<div class="cards"><div class="card">Argent reçu<strong class="metric" id="ledger-sales"></strong></div><div class="card">Total dépensé<strong class="metric" id="ledger-costs"></strong></div><div class="card">Reste après dépenses<strong class="metric" id="ledger-balance"></strong></div><div class="card">Cacao récolté<strong class="metric" id="ledger-harvest"></strong></div><div class="card">Cacao vendu<strong class="metric" id="ledger-sold"></strong></div><div class="card">Cacao à vendre<strong class="metric" id="ledger-stock"></strong></div></div>
+<div class="cards"><div class="card"><span class="producer-icon" aria-hidden="true">💰</span>Argent reçu<strong class="metric" id="ledger-sales"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">🧾</span>Total dépensé<strong class="metric" id="ledger-costs"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">👛</span>Reste après dépenses<strong class="metric" id="ledger-balance"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">🧺</span>Cacao récolté<strong class="metric" id="ledger-harvest"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">🤝</span>Cacao vendu<strong class="metric" id="ledger-sold"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">📦</span>Cacao à vendre<strong class="metric" id="ledger-stock"></strong></div></div>
 <h2>Relevés enregistrés</h2><p class="muted">Les anciens relevés sont indiqués dans la liste. Pour chaque parcelle et campagne, le dernier ancien relevé réel sert de point de départ. Il reprend la vente estimée et les dépenses saisies à l’époque.</p>
 <div class="table-wrap"><table><thead><tr><th>Date</th><th>Relevé</th><th>Quantité</th><th>Montant</th></tr></thead><tbody id="ledger-rows"></tbody></table></div>
 <div class="actions"><button class="button secondary" id="export" type="button">Télécharger le bilan (CSV)</button></div></div></section>
 <section id="durabilite" data-page hidden>
-<div class="intro"><h1 class="page">Les pratiques de ma parcelle</h1><p class="muted">Faites le point sur vos pratiques. La note sur 100 sert à choisir les actions à améliorer. Elle est calculée par Mon Cacao à partir de vos réponses.</p></div>
-<div class="panel"><form id="eco"><fieldset><legend>Questions sur votre parcelle</legend><div class="fields score-fields"><label for="indicator-0">Arbres d’ombre<small>Des arbres donnent-ils de l’ombre aux cacaoyers dans les différentes zones de la parcelle ?</small><select id="indicator-0" name="indicator-0" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-1">Sol couvert<small>Gardez-vous le sol couvert par des plantes ou des matières végétales pour limiter l’érosion ?</small><select id="indicator-1" name="indicator-1" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-2">Engrais et compost<small>Ajustez-vous les apports d’engrais ou de compost aux besoins du sol et des cacaoyers ?</small><select id="indicator-2" name="indicator-2" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-3">Maladies et ravageurs<small>Surveillez-vous la parcelle pour repérer les maladies et les ravageurs avant de décider d’un traitement ?</small><select id="indicator-3" name="indicator-3" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-4">Entretien des cacaoyers<small>Entretenez-vous les cacaoyers et retirez-vous les branches malades ?</small><select id="indicator-4" name="indicator-4" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-5">Protection de l’eau<small>Si un cours d’eau borde la parcelle, gardez-vous une bande de végétation le long de l’eau ?</small><select id="indicator-5" name="indicator-5" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-6">Déchets de la parcelle<small>Triez-vous et rassemblez-vous les déchets pour les remettre à un point de collecte adapté ?</small><select id="indicator-6" name="indicator-6" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-7">Variété des plantes<small>Gardez-vous plusieurs sortes d’arbres ou de plantes sur la parcelle ?</small><select id="indicator-7" name="indicator-7" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-8">Forêts et zones naturelles<small>Prenez-vous des mesures pour éviter de défricher les zones naturelles lors des travaux ou de l’agrandissement de la parcelle ?</small><select id="indicator-8" name="indicator-8" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-9">Démarche de certification<small>Avez-vous engagé des démarches de certification des pratiques avec votre coopérative ou un organisme ?</small><select id="indicator-9" name="indicator-9" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label></div></fieldset><div class="actions"><button class="button" type="submit">Calculer mon score</button></div></form><div class="result" id="eco-result" role="status"></div><details style="margin-top:16px"><summary>Références du questionnaire</summary><p>Les questions reprennent des thèmes du cacao durable. La certification suit une procédure distincte.</p><ul><li><a href="https://knowledge.rainforest-alliance.org/docs/rainforest-alliance-sustainable-agriculture-standard-farm-requirements/">Rainforest Alliance, exigences pour les exploitations agricoles</a></li><li><a href="https://www.iso.org/standard/64766.html">ISO 34101-2, cacao durable et traçable</a></li></ul></details></div><div class="panel" style="margin-top:16px"><h2>Transmettre mon bilan à ma coopérative</h2><p class="muted">Après le calcul, téléchargez votre bilan et envoyez-le à votre coopérative. Pour transmettre un bilan, passez à vos données.</p><form id="eco-share"><div class="fields"><label>Code de la coopérative <input name="coop" required maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Code producteur <input name="producer" required maxlength="32"></label><label>Code ou nom de la parcelle <input name="parcel" required maxlength="60"></label></div><p><label class="share-choice"><input type="checkbox" name="actual"> Ajouter les récoltes réelles enregistrées sous ce nom de parcelle</label></p>
+<div class="intro producer-page-head">
+<span class="producer-icon" aria-hidden="true">🌳</span><h1 class="page">Les pratiques de ma parcelle</h1>
+<p class="producer-hint">Répondez aux questions, une par une, pour voir vos conseils.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Faites le point sur vos pratiques. La note sur 100 sert à choisir les actions à améliorer. Elle est calculée par Mon Cacao à partir de vos réponses.</p></div>
+<div class="panel"><form id="eco"><fieldset><legend>Questions sur votre parcelle</legend><div class="eco-guide" hidden>
+<p id="eco-progress" role="status"></p>
+<div class="producer-choices"><button type="button" id="eco-prev">Retour</button><button type="button" id="eco-next">Continuer</button></div>
+</div><div class="fields score-fields"><label for="indicator-0"><span class="producer-icon" aria-hidden="true">🌳</span>Arbres d’ombre<small>Des arbres donnent-ils de l’ombre aux cacaoyers dans les différentes zones de la parcelle ?</small><select id="indicator-0" name="indicator-0" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-1"><span class="producer-icon" aria-hidden="true">🍂</span>Sol couvert<small>Gardez-vous le sol couvert par des plantes ou des matières végétales pour limiter l’érosion ?</small><select id="indicator-1" name="indicator-1" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-2"><span class="producer-icon" aria-hidden="true">🌱</span>Engrais et compost<small>Ajustez-vous les apports d’engrais ou de compost aux besoins du sol et des cacaoyers ?</small><select id="indicator-2" name="indicator-2" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-3"><span class="producer-icon" aria-hidden="true">🔍</span>Maladies et ravageurs<small>Surveillez-vous la parcelle pour repérer les maladies et les ravageurs avant de décider d’un traitement ?</small><select id="indicator-3" name="indicator-3" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-4"><span class="producer-icon" aria-hidden="true">🧤</span>Entretien des cacaoyers<small>Entretenez-vous les cacaoyers et retirez-vous les branches malades ?</small><select id="indicator-4" name="indicator-4" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-5"><span class="producer-icon" aria-hidden="true">💧</span>Protection de l’eau<small>Si un cours d’eau borde la parcelle, gardez-vous une bande de végétation le long de l’eau ?</small><select id="indicator-5" name="indicator-5" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-6"><span class="producer-icon" aria-hidden="true">🌿</span>Déchets de la parcelle<small>Triez-vous et rassemblez-vous les déchets pour les remettre à un point de collecte adapté ?</small><select id="indicator-6" name="indicator-6" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-7"><span class="producer-icon" aria-hidden="true">🗺️</span>Variété des plantes<small>Gardez-vous plusieurs sortes d’arbres ou de plantes sur la parcelle ?</small><select id="indicator-7" name="indicator-7" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-8"><span class="producer-icon" aria-hidden="true">🌳</span>Forêts et zones naturelles<small>Prenez-vous des mesures pour éviter de défricher les zones naturelles lors des travaux ou de l’agrandissement de la parcelle ?</small><select id="indicator-8" name="indicator-8" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label><label for="indicator-9"><span class="producer-icon" aria-hidden="true">🍂</span>Démarche de certification<small>Avez-vous engagé des démarches de certification des pratiques avec votre coopérative ou un organisme ?</small><select id="indicator-9" name="indicator-9" required><option value="">Choisissez votre réponse</option><option value="0">Non</option><option value="1">En partie</option><option value="2">Oui</option><option value="na">Ne s’applique pas</option></select></label></div></fieldset><div class="actions"><button class="button" type="submit">Calculer mon score</button></div></form><div class="result" id="eco-result" role="status"></div><details style="margin-top:16px"><summary>Références du questionnaire</summary><p>Les questions reprennent des thèmes du cacao durable. La certification suit une procédure distincte.</p><ul><li><a href="https://knowledge.rainforest-alliance.org/docs/rainforest-alliance-sustainable-agriculture-standard-farm-requirements/">Rainforest Alliance, exigences pour les exploitations agricoles</a></li><li><a href="https://www.iso.org/standard/64766.html">ISO 34101-2, cacao durable et traçable</a></li></ul></details></div><div class="panel" style="margin-top:16px"><h2>Transmettre mon bilan à ma coopérative</h2><p class="muted">Après le calcul, téléchargez votre bilan et envoyez-le à votre coopérative. Pour transmettre un bilan, passez à vos données.</p><form id="eco-share"><div class="fields"><label>Code de la coopérative <input name="coop" required maxlength="24" placeholder="Ex. COOP-NAWA"></label><label>Code producteur <input name="producer" required maxlength="32"></label><label>Code ou nom de la parcelle <input name="parcel" required maxlength="60"></label></div><p><label class="share-choice"><input type="checkbox" name="actual"> Ajouter les récoltes réelles enregistrées sous ce nom de parcelle</label></p>
 <div id="share-forecast" hidden><p><label class="share-choice"><input type="checkbox" name="forecast"> Ajouter la dernière prévision et ses conseils. Je confirme qu’elle concerne cette parcelle.</label></p><label>Campagne de la prévision <input name="forecastSeason" maxlength="30" placeholder="Ex. 2026 à 2027"></label></div>
 <div class="actions"><button class="button" id="eco-download" type="submit" disabled>Télécharger le bilan</button></div></form><p class="muted" id="eco-share-status" role="status"></p></div>
 </section>
@@ -153,16 +196,18 @@
 <p class="muted">Les scores reposent sur les pratiques déclarées. La vérification terrain peut être consignée pour chaque bilan. Le score est indicatif.</p></div>
 </section>
 <section id="financement" data-page hidden>
-<div class="intro"><h1 class="page">Financer ma parcelle</h1><p class="muted">Démonstration. Utilisez des données fictives. Les offres et demandes restent dans ce navigateur et le parcours ne réalise aucun envoi externe.</p></div>
-<div id="fin-offers" class="cards home-actions"></div>
-<form id="fin-request" class="panel" hidden><h2>Vérifier les informations à partager</h2><p id="fin-selection"></p>
+<div class="intro producer-page-head">
+<span class="producer-icon" aria-hidden="true">🤝</span><h1 class="page">Financer ma parcelle</h1>
+<p class="producer-hint">Choisissez une offre, vérifiez les données et suivez votre demande.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Démonstration. Utilisez des données fictives. Les offres et demandes restent dans ce navigateur et le parcours ne réalise aucun envoi externe.</p></div>
+<h2>1. Choisir une offre</h2><div id="fin-offers" class="cards home-actions"></div>
+<form id="fin-request" class="panel" hidden><h2>2. Choisir les informations à partager</h2><p id="fin-selection"></p>
 <fieldset><legend>Dossier de démonstration</legend>
 <label class="share-choice"><input type="checkbox" name="harvest" checked> Récolte et prévision de la parcelle fictive</label>
 <label class="share-choice"><input type="checkbox" name="budget"> Ventes et dépenses fictives</label>
 <label class="share-choice"><input type="checkbox" name="eco"> Bilan écologique fictif et état de la vérification</label>
 </fieldset><div id="fin-preview"></div><p><label class="share-choice"><input type="checkbox" name="consent" required> J’accepte de partager les informations cochées avec la structure de démonstration.</label></p>
 <button class="button" type="submit">Envoyer ma demande</button></form>
-<p id="fin-producer-status" role="status"></p><div class="panel"><h2>Mes demandes</h2><div id="fin-mine"></div></div>
+<p id="fin-producer-status" role="status"></p><div class="panel"><h2>3. Voir mes demandes</h2><div id="fin-mine"></div></div>
 </section>
 <section id="finance" data-page hidden>
 <div class="intro"><h1 class="page">Espace structure financière</h1><p class="muted">Démonstration. Utilisez des données fictives. Les offres et demandes restent dans ce navigateur et le parcours ne réalise aucun envoi externe.</p></div>
@@ -1001,7 +1046,10 @@ function renderFinance() {
       find("#fin-selection").scrollIntoView({ block: "center" });
       requestForm.elements.harvest.focus({ preventScroll: true });
     });
-    card.append(financeNode("h2", offer.title), financeNode("p", offer.organization), financeNode("p", offer.terms), button);
+    const icon = financeNode("span", "🤝");
+    icon.className = "producer-icon";
+    icon.setAttribute("aria-hidden", "true");
+    card.append(icon, financeNode("h3", offer.title), financeNode("p", offer.organization), financeNode("p", offer.terms), button);
     cards.append(card);
   }
   for (const [selector, review] of [["#fin-mine", false], ["#fin-inbox", true]]) {
@@ -1182,6 +1230,101 @@ render();
   form.noValidate = true;
   guide.hidden = false;
   showStep(0, false);
+})();
+</script>
+<script>
+(() => {
+  const expense = document.querySelector("#expense");
+  const description = expense.elements.description;
+  const choices = [...expense.querySelectorAll("[data-expense]")];
+  function markExpense() {
+    choices.forEach(button => button.setAttribute("aria-pressed", button.dataset.expense === description.value));
+  }
+  choices.forEach(button => button.addEventListener("click", () => {
+    description.value = button.dataset.expense;
+    markExpense();
+    expense.elements.amount.focus();
+  }));
+  description.addEventListener("input", markExpense);
+  expense.addEventListener("reset", () => queueMicrotask(markExpense));
+
+  const harvestChoice = document.querySelector("#harvest-choice");
+  const ledgerButtons = [...harvestChoice.querySelectorAll("button")];
+  function showLedgerForm(selected) {
+    ledgerButtons.forEach(button => {
+      const active = button === selected;
+      button.setAttribute("aria-pressed", active);
+      document.getElementById(button.getAttribute("aria-controls")).hidden = !active;
+    });
+  }
+  ledgerButtons.forEach(button => button.addEventListener("click", () => showLedgerForm(button)));
+  document.querySelector(".producer-ledger-entry").dataset.guided = "";
+  harvestChoice.hidden = false;
+  showLedgerForm(ledgerButtons[0]);
+
+  const eco = document.querySelector("#eco");
+  const fields = eco.querySelector(".score-fields");
+  const questions = [...fields.querySelectorAll("label")];
+  const previous = eco.querySelector("#eco-prev");
+  const next = eco.querySelector("#eco-next");
+  const submit = eco.querySelector("[type=submit]");
+  const progress = eco.querySelector("#eco-progress");
+  const result = document.querySelector("#eco-result");
+  let current = 0;
+  function showQuestion(index, focus = true) {
+    current = index;
+    questions.forEach((question, i) => { question.hidden = i !== index; });
+    previous.disabled = index === 0;
+    next.hidden = index === questions.length - 1;
+    submit.hidden = !next.hidden;
+    progress.textContent = `Question ${index + 1} sur ${questions.length}`;
+    if (focus) questions[index].querySelector("select").focus();
+  }
+  function advance() {
+    if (questions[current].querySelector("select").reportValidity()) showQuestion(current + 1);
+  }
+  previous.addEventListener("click", () => showQuestion(current - 1));
+  next.addEventListener("click", advance);
+  eco.addEventListener("submit", event => {
+    if (current < questions.length - 1) advance();
+    else {
+      const invalid = questions.findIndex(question => !question.querySelector("select").validity.valid);
+      if (invalid === -1) return;
+      showQuestion(invalid);
+      questions[invalid].querySelector("select").reportValidity();
+    }
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, true);
+  eco.addEventListener("reset", () => showQuestion(0, false));
+  result.tabIndex = -1;
+  new MutationObserver(() => {
+    if (result.textContent.trim() && !result.closest("[data-page]").hidden) result.focus();
+  }).observe(result, { childList: true });
+  fields.dataset.guided = "";
+  eco.querySelector(".eco-guide").hidden = false;
+  eco.noValidate = true;
+  showQuestion(0, false);
+
+  if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return;
+  document.querySelectorAll(".producer-speech").forEach(button => {
+    button.hidden = false;
+    button.addEventListener("click", () => {
+      const page = button.closest("[data-page]");
+      const text = [page.querySelector("h1").textContent, page.querySelector(".producer-hint").textContent];
+      if (page.id === "durabilite") {
+        const question = questions[current];
+        text.push(progress.textContent, question.querySelector("small")?.textContent || question.textContent);
+        if (result.textContent.trim()) text.push(result.innerText);
+      } else if (page.id === "bilan") {
+        text.push(...Array.from(page.querySelectorAll(".card"), card => card.innerText));
+      }
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text.join(". "));
+      utterance.lang = "fr-FR";
+      speechSynthesis.speak(utterance);
+    });
+  });
 })();
 </script>
 </body>
