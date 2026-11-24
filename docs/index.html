@@ -543,6 +543,7 @@ find("#forecast").addEventListener("submit", (event) => {
   const result = find("#forecast-result");
   const input = new FormData(form);
   button.disabled = true;
+  delete result.dataset.spokenSummary;
   result.textContent = "Calcul en cours";
   try {
     const model = JSON.parse(find("#yield-model").textContent);
@@ -596,7 +597,8 @@ find("#forecast").addEventListener("submit", (event) => {
     heading.textContent = "Que faire sur ma parcelle ?";
     const list = document.createElement("ul");
     list.className = "forecast-tips";
-    for (const advice of forecastAdvice(input)) {
+    const recommendations = forecastAdvice(input);
+    for (const advice of recommendations) {
       const item = document.createElement("li");
       item.textContent = advice;
       list.append(item);
@@ -604,6 +606,7 @@ find("#forecast").addEventListener("submit", (event) => {
     state.lastForecast = { kg: kgPerHa * Number(input.get("area")), advice: forecastTopics(input) };
     find("#share-forecast").hidden = false;
     save();
+    result.dataset.spokenSummary = summarizeForecast({totalKg, costs, price, variation, advice: recommendations});
     result.append(heading, list);
   } catch {
     result.textContent = "Le calcul est indisponible. Réessayez.";
@@ -611,6 +614,31 @@ find("#forecast").addEventListener("submit", (event) => {
     button.disabled = false;
   }
 });
+function summarizeForecast({totalKg, costs, price, variation, advice}) {
+  const rounded = new Intl.NumberFormat("fr-FR", {maximumFractionDigits: 0});
+  const kilos = value => rounded.format(value) + " kilos";
+  const francs = value => rounded.format(value) + " francs CFA";
+  const balance = value => value < 0
+    ? "Il manquerait environ " + francs(-value) + " pour couvrir vos dépenses."
+    : "Il vous resterait environ " + francs(value) + " après les dépenses.";
+  const parts = ["Pour toute votre parcelle, la récolte estimée est d’environ " + kilos(totalKg) + ".",
+    "Vos dépenses sont estimées à " + francs(costs) + "."];
+  if (price !== "") {
+    const sales = totalKg * Number(price);
+    parts.push("Si vous vendez toute la récolte au prix choisi, vous pourriez recevoir environ " + francs(sales) + ".", balance(sales - costs));
+  } else parts.push("Ajoutez un prix de vente pour savoir ce qu’il pourrait vous rester après les dépenses.");
+  if (Number(variation) > 0) {
+    const rate = Number(variation) / 100;
+    const low = totalKg * (1 - rate);
+    const high = totalKg * (1 + rate);
+    parts.push("Avec l’écart de " + format.format(Number(variation)) + " pour cent que vous avez choisi, voici deux cas à comparer.",
+      "Si la récolte est plus faible, elle serait d’environ " + kilos(low) + "." + (price !== "" ? " " + balance(low * Number(price) - costs) : ""),
+      "Si la récolte est plus élevée, elle serait d’environ " + kilos(high) + "." + (price !== "" ? " " + balance(high * Number(price) - costs) : ""));
+  }
+  if (advice.length) parts.push("Conseil à retenir. " + advice[0]);
+  parts.push("Ces chiffres sont des estimations. La récolte réelle peut être différente.");
+  return parts.join(" ");
+}
 const forecastTopicLabels = {
   disease: "Surveiller les maladies des cacaoyers", dry: "Protéger le sol quand il manque de pluie",
   wet: "Surveiller l’eau qui stagne et l’état des cabosses", shade: "Mieux répartir l’ombre",
@@ -1394,7 +1422,8 @@ render();
         status.textContent = "La lecture audio est indisponible dans ce navigateur.";
         return;
       }
-      const text = readScope(scope());
+      const target = scope();
+      const text = target.dataset.spokenSummary || readScope(target);
       if (!text) return;
       const utterance = new SpeechSynthesisUtterance(text);
       const voices = speechSynthesis.getVoices();
