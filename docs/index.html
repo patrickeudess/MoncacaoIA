@@ -23,6 +23,22 @@
 @media(max-width:850px){.top .wrap{min-height:60px;flex-direction:row;align-items:center;flex-wrap:wrap;padding-block:8px;gap:6px}.top .nav a:not([data-scope="both"]){display:none}.top .nav a{padding-inline:5px;font-size:.8rem}.brand{font-size:1rem;gap:6px}.mark{width:32px;height:32px}.current-space{font-size:.72rem;padding:4px 6px}.mobile-dock:not([hidden]){display:flex;position:fixed;z-index:20;inset:auto 0 0;min-height:60px;padding:6px 6px calc(6px + env(safe-area-inset-bottom));gap:3px;background:var(--white);border-top:1px solid var(--line);box-shadow:0 -4px 16px #173b2e12}.mobile-dock a,.mobile-dock button{display:grid;place-items:center;flex:1;min-width:0;min-height:44px;padding:3px;border:0;border-radius:8px;text-align:center;background:transparent;color:var(--forest);text-decoration:none;font:700 clamp(.65rem,2.5vw,.85rem)/1.15 system-ui;cursor:pointer}.mobile-dock [aria-current]{background:var(--mint)}body.has-dock{padding-bottom:calc(64px + env(safe-area-inset-bottom))}}
 #finance textarea{display:block;width:100%;margin:6px 0 12px;padding:8px;font:inherit;border:1px solid var(--line);border-radius:8px}#finance input{margin-bottom:12px}.fin-case{padding:14px 0;border-bottom:1px solid var(--line)}.fin-case:last-child{border:0}#fin-request label{font-weight:500;margin-bottom:8px}#fin-preview ul{padding-left:22px}
 </style>
+
+<style>
+.producer-actions .producer-action{min-height:128px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.producer-actions .producer-action:first-child{background:#e7f3e6;border-color:#79a980}
+.producer-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:#f2ebd8;font-size:25px}
+.producer-action strong{font-size:1.1rem}
+.forecast-guide{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.forecast-guide p{margin:0;font-weight:700}
+.forecast-guide progress{height:14px;flex:1;min-width:100px;accent-color:#315741}
+#prevision [hidden]{display:none!important}
+.forecast-controls .button,.forecast-listen,#forecast-retry{min-height:44px}
+#forecast legend{font-size:1.15rem;font-weight:700}
+#forecast input,#forecast select{min-height:44px}
+#forecast-result:focus{outline:2px solid #315741;outline-offset:5px}
+@media(max-width:480px){.producer-actions{grid-template-columns:1fr 1fr}.producer-actions .producer-action{min-width:0;padding:12px}.producer-action strong{overflow-wrap:anywhere}.forecast-guide .forecast-listen{flex-basis:100%}}
+</style>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -42,7 +58,14 @@
 <div class="hero"><div><h1>Mon carnet</h1><p>Retrouvez vos chiffres et choisissez votre prochaine action.</p></div>
 <svg class="hero-art" viewBox="0 0 240 204" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="120" cy="102" r="94" opacity=".24"/><ellipse cx="120" cy="102" rx="80" ry="93" transform="rotate(55 120 102)" opacity=".18"/><path d="M150 45c-36 1-89 30-97 73-6 32 17 48 45 43 43-8 79-59 75-95-1-15-10-21-23-21Z" fill="#315741"/><path d="M58 149c28-7 71-58 100-101M56 139c3-38 55-59 93-92M67 156c41-2 73-43 98-101M173 55c10-7 16-15 19-28M180 48c17 1 27-4 35-16-15-3-26 3-35 16ZM181 43c-14-8-19-18-17-30 12 5 20 16 17 30Z"/></svg>
 </div>
-<h2>Que voulez-vous faire ?</h2><div class="cards home-actions"><a class="card home-action" href="#financement"><strong>Financer ma parcelle</strong><small>Consulter les offres et suivre mes demandes.</small></a><a class="card home-action" href="#depenses"><strong>Mes dépenses</strong><small>Noter ce que j’ai payé pour ma parcelle.</small></a><a class="card home-action" href="#prevision"><strong>Estimer ma récolte</strong></a><a class="card home-action" href="#recoltes"><strong>Noter ma récolte</strong><small>Enregistrer la quantité récoltée, le prix et les dépenses.</small></a><a class="card home-action" href="#bilan"><strong>Mon bilan</strong><small>Voir les ventes, les dépenses et le cacao à vendre.</small></a><a class="card home-action" href="#durabilite"><strong>Améliorer ma parcelle</strong><small>Faire mon bilan et obtenir des conseils.</small></a></div><h2>Mes derniers résultats</h2><div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Reste après dépenses<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernière note de la parcelle<strong class="metric" id="latest-score">À renseigner</strong></div></div>
+<h2>Que voulez-vous faire ?</h2><div class="cards home-actions producer-actions">
+<a class="card home-action producer-action" href="#prevision"><span class="producer-icon" aria-hidden="true">🌱</span><strong>Préparer ma récolte</strong><small>Estimer ma récolte et comparer mes choix.</small></a>
+<a class="card home-action producer-action" href="#depenses"><span class="producer-icon" aria-hidden="true">🧾</span><strong>Noter mes dépenses</strong><small>Noter ce que j’ai payé.</small></a>
+<a class="card home-action producer-action" href="#recoltes"><span class="producer-icon" aria-hidden="true">🧺</span><strong>Noter ma récolte</strong><small>Enregistrer les kilos récoltés ou vendus.</small></a>
+<a class="card home-action producer-action" href="#durabilite"><span class="producer-icon" aria-hidden="true">🌳</span><strong>Mes pratiques</strong><small>Voir comment améliorer ma parcelle.</small></a>
+<a class="card home-action producer-action" href="#bilan"><span class="producer-icon" aria-hidden="true">📒</span><strong>Mon bilan</strong><small>Voir mes ventes et mes dépenses.</small></a>
+<a class="card home-action producer-action" href="#financement"><span class="producer-icon" aria-hidden="true">🤝</span><strong>Demander un financement</strong><small>Voir les offres et suivre mes demandes.</small></a>
+</div><h2>Mes derniers résultats</h2><div class="cards" aria-label="Dernier relevé et dernier bilan"><div class="card">Dernier rendement<strong class="metric" id="yield">À renseigner</strong></div><div class="card">Reste après dépenses<strong class="metric" id="margin">À renseigner</strong></div><div class="card">Dernière note de la parcelle<strong class="metric" id="latest-score">À renseigner</strong></div></div>
 
 </section>
 <datalist id="known-parcels"></datalist><datalist id="known-seasons"></datalist>
@@ -65,27 +88,45 @@
 <div class="actions"><button class="button" id="eco-download" type="submit" disabled>Télécharger le bilan</button></div></form><p class="muted" id="eco-share-status" role="status"></p></div>
 </section>
 <section id="prevision" data-page hidden>
-<div class="intro"><h1 class="page">Estimer ma récolte</h1></div>
-<div class="panel"><form id="forecast"><fieldset><legend>Ma parcelle</legend><div class="fields">
-<label>Surface de la parcelle (ha) <input name="area" type="number" min="0.01" max="100000" step="0.01" required></label>
-<label>Âge des cacaoyers (en années) <input name="age" type="number" min="1" max="30" step="any" required></label>
-<label>Dépenses par hectare en FCFA <input name="cost" type="number" min="0" step="any" required></label>
+<div class="intro"><h1 class="page">Préparer ma récolte</h1></div>
+<div class="panel"><form id="forecast">
+<div class="forecast-guide" id="forecast-guide" hidden>
+  <p id="forecast-progress" role="status"></p>
+  <progress id="forecast-bar" max="4" value="1" aria-label="Avancement de la prévision"></progress>
+  <button type="button" class="button secondary forecast-listen" id="forecast-listen" hidden>Écouter</button>
+</div><fieldset><legend>🌱 Ma parcelle</legend><div class="fields">
+<label>Quelle est la taille de votre parcelle (ha) ? <input name="area" type="number" inputmode="decimal" min="0.01" max="100000" step="0.01" required></label>
+<label>Âge des cacaoyers (en années) <input name="age" type="number" inputmode="decimal" min="1" max="30" step="any" required></label>
+<label>Combien dépensez-vous pour 1 hectare (FCFA) ? <input name="cost" type="number" inputmode="decimal" min="0" step="any" required></label>
 <label>Région <select name="region" required><option value="">Choisir</option><option value="Grand-Ponts">Grand-Ponts</option><option value="Indenie-Djuablin">Indénié-Djuablin</option><option value="La Me">La Mé</option><option value="San-Pedro">San-Pedro</option><option value="Yamoussoukro">Yamoussoukro</option></select></label>
 <label>Quantité de pluie <select name="rain" required><option value="">Choisir</option><option value="Faible">Faible</option><option value="Moyenne">Moyenne</option><option value="Élevée">Élevée</option></select></label>
-</div></fieldset><fieldset><legend>À propos de vous</legend><div class="fields"><label>Sexe du producteur <select name="sex" required><option value="">Choisir</option><option value="Feminin">Féminin</option><option value="Masculin">Masculin</option></select></label>
+</div></fieldset><fieldset><legend>👤 Mes informations</legend><div class="fields"><label>Sexe du producteur <select name="sex" required><option value="">Choisir</option><option value="Feminin">Féminin</option><option value="Masculin">Masculin</option></select></label>
 <label>Jusqu’où avez-vous étudié ? <select name="school" required><option value="">Choisir</option><option value="Non renseigné">Non renseigné</option><option value="Primaire">Primaire</option><option value="Secondaire">Secondaire</option><option value="Supérieur">Supérieur</option></select></label>
 <label>Savez-vous lire et écrire ? <select name="literacy" required><option value="">Choisir</option><option value="non">non</option><option value="oui, lire et écrire">oui, lire et écrire</option><option value="oui, lire seulement">oui, lire seulement</option></select></label>
-</div></fieldset><fieldset><legend>Ce que vous faites sur la parcelle</legend><div class="fields"><label>Utilisez-vous de l’engrais chimique ? <select name="fertilizer" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
+</div></fieldset><fieldset><legend>🌳 Mes pratiques</legend><div class="fields"><label>Utilisez-vous de l’engrais chimique ? <select name="fertilizer" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Arbres d’ombrage <select name="shade" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Fumier ou compost <select name="compost" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Produit contre les mauvaises herbes <select name="herbicide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Produit contre les insectes <select name="insecticide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Produit contre les champignons <select name="fungicide" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option></select></label>
 <label>Avez-vous vu des signes de maladie ? <select name="disease" required><option value="">Choisir</option><option value="Non">Non</option><option value="Oui">Oui</option><option value="Un peu">Un peu</option></select></label>
-</div></fieldset><fieldset><legend>Ventes et scénarios</legend><div class="fields">
+</div></fieldset><fieldset><legend>🧺 Mes ventes prévues</legend><div class="fields">
 <label>Prix de vente envisagé (FCFA/kg)<input type="number" name="salePrice" min="0" max="1000000000" step="any" inputmode="decimal"></label>
-<label>Variation de récolte à tester (%)<input type="number" name="variation" min="0" max="100" step="any" inputmode="decimal" placeholder="Ex. 10"></label>
-</div><p class="muted">Facultatif. Le prix sert à estimer les ventes si tout le cacao est vendu. La variation sert à tester un scénario plus bas et un scénario plus haut.</p></fieldset><p class="muted">Estimation calculée à partir de données de simulation.</p><div class="actions"><button class="button" type="submit">Calculer la prévision</button></div></form><div class="result" id="forecast-result" role="status"></div></div>
+<label>Écart de récolte à tester (%)<input type="number" name="variation" min="0" max="100" step="any" inputmode="decimal" placeholder="Ex. 10"></label>
+</div><p class="muted">Facultatif. Le prix sert à estimer les ventes si tout le cacao est vendu. La variation sert à tester un scénario plus bas et un scénario plus haut.</p></fieldset><p class="muted">Estimation calculée à partir de données de simulation.</p>
+<div class="actions forecast-controls">
+  <button class="button secondary" type="button" id="forecast-back" hidden>Retour</button>
+  <button class="button" type="button" id="forecast-next" hidden>Continuer</button>
+  <button class="button" type="submit">Voir ma récolte estimée</button>
+</div></form><div class="result" id="forecast-result" role="status" tabindex="-1"></div>
+<section id="forecast-compare" hidden aria-labelledby="forecast-compare-title">
+  <h2 id="forecast-compare-title">Comparer mes estimations</h2>
+  <div class="cards" id="forecast-compare-cards"></div>
+</section>
+<div class="actions" id="forecast-result-actions" hidden>
+  <button class="button" type="button" id="forecast-retry">Essayer un autre scénario</button>
+  <button class="button secondary forecast-listen" type="button" id="forecast-listen-result" hidden>Écouter le résultat</button>
+</div></div>
 </section>
 <section id="cooperative" data-page hidden>
 <div class="intro"><h1 class="page">Tableau de bord coopérative</h1><p id="coop-example-label" class="muted" hidden>Exemple fictif avec 300 producteurs.</p></div><div class="cards home-actions"><button class="card home-action" type="button" data-jump="coop-production-title"><strong>Voir la production</strong><small>Comparer les récoltes et les prévisions.</small></button><button class="card home-action" type="button" data-action="visit" aria-describedby="coop-visit-rule"><strong>Parcelles à visiter</strong><span class="metric" id="coop-visit">0</span></button><button class="card home-action" type="button" data-jump="coop-actions-title"><strong>Suivre l’aide aux producteurs</strong><small>Voir les actions à prévoir, programmées et terminées.</small></button><button class="card home-action" type="button" data-jump="coop-receive-title"><strong>Recevoir les bilans</strong><small>Ajouter les fichiers envoyés par les membres.</small></button><button class="card home-action" type="button" data-jump="coop-summary-title"><strong>Voir et télécharger le résumé</strong><small>Consulter les chiffres et télécharger le fichier CSV.</small></button></div>
@@ -412,7 +453,7 @@ function forecastAdvice(input) {
 find("#forecast").addEventListener("submit", (event) => {
   event.preventDefault();
   const form = event.currentTarget;
-  const button = form.querySelector("button");
+  const button = form.querySelector("[type=submit]");
   const result = find("#forecast-result");
   const input = new FormData(form);
   button.disabled = true;
@@ -1042,6 +1083,106 @@ renderFinance();
 window.addEventListener("hashchange", () => route(true));
 route(false);
 render();
+</script>
+
+<script>
+(() => {
+  const form = document.querySelector("#forecast");
+  const steps = Array.from(form.querySelectorAll("fieldset"));
+  const guide = document.querySelector("#forecast-guide");
+  const back = document.querySelector("#forecast-back");
+  const next = document.querySelector("#forecast-next");
+  const submit = form.querySelector("[type=submit]");
+  const result = document.querySelector("#forecast-result");
+  const resultActions = document.querySelector("#forecast-result-actions");
+  const progress = document.querySelector("#forecast-progress");
+  const comparison = document.querySelector("#forecast-compare");
+  const compareCards = document.querySelector("#forecast-compare-cards");
+  let current = 0;
+  let previousEstimate = null;
+  function showStep(index, moveFocus = true) {
+    current = index;
+    steps.forEach((step, i) => { step.hidden = i !== index; });
+    back.hidden = index === 0;
+    next.hidden = index === steps.length - 1;
+    submit.hidden = !next.hidden;
+    progress.textContent = `Étape ${index + 1} sur ${steps.length}`;
+    document.querySelector("#forecast-bar").value = index + 1;
+    if (moveFocus) {
+      const heading = steps[index].querySelector("legend");
+      heading.tabIndex = -1;
+      heading.focus();
+    }
+  }
+  function invalidField(step) {
+    return Array.from(step.querySelectorAll("input, select")).find(field => !field.validity.valid);
+  }
+  function advance() {
+    const invalid = invalidField(steps[current]);
+    if (invalid) invalid.reportValidity();
+    else showStep(current + 1);
+  }
+  next.addEventListener("click", advance);
+  back.addEventListener("click", () => showStep(current - 1));
+  form.addEventListener("submit", event => {
+    if (current === steps.length - 1) {
+      const index = steps.findIndex(invalidField);
+      if (index === -1) return;
+      showStep(index, false);
+      invalidField(steps[index]).reportValidity();
+    } else advance();
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, true);
+  new MutationObserver(() => {
+    const metrics = result.querySelector(".forecast-metrics");
+    resultActions.hidden = !metrics;
+    if (!metrics) return;
+    if (previousEstimate) {
+      const currentEstimate = metrics.cloneNode(true);
+      const estimates = [["Estimation précédente", previousEstimate], ["Nouvelle estimation", currentEstimate]];
+      compareCards.replaceChildren(...estimates.map(([title, estimate]) => {
+        const column = document.createElement("div");
+        const heading = document.createElement("h3");
+        heading.textContent = title;
+        column.append(heading, estimate);
+        return column;
+      }));
+      comparison.hidden = false;
+    }
+    resultActions.hidden = false;
+    result.focus();
+  }).observe(result, {childList: true});
+  document.querySelector("#forecast-retry").addEventListener("click", () => {
+    previousEstimate = result.querySelector(".forecast-metrics").cloneNode(true);
+    comparison.hidden = true;
+    showStep(0);
+  });
+  function enableSpeech(id, getText) {
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return;
+    const button = document.querySelector(id);
+    button.hidden = false;
+    button.addEventListener("click", () => {
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(getText());
+      utterance.lang = "fr-FR";
+      speechSynthesis.speak(utterance);
+    });
+  }
+  enableSpeech("#forecast-listen", () => {
+    const step = steps[current];
+    return [progress.textContent, step.querySelector("legend").textContent,
+      ...Array.from(step.querySelectorAll("label"), label =>
+        Array.from(label.childNodes).filter(node => node.nodeType === Node.TEXT_NODE)
+          .map(node => node.textContent.trim()).join(" "))].join(". ");
+  });
+  enableSpeech("#forecast-listen-result", () => Array.from(
+    result.querySelectorAll(".card, p, h2, li"), node => node.innerText.replace(/\s+/g, " ")
+  ).join(". "));
+  form.noValidate = true;
+  guide.hidden = false;
+  showStep(0, false);
+})();
 </script>
 </body>
 </html>
