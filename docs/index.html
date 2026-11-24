@@ -61,7 +61,16 @@
 #financement .share-choice input{width:22px;height:22px;flex:0 0 22px}
 @media(max-width:480px){.producer-choices button{flex:1 1 120px}.producer-page-head .page{font-size:1.55rem}}
 </style>
-</head>
+<style>
+.producer-audio{display:inline-grid;place-items:center;vertical-align:middle;width:46px;height:46px;margin:4px 0 4px 8px;border:2px solid #315741;border-radius:50%;background:#e5f0dc;color:#163526;font-size:23px;line-height:1;cursor:pointer}
+.producer-audio[aria-pressed=true]{background:#315741;color:white}
+.producer-audio:focus-visible{outline:3px solid #d59732;outline-offset:3px}
+.producer-audio[hidden]{display:none!important}
+.producer-page-head{grid-template-columns:auto minmax(0,1fr) auto}
+.producer-page-head .producer-audio{margin:0}
+.producer-audio-status:empty{display:none}
+#accueil .hero h1,#prevision .intro h1{display:inline}
+</style></head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="top"><div class="wrap"><a class="brand" href="#espaces"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19C2 13 9 4 19 4c0 10-6 17-14 15Zm0 0 9-9m-7 7 1-6m3 3 5-1"/></svg></span>Mon Cacao</a><span class="current-space" id="current-space" hidden></span>
@@ -93,7 +102,7 @@
 <datalist id="known-parcels"></datalist><datalist id="known-seasons"></datalist>
 <section id="depenses" data-page hidden><div class="intro producer-page-head">
 <span class="producer-icon" aria-hidden="true">🧾</span><h1 class="page">Mes dépenses</h1>
-<p class="producer-hint">Notez le montant, puis la dépense et la parcelle.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Notez ce que vous payez pour votre parcelle, même avant de récolter.</p></div>
+<p class="producer-hint">Notez le montant, puis la dépense et la parcelle.</p><p class="muted">Notez ce que vous payez pour votre parcelle, même avant de récolter.</p></div>
 <div class="panel"><h2>Noter une dépense</h2><form id="expense" autocomplete="off">
 <fieldset class="producer-task"><legend>1. Qu’avez-vous payé ?</legend>
 <div class="producer-choices" aria-label="Exemples de dépenses">
@@ -104,7 +113,7 @@
 </section>
 <section id="recoltes" data-page hidden><div class="intro producer-page-head">
 <span class="producer-icon" aria-hidden="true">🧺</span><h1 class="page">Mes récoltes</h1>
-<p class="producer-hint">Choisissez de noter une récolte ou une vente.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Notez les kilos récoltés. Ajoutez la vente quand vous vendez votre cacao.</p></div>
+<p class="producer-hint">Choisissez de noter une récolte ou une vente.</p><p class="muted">Notez les kilos récoltés. Ajoutez la vente quand vous vendez votre cacao.</p></div>
 <div class="producer-choices" id="harvest-choice" hidden>
 <button type="button" aria-controls="harvest-panel" aria-pressed="true">🧺 Noter une récolte</button>
 <button type="button" aria-controls="sale-panel" aria-pressed="false">💰 Noter une vente</button>
@@ -113,7 +122,7 @@
 <div class="panel" id="sale-panel"><h2>Noter une vente</h2><form id="sale" autocomplete="off"><div class="fields"><label>Parcelle <input name="parcel" list="known-parcels" required maxlength="60" placeholder="Ex. Parcelle Nord"></label><label>Campagne <input name="season" list="known-seasons" required maxlength="30" placeholder="Ex. 2026 à 2027"></label><label>Date <input name="date" type="date" required></label><label>Cacao vendu (kg) <input name="weight" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" required></label><label>Prix reçu par kg (FCFA) <input name="price" type="number" min="1" max="1000000000" step="1" inputmode="numeric" required></label></div><div class="actions"><button class="button" type="submit">Enregistrer la vente</button></div></form><p class="result" id="sale-result" role="status"></p></div></div></section>
 <section id="bilan" data-page hidden><div class="intro producer-page-head">
 <span class="producer-icon" aria-hidden="true">📒</span><h1 class="page">Mon bilan</h1>
-<p class="producer-hint">Choisissez la parcelle et la campagne pour voir vos chiffres.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Choisissez une parcelle et une campagne pour voir vos ventes, vos dépenses et le cacao qu’il vous reste à vendre.</p></div>
+<p class="producer-hint">Choisissez la parcelle et la campagne pour voir vos chiffres.</p><p class="muted">Choisissez une parcelle et une campagne pour voir vos ventes, vos dépenses et le cacao qu’il vous reste à vendre.</p></div>
 <div class="panel"><label>Parcelle et campagne <select id="ledger-group"></select></label>
 <div class="cards"><div class="card"><span class="producer-icon" aria-hidden="true">💰</span>Argent reçu<strong class="metric" id="ledger-sales"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">🧾</span>Total dépensé<strong class="metric" id="ledger-costs"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">👛</span>Reste après dépenses<strong class="metric" id="ledger-balance"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">🧺</span>Cacao récolté<strong class="metric" id="ledger-harvest"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">🤝</span>Cacao vendu<strong class="metric" id="ledger-sold"></strong></div><div class="card"><span class="producer-icon" aria-hidden="true">📦</span>Cacao à vendre<strong class="metric" id="ledger-stock"></strong></div></div>
 <h2>Relevés enregistrés</h2><p class="muted">Les anciens relevés sont indiqués dans la liste. Pour chaque parcelle et campagne, le dernier ancien relevé réel sert de point de départ. Il reprend la vente estimée et les dépenses saisies à l’époque.</p>
@@ -122,7 +131,7 @@
 <section id="durabilite" data-page hidden>
 <div class="intro producer-page-head">
 <span class="producer-icon" aria-hidden="true">🌳</span><h1 class="page">Les pratiques de ma parcelle</h1>
-<p class="producer-hint">Répondez aux questions, une par une, pour voir vos conseils.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Faites le point sur vos pratiques. La note sur 100 sert à choisir les actions à améliorer. Elle est calculée par Mon Cacao à partir de vos réponses.</p></div>
+<p class="producer-hint">Répondez aux questions, une par une, pour voir vos conseils.</p><p class="muted">Faites le point sur vos pratiques. La note sur 100 sert à choisir les actions à améliorer. Elle est calculée par Mon Cacao à partir de vos réponses.</p></div>
 <div class="panel"><form id="eco"><fieldset><legend>Questions sur votre parcelle</legend><div class="eco-guide" hidden>
 <p id="eco-progress" role="status"></p>
 <div class="producer-choices"><button type="button" id="eco-prev">Retour</button><button type="button" id="eco-next">Continuer</button></div>
@@ -136,7 +145,7 @@
 <div class="forecast-guide" id="forecast-guide" hidden>
   <p id="forecast-progress" role="status"></p>
   <progress id="forecast-bar" max="4" value="1" aria-label="Avancement de la prévision"></progress>
-  <button type="button" class="button secondary forecast-listen" id="forecast-listen" hidden>Écouter</button>
+  
 </div><fieldset><legend>🌱 Ma parcelle</legend><div class="fields">
 <label>Quelle est la taille de votre parcelle (ha) ? <input name="area" type="number" inputmode="decimal" min="0.01" max="100000" step="0.01" required></label>
 <label>Âge des cacaoyers (en années) <input name="age" type="number" inputmode="decimal" min="1" max="30" step="any" required></label>
@@ -168,7 +177,7 @@
 </section>
 <div class="actions" id="forecast-result-actions" hidden>
   <button class="button" type="button" id="forecast-retry">Essayer un autre scénario</button>
-  <button class="button secondary forecast-listen" type="button" id="forecast-listen-result" hidden>Écouter le résultat</button>
+  
 </div></div>
 </section>
 <section id="cooperative" data-page hidden>
@@ -198,7 +207,7 @@
 <section id="financement" data-page hidden>
 <div class="intro producer-page-head">
 <span class="producer-icon" aria-hidden="true">🤝</span><h1 class="page">Financer ma parcelle</h1>
-<p class="producer-hint">Choisissez une offre, vérifiez les données et suivez votre demande.</p><button type="button" class="button secondary producer-speech" hidden>Écouter</button><p class="muted">Démonstration. Utilisez des données fictives. Les offres et demandes restent dans ce navigateur et le parcours ne réalise aucun envoi externe.</p></div>
+<p class="producer-hint">Choisissez une offre, vérifiez les données et suivez votre demande.</p><p class="muted">Démonstration. Utilisez des données fictives. Les offres et demandes restent dans ce navigateur et le parcours ne réalise aucun envoi externe.</p></div>
 <h2>1. Choisir une offre</h2><div id="fin-offers" class="cards home-actions"></div>
 <form id="fin-request" class="panel" hidden><h2>2. Choisir les informations à partager</h2><p id="fin-selection"></p>
 <fieldset><legend>Dossier de démonstration</legend>
@@ -1206,27 +1215,6 @@ render();
     comparison.hidden = true;
     showStep(0);
   });
-  function enableSpeech(id, getText) {
-    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return;
-    const button = document.querySelector(id);
-    button.hidden = false;
-    button.addEventListener("click", () => {
-      speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(getText());
-      utterance.lang = "fr-FR";
-      speechSynthesis.speak(utterance);
-    });
-  }
-  enableSpeech("#forecast-listen", () => {
-    const step = steps[current];
-    return [progress.textContent, step.querySelector("legend").textContent,
-      ...Array.from(step.querySelectorAll("label"), label =>
-        Array.from(label.childNodes).filter(node => node.nodeType === Node.TEXT_NODE)
-          .map(node => node.textContent.trim()).join(" "))].join(". ");
-  });
-  enableSpeech("#forecast-listen-result", () => Array.from(
-    result.querySelectorAll(".card, p, h2, li"), node => node.innerText.replace(/\s+/g, " ")
-  ).join(". "));
   form.noValidate = true;
   guide.hidden = false;
   showStep(0, false);
@@ -1306,25 +1294,119 @@ render();
   eco.noValidate = true;
   showQuestion(0, false);
 
-  if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return;
-  document.querySelectorAll(".producer-speech").forEach(button => {
-    button.hidden = false;
-    button.addEventListener("click", () => {
-      const page = button.closest("[data-page]");
-      const text = [page.querySelector("h1").textContent, page.querySelector(".producer-hint").textContent];
-      if (page.id === "durabilite") {
-        const question = questions[current];
-        text.push(progress.textContent, question.querySelector("small")?.textContent || question.textContent);
-        if (result.textContent.trim()) text.push(result.innerText);
-      } else if (page.id === "bilan") {
-        text.push(...Array.from(page.querySelectorAll(".card"), card => card.innerText));
+
+})();
+</script>
+
+<script>
+(() => {
+  const supported = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+  const status = document.createElement("p");
+  status.className = "producer-audio-status";
+  status.setAttribute("role", "status");
+  let playing = null;
+  let activeUtterance = null;
+
+  function readScope(scope) {
+    const parts = [];
+    const walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        const parent = node.parentElement;
+        if (!node.textContent.trim() || parent.closest("[hidden], [aria-hidden=true], button, select, script, .producer-audio-status") || !parent.getClientRects().length) {
+          return NodeFilter.FILTER_REJECT;
+        }
+        return NodeFilter.FILTER_ACCEPT;
       }
-      speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text.join(". "));
-      utterance.lang = "fr-FR";
+    });
+    while (walker.nextNode()) parts.push(walker.currentNode.textContent.trim());
+    return parts.join(". ");
+  }
+
+  function stop() {
+    activeUtterance = null;
+    if (playing) {
+      playing.querySelector(".audio-icon").textContent = "🔊";
+      playing.setAttribute("aria-pressed", "false");
+      playing = null;
+    }
+    if (supported) window.speechSynthesis.cancel();
+    status.textContent = "";
+  }
+
+  function addAudio(anchor, scope) {
+    const name = anchor.textContent.trim();
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "producer-audio";
+    button.setAttribute("aria-label", "Écouter ou arrêter : " + name);
+    button.setAttribute("aria-pressed", "false");
+    button.title = "Écouter";
+    const icon = document.createElement("span");
+    icon.className = "audio-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = "🔊";
+    button.append(icon);
+    anchor.after(button);
+    button.addEventListener("click", () => {
+      const sameButton = playing === button;
+      stop();
+      if (sameButton) return;
+      const page = anchor.closest("[data-page]");
+      page.querySelector("h1").parentElement.append(status);
+      if (!supported) {
+        status.textContent = "La lecture audio est indisponible dans ce navigateur.";
+        return;
+      }
+      const text = readScope(scope());
+      if (!text) return;
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = speechSynthesis.getVoices();
+      const voice = voices.find(item => item.lang.toLowerCase() === "fr-ci") ||
+        voices.find(item => item.lang.toLowerCase() === "fr-fr") ||
+        voices.find(item => item.lang.toLowerCase().startsWith("fr"));
+      utterance.lang = voice?.lang || "fr-FR";
+      if (voice) utterance.voice = voice;
+      utterance.rate = 0.92;
+      playing = button;
+      activeUtterance = utterance;
+      icon.textContent = "■";
+      button.setAttribute("aria-pressed", "true");
+      utterance.onend = () => {
+        if (activeUtterance === utterance) stop();
+      };
+      utterance.onerror = () => {
+        if (activeUtterance !== utterance) return;
+        stop();
+        status.textContent = "Impossible de lire ce texte. Réessayez ou utilisez un navigateur avec une voix française.";
+      };
       speechSynthesis.speak(utterance);
     });
-  });
+  }
+
+  for (const id of ["accueil", "prevision", "depenses", "recoltes", "bilan", "durabilite", "financement"]) {
+    const page = document.getElementById(id);
+    addAudio(page.querySelector("h1"), () => {
+      if (id === "prevision") return page.querySelector("#forecast fieldset:not([hidden])");
+      if (id === "durabilite") return page.querySelector(".score-fields label:not([hidden])");
+      return page;
+    });
+    const sectionHeadings = page.querySelectorAll("h2[id], .panel > h2, .panel > form > h2, #fin-offers ~ h2, .home-actions + h2");
+    sectionHeadings.forEach(heading => addAudio(heading, () => heading.parentElement));
+    if (id === "prevision" || id === "durabilite") {
+      const result = page.querySelector(id === "prevision" ? "#forecast-result" : "#eco-result");
+      const heading = document.createElement("h2");
+      heading.textContent = "Mon résultat";
+      heading.hidden = true;
+      result.before(heading);
+      addAudio(heading, () => result);
+      const button = heading.nextElementSibling;
+      button.hidden = true;
+      new MutationObserver(() => {
+        heading.hidden = button.hidden = !result.textContent.trim();
+      }).observe(result, {childList: true, subtree: true});
+    }
+  }
+  window.addEventListener("hashchange", stop);
 })();
 </script>
 </body>
