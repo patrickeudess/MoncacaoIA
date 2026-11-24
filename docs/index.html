@@ -62,11 +62,17 @@
 @media(max-width:480px){.producer-choices button{flex:1 1 120px}.producer-page-head .page{font-size:1.55rem}}
 </style>
 <style>
-.producer-audio{display:inline-grid;place-items:center;vertical-align:middle;width:46px;height:46px;margin:4px 0 4px 8px;border:2px solid #315741;border-radius:50%;background:#e5f0dc;color:#163526;font-size:23px;line-height:1;cursor:pointer}
+.producer-audio-heading{display:flex;align-items:center;gap:4px;min-width:0}
+.producer-audio-heading>:is(h1,h2){margin:0;min-width:0;overflow-wrap:anywhere}
+.producer-audio-heading:has(h2){margin-block:10px}
+.producer-audio{display:inline-grid;place-items:center;flex:0 0 44px;width:44px;height:44px;padding:0;border:0;border-radius:8px;background:transparent;color:#315741;cursor:pointer}
+.producer-audio svg{width:17px;height:17px;display:block}
+.producer-audio:hover{background:#edf3e9}
+.producer-audio-heading[hidden]{display:none!important}
 .producer-audio[aria-pressed=true]{background:#315741;color:white}
 .producer-audio:focus-visible{outline:3px solid #d59732;outline-offset:3px}
 .producer-audio[hidden]{display:none!important}
-.producer-page-head{grid-template-columns:auto minmax(0,1fr) auto}
+.producer-page-head{grid-template-columns:auto minmax(0,1fr)}
 .producer-page-head .producer-audio{margin:0}
 .producer-audio-status:empty{display:none}
 #accueil .hero h1,#prevision .intro h1{display:inline}
@@ -1330,6 +1336,8 @@ render();
   status.setAttribute("role", "status");
   let playing = null;
   let activeUtterance = null;
+  const speaker = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4zM15 9a4 4 0 0 1 0 6m3-9a8 8 0 0 1 0 12"/></svg>';
+  const stopIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></svg>';
 
   function readScope(scope) {
     const parts = [];
@@ -1349,7 +1357,7 @@ render();
   function stop() {
     activeUtterance = null;
     if (playing) {
-      playing.querySelector(".audio-icon").textContent = "🔊";
+      playing.querySelector(".audio-icon").innerHTML = speaker;
       playing.setAttribute("aria-pressed", "false");
       playing = null;
     }
@@ -1368,15 +1376,18 @@ render();
     const icon = document.createElement("span");
     icon.className = "audio-icon";
     icon.setAttribute("aria-hidden", "true");
-    icon.textContent = "🔊";
+    icon.innerHTML = speaker;
     button.append(icon);
-    anchor.after(button);
+    const row = document.createElement("div");
+    row.className = "producer-audio-heading";
+    anchor.before(row);
+    row.append(anchor, button);
     button.addEventListener("click", () => {
       const sameButton = playing === button;
       stop();
       if (sameButton) return;
       const page = anchor.closest("[data-page]");
-      page.querySelector("h1").parentElement.append(status);
+      page.querySelector("h1").closest(".producer-audio-heading").after(status);
       if (!supported) {
         status.textContent = "La lecture audio est indisponible dans ce navigateur.";
         return;
@@ -1393,7 +1404,7 @@ render();
       utterance.rate = 0.92;
       playing = button;
       activeUtterance = utterance;
-      icon.textContent = "■";
+      icon.innerHTML = stopIcon;
       button.setAttribute("aria-pressed", "true");
       utterance.onend = () => {
         if (activeUtterance === utterance) stop();
@@ -1405,6 +1416,7 @@ render();
       };
       speechSynthesis.speak(utterance);
     });
+    return row;
   }
 
   for (const id of ["accueil", "prevision", "depenses", "recoltes", "bilan", "durabilite", "financement"]) {
@@ -1415,18 +1427,21 @@ render();
       return page;
     });
     const sectionHeadings = page.querySelectorAll("h2[id], .panel > h2, .panel > form > h2, #fin-offers ~ h2, .home-actions + h2");
-    sectionHeadings.forEach(heading => addAudio(heading, () => heading.parentElement));
+    sectionHeadings.forEach(heading => {
+      const section = heading.parentElement;
+      addAudio(heading, () => section);
+    });
     if (id === "prevision" || id === "durabilite") {
       const result = page.querySelector(id === "prevision" ? "#forecast-result" : "#eco-result");
       const heading = document.createElement("h2");
       heading.textContent = "Mon résultat";
       heading.hidden = true;
       result.before(heading);
-      addAudio(heading, () => result);
-      const button = heading.nextElementSibling;
-      button.hidden = true;
+      const row = addAudio(heading, () => result);
+      heading.hidden = false;
+      row.hidden = true;
       new MutationObserver(() => {
-        heading.hidden = button.hidden = !result.textContent.trim();
+        row.hidden = !result.textContent.trim();
       }).observe(result, {childList: true, subtree: true});
     }
   }
